@@ -1,3 +1,5 @@
 import React, { createContext } from 'react';
 
-const tripContext = createContext();
+const TripContext = createContext();
+
+export default TripContext;
