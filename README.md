@@ -1,1 +1,1 @@
-# projectx
+# Tech Talents Project Application
