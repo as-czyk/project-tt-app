@@ -8,9 +8,11 @@ const Trips = () => {
   return (
     <Fragment>
       <TripsSearch />
-      {tripscontext.trips.map((trip) => (
-        <TripItem key={trip.id} trip={trip} />
-      ))}
+      <div className='trips__wrapper'>
+        {tripscontext.trips.map((trip) => (
+          <TripItem key={trip.id} trip={trip} />
+        ))}
+      </div>
     </Fragment>
   );
 };
