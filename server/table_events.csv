@@ -1,5 +1,5 @@
-,event_id,event_name,event_address,event_start_date,event_end_date,event_start_time,event_end_time
-0,2ab60824-b539-4a1f-ae1a-f7d94d2d55bb,Time Warp,"Xaver-Fuhr-Straße 101, 68163 Mannheim",2020-04-04,2020-04-05,19:00:00,14:00:00
-1,7be626b0-c1cd-4a26-a111-60afb13ba940,MAYDAY,"Rheinlanddamm 200, 44139 Dortmund",2020-04-30,2020-05-01,17:00:00,12:00:00
-2,eff7e9ae-9c58-42e1-8835-0d51c33dc480,Rock am Ring,"Otto-Flimm-Straße, 53520 Nürburg",2020-06-05,2020-06-07,12:00:00,20:00:00
-3,e6930b99-e8ca-49f8-9583-89f54366dc14,World Club Dome,"Mörfelder Landstraße 362, 60528 Frankfurt am Main",2020-06-05,2020-06-07,20:00:00,18:00:00
+event_id,event_name,event_address,event_start_date,event_end_date,event_start_time,event_end_time
+2ab60824-b539-4a1f-ae1a-f7d94d2d55bb,Time Warp,"Xaver-Fuhr-Straße 101, 68163 Mannheim",2020-04-04,2020-04-05,19:00:00,14:00:00
+7be626b0-c1cd-4a26-a111-60afb13ba940,MAYDAY,"Rheinlanddamm 200, 44139 Dortmund",2020-04-30,2020-05-01,17:00:00,12:00:00
+eff7e9ae-9c58-42e1-8835-0d51c33dc480,Rock am Ring,"Otto-Flimm-Straße, 53520 Nürburg",2020-06-05,2020-06-07,12:00:00,20:00:00
+e6930b99-e8ca-49f8-9583-89f54366dc14,World Club Dome,"Mörfelder Landstraße 362, 60528 Frankfurt am Main",2020-06-05,2020-06-07,20:00:00,18:00:00
