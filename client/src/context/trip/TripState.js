@@ -35,9 +35,8 @@ const TripState = (props) => {
         car_type: 'Auto',
         meeting_point: 'Hanau Hauptbahnhof',
       },
-    ];
-  }
-  
+    ],
+  };
 
   const [state, dispatch] = useReducer(TripReducer, initialState);
 
@@ -48,7 +47,7 @@ const TripState = (props) => {
   return (
     <TripContext.Provider
       value={{
-        trips: state.trips
+        trips: state.trips,
         /*id: state.id,
         seats: state.user,
         user_id: state.user_id,
