@@ -12,14 +12,17 @@ function App() {
   return (
     <TripState>
       <Router>
-        <Fragment>
-          <Header />
-          <Navigation />
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/trips' component={Trips} />
-          </Switch>
-        </Fragment>
+        <div className='main__container'>
+          <div className='navbar__container'>
+            <Navigation />
+          </div>
+          <div className='ctn__container'>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/trips' component={Trips} />
+            </Switch>
+          </div>
+        </div>
       </Router>
     </TripState>
   );

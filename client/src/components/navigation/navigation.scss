@@ -1,14 +1,13 @@
-.navigation__container {
-  border: 1px solid red;
-  height: 3em;
-  margin: 5em;
+@import '../../App.css';
+
+.nav__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   li {
     list-style: none;
-  }
-  ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    padding: 20px;
   }
 }
