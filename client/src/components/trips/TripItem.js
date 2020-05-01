@@ -6,12 +6,12 @@ export const TripItem = ({ trip }) => {
 
   return (
     <div className='trips__container'>
-      <p>{id}</p>
-      <p>{status}</p>
-      <p>{seats}</p>
-      <p>{text}</p>
-      <p>{time}</p>
-      <p>{car_type}</p>
+      <p>FahrtID: {id}</p>
+      <p>Status der Fahrt: {status}</p>
+      <p>Anzahl der Sitze: {seats}</p>
+      <p>Frei-Text: {text}</p>
+      <p>Abfahrszeitpunkt: {time}</p>
+      <p>Fahrzeugtyp:{car_type}</p>
     </div>
   );
 };

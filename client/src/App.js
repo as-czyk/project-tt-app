@@ -16,7 +16,7 @@ function App() {
           <div className='navbar__container'>
             <Navigation />
           </div>
-          <div className='ctn__container'>
+          <div className='content__container'>
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/trips' component={Trips} />

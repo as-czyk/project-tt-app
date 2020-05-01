@@ -1,13 +1,19 @@
 @import '../../App.css';
 
 .nav__wrapper {
+  position: fixed;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100vh;
+  width: 200px;
+  ul {
+    margin-top: 100px;
+  }
   li {
     list-style: none;
-    padding: 20px;
+    padding: 10px;
+    font-size: 1.5em;
   }
 }
