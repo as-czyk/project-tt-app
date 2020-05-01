@@ -1,0 +1,26 @@
+.event__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 'ctn inf';
+  border: 1px solid red;
+  margin: 5em;
+  height: 20em;
+}
+
+.event__ctn {
+  grid-area: ctn;
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.event__inf {
+  grid-area: inf;
+  border: 1px solid orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

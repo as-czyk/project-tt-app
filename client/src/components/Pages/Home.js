@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Event from '../event/Event';
+import Weather from '../weather/Weather';
 
 const Home = () => {
-  return <h1>Home</h1>;
+  return (
+    <Fragment>
+      <Event />
+      <Weather />
+    </Fragment>
+  );
 };
 
 export default Home;
