@@ -1,0 +1,35 @@
+.trips__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid blue;
+  margin: 10px;
+}
+
+.trips__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 5em;
+  flex-wrap: wrap;
+  border: 1px solid red;
+}
+
+.search__trips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid green;
+  height: 5em;
+  margin: 5em;
+}
+
+.search__bar {
+  width: 30em;
+  height: 3em;
+  border: 1px solid blue;
+
+  &:focus {
+    outline: none;
+  }
+}
