@@ -1,0 +1,24 @@
+.trips__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid red;
+}
+
+.search__trips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid green;
+  height: 10em;
+}
+
+.search__bar {
+  width: 30em;
+  height: 5em;
+
+  &:focus {
+    outline: none;
+  }
+}
