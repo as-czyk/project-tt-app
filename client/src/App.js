@@ -4,6 +4,7 @@ import TripState from './context/trip/TripState';
 import './App.css';
 
 import Trips from './components/trips/Trips';
+import OfferTrip from './components/trips/OfferTrip';
 import Header from './components/header/Header';
 import Navigation from './components/navigation/Navigation';
 import Home from './components/Pages/Home';
@@ -20,6 +21,7 @@ function App() {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/trips' component={Trips} />
+              <Route exact path='/offertrip' component={OfferTrip} />
             </Switch>
           </div>
         </div>
