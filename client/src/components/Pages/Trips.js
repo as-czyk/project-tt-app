@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import TripsContext from '../../context/trip/TripContext';
-import TripItem from './TripItem';
-import TripsSearch from './TripsSearch';
+import TripItem from '../trips/TripItem';
+import TripsSearch from '../trips/TripsSearch';
 
 const Trips = () => {
   const tripscontext = useContext(TripsContext);
