@@ -5,13 +5,15 @@ import TripsSearch from './TripsSearch';
 
 const Trips = () => {
   const tripscontext = useContext(TripsContext);
+  const { trips, filtered } = tripscontext;
+
   return (
     <Fragment>
       <TripsSearch />
       <div className='trips__wrapper'>
-        {tripscontext.trips.map((trip) => (
-          <TripItem key={trip.id} trip={trip} />
-        ))}
+        {filtered !== null
+          ? filtered.map((trip) => <TripItem key={trip.id} trip={trip} />)
+          : trips.map((trip) => <TripItem key={trip.id} trip={trip} />)}
       </div>
     </Fragment>
   );
