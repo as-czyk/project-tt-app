@@ -35,3 +35,48 @@
     outline: none;
   }
 }
+
+.trips__form {
+  margin: 10px;
+  line-height: 1.5;
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 25em;
+
+  input {
+    padding: 1em;
+    width: 40%;
+    border: 1px solid red;
+    margin: 10px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.switch__container {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+  line-height: 1.5;
+  height: 4em;
+}
+
+.btn {
+  border: 1px solid red;
+  border-radius: 25px;
+  width: 40%;
+  height: 10%;
+  margin-top: 2em;
+
+  &:focus {
+    outline: none;
+  }
+}
