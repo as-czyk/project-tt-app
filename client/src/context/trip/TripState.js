@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import TripContext from './TripContext';
 import TripReducer from './TripReducer';
 import { v4 as uuidv4 } from 'uuid';
-import { ADD_TRIP } from '../types';
+import { ADD_TRIP, FILTER_TRIPS, CLEAR_FILTER } from '../types';
 
 const TripState = (props) => {
   const initialState = {
@@ -15,7 +15,7 @@ const TripState = (props) => {
         text: 'Hallo das ist eine Fahrt die ich anbieten möchte',
         time: '16:00',
         car_type: 'Auto',
-        meeting_point: 'Hanau Hauptbahnhof',
+        meeting_point: 'Mannheim',
       },
       {
         id: 2,
@@ -25,7 +25,7 @@ const TripState = (props) => {
         text: 'Hallo das ist eine Fahrt die ich anbieten möchte',
         time: '16:00',
         car_type: 'Auto',
-        meeting_point: 'Hanau Hauptbahnhof',
+        meeting_point: 'Hanau',
       },
       {
         id: 3,
@@ -35,9 +35,10 @@ const TripState = (props) => {
         text: 'Hallo das ist eine Fahrt die ich anbieten möchte',
         time: '16:00',
         car_type: 'Auto',
-        meeting_point: 'Hanau Hauptbahnhof',
+        meeting_point: 'Frankfurt',
       },
     ],
+    filtered: null,
   };
 
   const [state, dispatch] = useReducer(TripReducer, initialState);
@@ -58,11 +59,29 @@ const TripState = (props) => {
     });
   };
 
+  // Filter Trips
+  const filterTrips = (text) => {
+    dispatch({
+      type: FILTER_TRIPS,
+      payload: text,
+    });
+  };
+
+  //Clear Filter
+  const clearFilter = () => {
+    dispatch({
+      type: CLEAR_FILTER,
+    });
+  };
+
   return (
     <TripContext.Provider
       value={{
         trips: state.trips,
+        filtered: state.filtered,
         addTrip,
+        filterTrips,
+        clearFilter,
       }}
     >
       {props.children}
