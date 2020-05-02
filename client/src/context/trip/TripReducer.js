@@ -1,5 +1,16 @@
-import React from 'react';
-import TripState from './TripState';
-import {} from '../types';
+import { ADD_TRIP } from '../types';
 
-export default (state, action) => {};
+export default (state, action) => {
+  switch (action.type) {
+    case ADD_TRIP:
+      return {
+        ...state,
+        trips: [...state.trips, action.payload],
+      };
+
+    default:
+      return {
+        state,
+      };
+  }
+};
