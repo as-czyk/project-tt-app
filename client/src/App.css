@@ -8,7 +8,12 @@
 .main__container {
   display: grid;
   grid-template-columns: 200px 1fr;
-  grid-template-areas: 'nav ctn';
+  grid-template-rows: 1fr 100px;
+  grid-template-areas:
+    'nav ctn'
+    'ft ft';
+  border: 1px solid green;
+  margin: 10px;
 }
 
 .navbar__container {
@@ -18,5 +23,10 @@
 
 .content__container {
   grid-area: ctn;
+  border: 1px solid red;
+}
+
+.footer__container {
+  grid-area: ft;
   border: 1px solid red;
 }

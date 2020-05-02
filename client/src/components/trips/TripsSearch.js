@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useRef, useEffect } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import TripContext from '../../context/trip/TripContext';
 
 const TripsSearch = () => {
