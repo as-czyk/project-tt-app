@@ -14,7 +14,7 @@ const Navigation = () => {
           <Link to='/trips'>Find Trips</Link>
         </li>
         <li>
-          <Link to='/trips'>Offer Trip</Link>
+          <Link to='/offertrip'>Offer Trip</Link>
         </li>
       </ul>
     </nav>
