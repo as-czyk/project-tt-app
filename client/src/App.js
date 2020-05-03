@@ -8,6 +8,8 @@ import OfferTrip from './components/trips/OfferTrip';
 import Navigation from './components/navigation/Navigation';
 import Home from './components/Pages/Home';
 import Footer from './components/Footer/Footer';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/trips' component={Trips} />
               <Route exact path='/offertrip' component={OfferTrip} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/register' component={Register} />
             </Switch>
           </div>
           <div className='className=footer__container'>
