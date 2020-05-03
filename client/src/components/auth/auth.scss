@@ -1,0 +1,21 @@
+.auth__form {
+  margin: 10px;
+  line-height: 1.5;
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 25em;
+
+  input {
+    padding: 1em;
+    width: 40%;
+    border: 1px solid red;
+    margin: 10px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
