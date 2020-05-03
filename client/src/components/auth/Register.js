@@ -5,14 +5,26 @@ const Register = () => {
   return (
     <Fragment>
       <form className='auth__form'>
-        <input type='email' name='email' placeholder='Email' />
-        <input type='password' name='password' placeholder='Password' />
-        <input
-          type='password'
-          name='password2'
-          placeholder='Confirm Password'
-        />
-        <input type='text' name='tickerID' placeholder='Ticket ID' />
+        <div className='input__wrapper'>
+          <i class='far fa-envelope fa-lg'></i>
+          <input type='email' name='email' placeholder='Email' />
+        </div>
+        <div className='input__wrapper'>
+          <i class='fas fa-key fa-lg'></i>
+          <input type='password' name='password' placeholder='Password' />
+        </div>
+        <div className='input__wrapper'>
+          <i class='fas fa-key fa-lg'></i>
+          <input
+            type='password'
+            name='password2'
+            placeholder='Confirm Password'
+          />
+        </div>
+        <div className='input__wrapper'>
+          <i class='fas fa-ticket-alt fa-lg'></i>
+          <input type='text' name='tickerID' placeholder='Ticket ID' />
+        </div>
       </form>
     </Fragment>
   );
