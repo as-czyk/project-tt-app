@@ -13,17 +13,32 @@ trips_bp = Blueprint('trips_bp', __name__,
                      template_folder='templates',
                      static_folder='static')
 
-@trips_bp.route('/api/trip/<trip_id>', methods=['GET'])
-def get_journey(trip_id):
-    return trip_id
-    # table_journey_db = client.table.journey
-    # journey_test = table_journey_db.find({'journey_id': "'" + trip_id + "'"})
-    # journeys = []
-    # for journey in journey_test:
-    #      #journey.pop("journey_id")
-    #      journeys.append(journey)
-    # # #return "This is a test"
-    # return dumps(journeys)
+@trips_bp.route("/api/trip", methods=["GET"])
+def get_one_journey():
+    table_journey_db = client.table.journey
+    result = table_journey_db.find( {'journey_id': request.args.get("id")} )
+    results = []
+    for x in result:
+         results.append(x)
+    return dumps(results), 200
+
+@trips_bp.route("/api/trip_event", methods=["GET"])
+def get_all_journeys_for_one_event_id():
+    table_journey_db = client.table.journey
+    result = table_journey_db.find( {'event_id': request.args.get("id")} )
+    results = []
+    for x in result:
+         results.append(x)
+    return dumps(results), 200
+
+@trips_bp.route("/api/test/<string:name>", methods=["GET"])
+def get_name(name: str):
+    return jsonify(data=name), 200
+
+@trips_bp.route("/api/request", methods=["GET"])
+def get_name_1():
+    name = request.args.get("name")
+    return jsonify(data=name), 200
 
     # @app.route('/api/journey', methods=['POST'])
 # def post_jounrey():
@@ -37,9 +52,5 @@ def get_journey(trip_id):
 # # Delete a journey
 # @app.route('/api/journey:journeyID', methods=['DELETE'])
 # def delete_jounrey():
+# aufgrund einer ID
 #     return 'Delete journey'
-
-# # Get Journey
-# @app.route('/api/journey', methods=['GET'])
-# def get_jounrey():
-#     return 'Route to get jounrey based on ID'
