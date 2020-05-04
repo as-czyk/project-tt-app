@@ -13,44 +13,60 @@ trips_bp = Blueprint('trips_bp', __name__,
                      template_folder='templates',
                      static_folder='static')
 
-@trips_bp.route("/api/trip", methods=["GET"])
+@trips_bp.route("/api/trip", methods=["GET", "POST", "DELETE", "PATCH"])
 def get_one_journey():
     table_journey_db = client.table.journey
-    result = table_journey_db.find( {'journey_id': request.args.get("id")} )
-    results = []
-    for x in result:
-         results.append(x)
-    return dumps(results), 200
+    if request.method == 'GET':
+        result = table_journey_db.find( {'journey_id': request.args.get("id")} )
+        results = [x for x in result]
+        return dumps(results), 200
+    if request.method == 'POST':
+        insert = {
+            'event_address': request.args.get('event_address'),
+            "event_id":request.args.get('event_id'),
+            "event_start_date": request.args.get('event_start_date'),
+            "event_start_time":request.args.get('event_start_time'),
+            "pickup_zip_code":request.args.get('pickup_zip_code'),
+            "user_id":request.args.get('user_id'),
+            "journey_id":request.args.get('journey_id'),
+            "journey_empty_spaces":request.args.get('journey_empty_spaces'),
+            "journey_car":request.args.get('journey_car'),
+            "journey_text":request.args.get('journey_text'),
+            "journey_date":request.args.get('journey_date'),
+            "journey_start_time":request.args.get('journey_start_time')}
+        result = table_journey_db.insert_one(insert)
+        return "Successfully inserted with ObjectID: " + str(result.inserted_id)
+    if request.method == 'DELETE':
+        db_response = table_journey_db.delete_one({'journey_id': request.args.get("id")})
+        if db_response.deleted_count == 1:
+            response = {'ok': True, 'message': 'record deleted'}
+        else:
+            response = {'ok': True, 'message': 'no record found'}
+        return jsonify(response), 200
+    if request.method == 'PATCH':
+        query = request.args
+        #return jsonify(query)
+        before = table_journey_db.find( {'journey_id': request.args.get("journey_id")} )
+        table_journey_db.update_one(
+        {'journey_id': request.args.get("journey_id")}, {'$set': {
+            "event_address":request.args.get('event_address'),
+            "event_id":request.args.get('event_id'),
+            "event_start_date": request.args.get('event_start_date'),
+            "event_start_time":request.args.get('event_start_time'),
+            "pickup_zip_code":request.args.get('pickup_zip_code'),
+            "user_id":request.args.get('user_id'),
+            "journey_id":request.args.get('journey_id'),
+            "journey_empty_spaces":request.args.get('journey_empty_spaces'),
+            "journey_car":request.args.get('journey_car'),
+            "journey_text":request.args.get('journey_text'),
+            "journey_date":request.args.get('journey_date'),
+            "journey_start_time":request.args.get('journey_start_time')
+        }})
+        return jsonify({'ok': True, 'message': 'record updated'}), 200
 
 @trips_bp.route("/api/trip_event", methods=["GET"])
 def get_all_journeys_for_one_event_id():
     table_journey_db = client.table.journey
     result = table_journey_db.find( {'event_id': request.args.get("id")} )
-    results = []
-    for x in result:
-         results.append(x)
+    results = [x for x in result]
     return dumps(results), 200
-
-@trips_bp.route("/api/test/<string:name>", methods=["GET"])
-def get_name(name: str):
-    return jsonify(data=name), 200
-
-@trips_bp.route("/api/request", methods=["GET"])
-def get_name_1():
-    name = request.args.get("name")
-    return jsonify(data=name), 200
-
-    # @app.route('/api/journey', methods=['POST'])
-# def post_jounrey():
-#     return 'Route to post a journey'
-
-# Update a journey
-# @app.route('/api/journey:journeyID', methods=['PUT'])
-# def put_jounrey():
-#     return 'Route to put /verändern a journey'
-
-# # Delete a journey
-# @app.route('/api/journey:journeyID', methods=['DELETE'])
-# def delete_jounrey():
-# aufgrund einer ID
-#     return 'Delete journey'
