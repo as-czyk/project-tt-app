@@ -3,7 +3,13 @@ import UserContext from './UserContext';
 import UseReducer from './UserReducer';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
-import { LOGIN_SUCCESS, LOGIN_FAIL, USER_LOADED, AUTH_ERROR } from '../types';
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  USER_LOADED,
+  AUTH_ERROR,
+  LOGOUT,
+} from '../types';
 
 const UserState = (props) => {
   const initialState = {
@@ -58,6 +64,9 @@ const UserState = (props) => {
     }
   };
 
+  //Logout
+  const logout = () => dispatch({ type: LOGOUT });
+
   return (
     <UserContext.Provider
       value={{
@@ -68,6 +77,7 @@ const UserState = (props) => {
         error: state.error,
         login,
         loadUser,
+        logout,
       }}
     >
       {props.children}
