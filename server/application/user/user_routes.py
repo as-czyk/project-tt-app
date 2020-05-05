@@ -11,6 +11,7 @@ from bson.json_util import dumps
 import jwt
 import datetime
 from functools import wraps
+import uuid
 
 connect(
     db='table',
@@ -130,6 +131,31 @@ def get_all_user():
         })    
     return jsonify({'users': output})
 
+# User Routes
+# '/api/auth', methods=['GET']
+# Private Route
+
+@user_bp.route('/api/auth', methods=['GET'])
+@token_required
+def get_auth_user(current_user):
+    user_table = client.table.user
+    result = user_table.find( {"user_id": current_user['user_id']} )
+    if not result:
+       return jsonify({'message': 'No user found!'})
+    output = {}
+    for q in result:
+        output = {
+            'user_id' : q['user_id'],
+            'user_prename' : q['user_prename'],
+            'user_name' : q['user_name'],
+            'user_email' : q['user_email'],
+            'user_alias' : q['user_alias'],
+            'ticket_id' : q['ticket_id'],
+            'event_id' : q['event_id']
+        }
+    
+    return jsonify({'user': output})
+
 # Create User
 # '/api/user', methods=['GET']
 # Public Route
@@ -148,7 +174,7 @@ def create_user():
             hashed_password = generate_password_hash(data['user_password'], method='sha256')
             #To Do - Keine Hart verdrahteten Werte
             user = {
-            'user_id' : '123456789',
+            'user_id' : str(uuid.uuid4()),
             'user_prename' : 'Test',
             'user_alias' : 'username',
             'user_name': data['user_name'],
