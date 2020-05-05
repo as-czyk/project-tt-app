@@ -12,6 +12,7 @@ import Home from './components/Pages/Home';
 import Footer from './components/Footer/Footer';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 function App() {
   return (
@@ -24,9 +25,9 @@ function App() {
             </div>
             <div className='content__container'>
               <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/trips' component={Trips} />
-                <Route exact path='/offertrip' component={OfferTrip} />
+                <PrivateRoute exact path='/' component={Home} />
+                <PrivateRoute exact path='/trips' component={Trips} />
+                <PrivateRoute exact path='/offertrip' component={OfferTrip} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
               </Switch>

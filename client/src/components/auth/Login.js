@@ -38,7 +38,7 @@ const Login = (props) => {
     <Fragment>
       <form onSubmit={onSubmit} className='auth__form'>
         <div className='input__wrapper'>
-          <i class='far fa-envelope fa-lg'></i>
+          <i className='far fa-envelope fa-lg'></i>
           <input
             onChange={onChange}
             type='email'
