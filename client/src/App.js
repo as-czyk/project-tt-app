@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TripState from './context/trip/TripState';
+import UserState from './context/user/UserState';
+
 import './App.css';
 
 import Trips from './components/Pages/Trips';
@@ -13,27 +15,29 @@ import Register from './components/auth/Register';
 
 function App() {
   return (
-    <TripState>
-      <Router>
-        <div className='main__container'>
-          <div className='navbar__container'>
-            <Navigation />
+    <UserState>
+      <TripState>
+        <Router>
+          <div className='main__container'>
+            <div className='navbar__container'>
+              <Navigation />
+            </div>
+            <div className='content__container'>
+              <Switch>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/trips' component={Trips} />
+                <Route exact path='/offertrip' component={OfferTrip} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/register' component={Register} />
+              </Switch>
+            </div>
+            <div className='className=footer__container'>
+              <Footer />
+            </div>
           </div>
-          <div className='content__container'>
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route exact path='/trips' component={Trips} />
-              <Route exact path='/offertrip' component={OfferTrip} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/register' component={Register} />
-            </Switch>
-          </div>
-          <div className='className=footer__container'>
-            <Footer />
-          </div>
-        </div>
-      </Router>
-    </TripState>
+        </Router>
+      </TripState>
+    </UserState>
   );
 }
 
