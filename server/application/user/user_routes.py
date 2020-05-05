@@ -2,12 +2,15 @@ from flask import Blueprint, render_template
 from flask import current_app as app
 import pymongo
 import json
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
 import mongoengine
 from mongoengine import *
 from bson import Binary, Code
 from bson.json_util import dumps
+import jwt
+import datetime
+from functools import wraps
 
 connect(
     db='table',
@@ -20,44 +23,169 @@ db = client['table']
 collection = db['user']
 
 # User Model
-class User(mongoengine.Document):
-    user_id = mongoengine.StringField(required=True)
-    name = mongoengine.StringField(required=True)
-    email = mongoengine.StringField(max_length=50)
-    password = mongoengine.StringField(required=True)
-    ticket_ID = mongoengine.StringField(required=True)
+class User(Document):
+    user_id = StringField(required=True)
+    name = StringField(required=True)
+    email = EmailField(max_length=50)
+    password = StringField(required=True)
+    ticket_ID = StringField(required=True)
 
+    def json(self):
+        user_dict = {
+            "user_id": self.user_id,
+            "name": self.name,
+            "email": self.email, 
+            "password": self.password,
+            "ticket_ID": self.ticket_ID
+        }
+        return json.dumps(user_dict)
 
 # Set up a Blueprint
 user_bp = Blueprint('user_bp', __name__,
                      template_folder='templates',
                      static_folder='static')
 
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = None
+
+        if 'x-access-token' in request.headers:
+            token = request.headers['x-access-token']
+
+        if not token: 
+            return jsonify({'msg' : 'Token is missing'})
+        
+        try:
+            data = jwt.decode(token, app.config['SECRET_KEY'])
+            current_user = collection.find_one({'user_id' : data['user_id']})
+        except:
+            return jsonify({'msg' : 'Token is invalid'})
+        
+        return f(current_user, *args, **kwargs)
+    
+    return decorated
+
+
 
 # User Routes
-#@user_bp.route('/api/user', methods=['GET'])
-#def get_all_user():
-#    return 'Route to get a user'
+# '/api/user', methods=['GET']
+# Private Route
 
 @user_bp.route('/api/user', methods=['GET'])
-def get_one_user():
+@token_required
+def get_one_user(current_user):
     user_table = client.table.user
-    result = user_table.find( {"user_id": request.args.get("id")} )
-    results = []
-    for x in result:
-       results.append(x)
-    return dumps(results), 200
+    result = user_table.find( {"user_email": request.args.get("email")} )
+    if not result: 
+        return jsonify({'message': 'No user found!'})
+    output = {}
+    for q in result:
+        output = {
+            'user_id' : q['user_id'],
+            'user_prename' : q['user_prename'],
+            'user_name' : q['user_name'],
+            'user_email' : q['user_email'],
+            'user_alias' : q['user_alias'],
+            'user_password' : q['user_password'],
+            'ticket_id' : q['ticket_id'],
+            'event_id' : q['event_id']
+        }
+
+    return jsonify({'user': output})
+
+# Delete User
+# '/api/user', methods=['DELETE']
+# Private Route
+
+@user_bp.route('/api/user', methods=['DELETE'])
+@token_required
+def delete_user(current_user):
+    user_table = client.table.user
+    result = user_table.delete_one( {"user_email": request.args.get("email")} )
+    if result.deleted_count == 1:
+        response = {'ok': True, 'message': 'record deleted'}
+    else:
+        response = {'ok': True, 'message': 'no record found'}
+    return jsonify(response), 200
+
+# Get All User
+# '/api/user', methods=['DELETE']
+# Private Route
+
+@user_bp.route('/api/allusers', methods=['GET'])
+def get_all_user():
+    user = client.table.user
+    output = []
+    for q in user.find():
+        output.append({
+            'user_id' : q['user_id'],
+            'user_prename' : q['user_prename'],
+            'user_name' : q['user_name'],
+            'user_email' : q['user_email'],
+            'user_alias' : q['user_alias'],
+            'user_password' : q['user_password'],
+            'ticket_id' : q['ticket_id'],
+            'event_id' : q['event_id']
+        })    
+    return jsonify({'users': output})
+
+# Create User
+# '/api/user', methods=['GET']
+# Public Route
 
 @user_bp.route('/api/user', methods=['POST'])
-def create_user():
+def create_user(): 
     data = request.get_json()
-    hashed_password = generate_password_hash(data['password'], method='sha256')
-    new_user = User(user_id=('1234'), name=data['name'], email=data['email'], password=hashed_password, ticket_ID=data['ticket_ID'])
-    user = new_user.__dict__
-    collection.insert_one(user)
-    print('here')
-    return jsonify({"user": "user is created"})
+    email = data['user_email']
 
-@user_bp.route('/api/test', methods=['GET'])
-def test():
-    return ('Hallo')
+    try:
+        email = collection.find_one( {'user_email': email} )
+        print(email)
+        if email != None:
+            return ({'msg': 'the user already exists'})
+        else:
+            hashed_password = generate_password_hash(data['user_password'], method='sha256')
+            #To Do - Keine Hart verdrahteten Werte
+            user = {
+            'user_id' : '123456789',
+            'user_prename' : 'Test',
+            'user_alias' : 'username',
+            'user_name': data['user_name'],
+            'user_email': data['user_email'],
+            'user_password': hashed_password,
+            'ticket_id': data['user_ticket_ID'],
+            'event_id' : 'eff7e9ae-9c58-42e1-8835-0d51c33dc480'
+            }
+            result = collection.insert_one(user)
+            token = jwt.encode({'user_id' : user['user_id'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=60)}, app.config['SECRET_KEY'])
+
+            return jsonify({'token' : token.decode('UTF-8')})
+    except:
+        return('Server error'), 500
+
+# Login User
+# '/api/login', methods=[POST]
+# Public Route
+
+@user_bp.route('/api/auth', methods=['POST'])
+def auth_user():
+    data = request.get_json()
+    email = data['user_email']
+    password = data['user_password']
+
+    if not data or not email or not password:
+        return make_response({'msg':'Please provide valid credentials'}, 401, {'WWW-Authenitcate' : 'Basic realm="Login required!"'})
+
+    user = collection.find_one( {'user_email' : email} )
+
+    if not user:
+        return make_response({'msg':'User not found'}, 401, {'WWW-Authenitcate' : 'Basic realm="Login required!"'})
+    
+    if check_password_hash(user['user_password'], password):
+        token = jwt.encode({'user_id' : user['user_id'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=60)}, app.config['SECRET_KEY'])
+
+        return jsonify({'token' : token.decode('UTF-8')})
+    
+    return make_response({'msg':'Please provide valid credentials'}, 401, {'WWW-Authenitcate' : 'Basic realm="Login required!"'})
+
