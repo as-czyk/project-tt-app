@@ -1,11 +1,19 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import TripsContext from '../../context/trip/TripContext';
+import UserContext from '../../context/user/UserContext';
 import TripItem from '../trips/TripItem';
 import TripsSearch from '../trips/TripsSearch';
 
 const Trips = () => {
   const tripscontext = useContext(TripsContext);
-  const { trips, filtered } = tripscontext;
+  const userContext = useContext(UserContext);
+
+  const { user } = userContext;
+  const { trips, filtered, loadTrips } = tripscontext;
+
+  useEffect(() => {
+    loadTrips(user.event_id);
+  }, []);
 
   return (
     <Fragment>
