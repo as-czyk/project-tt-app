@@ -11,6 +11,7 @@ from bson.json_util import dumps
 import jwt
 import datetime
 from functools import wraps
+import uuid
 
 connect(
     db='table',
@@ -155,11 +156,6 @@ def get_auth_user(current_user):
     
     return jsonify({'user': output})
 
-
-
-
-
-
 # Create User
 # '/api/user', methods=['GET']
 # Public Route
@@ -178,7 +174,7 @@ def create_user():
             hashed_password = generate_password_hash(data['user_password'], method='sha256')
             #To Do - Keine Hart verdrahteten Werte
             user = {
-            'user_id' : '1234567890',
+            'user_id' : str(uuid.uuid4()),
             'user_prename' : 'Test',
             'user_alias' : 'username',
             'user_name': data['user_name'],
