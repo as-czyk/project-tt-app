@@ -12,6 +12,7 @@ import Home from './components/Pages/Home';
 import Footer from './components/Footer/Footer';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import Profile from './components/Pages/Profile';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                 <PrivateRoute exact path='/' component={Home} />
                 <PrivateRoute exact path='/trips' component={Trips} />
                 <PrivateRoute exact path='/offertrip' component={OfferTrip} />
+                <PrivateRoute exact path='/profile' component={Profile} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
               </Switch>
