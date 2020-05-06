@@ -4,6 +4,8 @@ import pymongo
 from flask import Flask, request, jsonify, render_template
 from bson import Binary, Code
 from bson.json_util import dumps
+from flask import Response 
+from bson import json_util
 
 client = pymongo.MongoClient(
     "mongodb+srv://yannik:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority")
@@ -18,8 +20,24 @@ def get_one_journey():
     table_journey_db = client.table.journey
     if request.method == 'GET':
         result = table_journey_db.find( {'journey_id': request.args.get("id")} )
-        results = [x for x in result]
-        return dumps(results), 200
+    if not result: 
+        return jsonify({'message': 'No trip found!'})
+    output = {}
+    for q in result:
+        output = {
+            'event_address': q['event_address'],
+            "event_id":q['event_id'],
+            "event_start_date": q['event_start_date'],
+            "event_start_time":q['event_start_time'],
+            "pickup_zip_code":q['pickup_zip_code'],
+            "user_id":q['user_id'],
+            "journey_id":q['journey_id'],
+            "journey_empty_spaces":q['journey_empty_spaces'],
+            "journey_car":q['journey_car'],
+            "journey_text":q['journey_text'],
+            "journey_date":q['journey_date'],
+            "journey_start_time":q['journey_start_time']}
+    return jsonify({'trip': output})
     if request.method == 'POST':
         insert = {
             'event_address': request.args.get('event_address'),
@@ -45,7 +63,6 @@ def get_one_journey():
         return jsonify(response), 200
     if request.method == 'PATCH':
         query = request.args
-        #return jsonify(query)
         before = table_journey_db.find( {'journey_id': request.args.get("journey_id")} )
         table_journey_db.update_one(
         {'journey_id': request.args.get("journey_id")}, {'$set': {
@@ -69,4 +86,7 @@ def get_all_journeys_for_one_event_id():
     table_journey_db = client.table.journey
     result = table_journey_db.find( {'event_id': request.args.get("id")} )
     results = [x for x in result]
-    return dumps(results), 200
+    return Response(
+    json_util.dumps({'trip_event' : results}),
+    mimetype='application/json'
+)
