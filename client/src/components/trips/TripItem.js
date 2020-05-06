@@ -2,18 +2,35 @@ import React from 'react';
 import './trips.scss';
 
 export const TripItem = ({ trip }) => {
-  const { id, status, seats, text, time, car_type, meeting_point } = trip;
+  const {
+    journey_id,
+    event_id,
+    event_start_date,
+    event_start_time,
+    event_address,
+    journey_car,
+    journey_data,
+    journey_empty_spaces,
+    journey_text,
+    pickup_zip_code,
+    user_id,
+  } = trip;
+
   // push user on details page with the ID of the journey
   // Component takes in props (id)
   return (
     <div className='trips__container'>
-      <p>FahrtID: {id}</p>
-      <p>Status der Fahrt: {status}</p>
-      <p>Anzahl der Sitze: {seats}</p>
-      <p>Frei-Text: {text}</p>
-      <p>Abfahrszeitpunkt: {time}</p>
-      <p>Fahrzeugtyp:{car_type}</p>
-      <p>Abfahrtort: {meeting_point}</p>
+      <p>FahrtID: {journey_id}</p>
+      <p>Event ID: {event_id}</p>
+      <p>Event Adress: {event_address}</p>
+      <p>Start Datum: {event_start_date}</p>
+      <p>Start Zeit: {event_start_time}</p>
+      <p>Auto: {journey_car}</p>
+      <p>Freitext:{journey_data}</p>
+      <p>Sitze: {journey_empty_spaces}</p>
+      <p>Freitext: {journey_text}</p>
+      <p>PLZ: {pickup_zip_code}</p>
+      <p>User_id: {user_id}</p>
       <button type='submit'>Reservierung anfragen</button>
     </div>
   );

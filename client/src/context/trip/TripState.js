@@ -46,7 +46,7 @@ const TripState = (props) => {
       });
       dispatch({
         type: LOAD_TRIPS,
-        payload: res.data,
+        payload: res.data.trip_event,
       });
     } catch (err) {
       dispatch({

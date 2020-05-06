@@ -47,7 +47,7 @@ const Login = (props) => {
           />
         </div>
         <div className='input__wrapper'>
-          <i class='fas fa-key fa-lg'></i>
+          <i className='fas fa-key fa-lg'></i>
           <input
             onChange={onChange}
             type='password'

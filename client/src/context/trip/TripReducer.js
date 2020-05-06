@@ -13,14 +13,14 @@ export default (state, action) => {
         ...state,
         filtered: state.trips.filter((trip) => {
           const regex = new RegExp(`${action.payload}`, 'gi');
-          return trip.meeting_point.match(regex);
+          return trip.journey_text.match(regex);
         }),
       };
 
     case LOAD_TRIPS:
       return {
         ...state,
-        trips: [action.payload],
+        trips: action.payload,
       };
 
     case CLEAR_FILTER:
