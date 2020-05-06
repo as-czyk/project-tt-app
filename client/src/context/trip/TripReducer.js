@@ -20,7 +20,7 @@ export default (state, action) => {
     case LOAD_TRIPS:
       return {
         ...state,
-        trips: [...state.trips, action.payload],
+        trips: [action.payload],
       };
 
     case CLEAR_FILTER:
