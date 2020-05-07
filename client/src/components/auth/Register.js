@@ -6,15 +6,15 @@ const Register = () => {
     <Fragment>
       <form className='auth__form'>
         <div className='input__wrapper'>
-          <i class='far fa-envelope fa-lg'></i>
+          <i className='far fa-envelope fa-lg'></i>
           <input type='email' name='email' placeholder='Email' />
         </div>
         <div className='input__wrapper'>
-          <i class='fas fa-key fa-lg'></i>
+          <i className='fas fa-key fa-lg'></i>
           <input type='password' name='password' placeholder='Password' />
         </div>
         <div className='input__wrapper'>
-          <i class='fas fa-key fa-lg'></i>
+          <i className='fas fa-key fa-lg'></i>
           <input
             type='password'
             name='password2'
@@ -22,7 +22,7 @@ const Register = () => {
           />
         </div>
         <div className='input__wrapper'>
-          <i class='fas fa-ticket-alt fa-lg'></i>
+          <i className='fas fa-ticket-alt fa-lg'></i>
           <input type='text' name='tickerID' placeholder='Ticket ID' />
         </div>
       </form>

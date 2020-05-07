@@ -22,7 +22,7 @@ const TripsSearch = () => {
   };
 
   return (
-    <form class='search__trips'>
+    <form className='search__trips'>
       <input
         className='search__bar'
         type='text'
