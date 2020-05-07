@@ -8,6 +8,7 @@ import {
   CLEAR_FILTER,
   LOAD_TRIPS,
   LOAD_ERROR,
+  SET_LOADING,
 } from '../types';
 import axios from 'axios';
 
@@ -15,6 +16,7 @@ const TripState = (props) => {
   const initialState = {
     trips: [],
     filtered: null,
+    loading: false,
   };
 
   const [state, dispatch] = useReducer(TripReducer, initialState);
@@ -24,34 +26,28 @@ const TripState = (props) => {
    */
 
   //Add Trip
-  const addTrip = (trip) => {
-    //Fix hardcoded data
-    trip.journey_id = uuidv4();
-    trip.event_id = 'eff7e9ae-9c58-42e1-8835-0d51c33dc480';
-    trip.event_start_date = 'Test';
-    trip.event_start_time = 'Test';
-    trip.event_address = 'Test';
-    trip.journey_date = 'Test';
-
-    // Dev Data
-    // Api call to backend goes here
-
-    /*try {
-      const res = await axios.post('/api/journey', {
-
-      })
+  const addTrip = async (trip) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    try {
+      const res = await axios.post('/api/trip', trip, config);
+      dispatch({
+        type: ADD_TRIP,
+        payload: trip,
+      });
     } catch (err) {
-
-    } */
-
-    dispatch({
-      type: ADD_TRIP,
-      payload: trip,
-    });
+      dispatch({
+        type: LOAD_ERROR,
+      });
+    }
   };
 
   //Load Trips
   const loadTrips = async (eventID) => {
+    setLoading();
     try {
       const res = await axios.get('/api/trip_event', {
         params: {
@@ -84,11 +80,15 @@ const TripState = (props) => {
     });
   };
 
+  //Set Loading
+  const setLoading = () => dispatch({ type: SET_LOADING });
+
   return (
     <TripContext.Provider
       value={{
         trips: state.trips,
         filtered: state.filtered,
+        loading: state.loading,
         addTrip,
         filterTrips,
         clearFilter,

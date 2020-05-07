@@ -1,4 +1,10 @@
-import { ADD_TRIP, FILTER_TRIPS, CLEAR_FILTER, LOAD_TRIPS } from '../types';
+import {
+  ADD_TRIP,
+  FILTER_TRIPS,
+  CLEAR_FILTER,
+  LOAD_TRIPS,
+  SET_LOADING,
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -21,12 +27,19 @@ export default (state, action) => {
       return {
         ...state,
         trips: action.payload,
+        loading: false,
       };
 
     case CLEAR_FILTER:
       return {
         ...state,
         filtered: null,
+      };
+
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
 
     default:

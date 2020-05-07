@@ -6,6 +6,7 @@ from bson import Binary, Code
 from bson.json_util import dumps
 from flask import Response 
 from bson import json_util
+import uuid
 
 client = pymongo.MongoClient(
     "mongodb+srv://yannik:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority")
@@ -15,9 +16,10 @@ trips_bp = Blueprint('trips_bp', __name__,
                      template_folder='templates',
                      static_folder='static')
 
-@trips_bp.route("/api/trip", methods=["GET", "POST", "DELETE", "PATCH"])
+@trips_bp.route("/api/trip", methods=["GET", "DELETE", "PATCH"])
 def get_one_journey():
     table_journey_db = client.table.journey
+    result = {}
     if request.method == 'GET':
         result = table_journey_db.find( {'journey_id': request.args.get("id")} )
     if not result: 
@@ -38,22 +40,6 @@ def get_one_journey():
             "journey_date":q['journey_date'],
             "journey_start_time":q['journey_start_time']}
     return jsonify({'trip': output})
-    if request.method == 'POST':
-        insert = {
-            'event_address': request.args.get('event_address'),
-            "event_id":request.args.get('event_id'),
-            "event_start_date": request.args.get('event_start_date'),
-            "event_start_time":request.args.get('event_start_time'),
-            "pickup_zip_code":request.args.get('pickup_zip_code'),
-            "user_id":request.args.get('user_id'),
-            "journey_id":request.args.get('journey_id'),
-            "journey_empty_spaces":request.args.get('journey_empty_spaces'),
-            "journey_car":request.args.get('journey_car'),
-            "journey_text":request.args.get('journey_text'),
-            "journey_date":request.args.get('journey_date'),
-            "journey_start_time":request.args.get('journey_start_time')}
-        result = table_journey_db.insert_one(insert)
-        return "Successfully inserted with ObjectID: " + str(result.inserted_id)
     if request.method == 'DELETE':
         db_response = table_journey_db.delete_one({'journey_id': request.args.get("id")})
         if db_response.deleted_count == 1:
@@ -90,3 +76,23 @@ def get_all_journeys_for_one_event_id():
     json_util.dumps({'trip_event' : results}),
     mimetype='application/json'
 )
+
+@trips_bp.route('/api/trip', methods=['POST'])
+def create_trip():
+    data = request.get_json()
+    table_journey_db = client.table.journey
+    journey = {
+        'event_address': data['event_address'],
+        "event_id":data['event_id'],
+        "event_start_date": '2020-06-07',
+        "event_start_time": '16:00',
+        "pickup_zip_code": data['pickup_zip_code'],
+        "user_id":data['user_id'],
+        "journey_id": str(uuid.uuid4()),
+        "journey_empty_spaces":data['journey_empty_spaces'],
+        "journey_car":data['journey_car'],
+        "journey_text":data['journey_text'],
+        "journey_date":data['journey_date'],
+        "journey_start_time":data['journey_start_time']}
+    result = table_journey_db.insert_one(journey)
+    return "Successfully inserted with ObjectID: " + str(result.inserted_id)
