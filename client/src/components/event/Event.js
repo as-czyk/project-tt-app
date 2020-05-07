@@ -1,17 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import UserContext from '../../context/user/UserContext';
 import './event.scss';
 
 const Event = () => {
+  const userContext = useContext(UserContext);
+  const { event } = userContext;
+
   return (
     <div className='event__container'>
       <div className='event__ctn'>
         <p>Image</p>
       </div>
       <div className='event__inf'>
-        <h2>Context spezifische Informationen zum Event</h2>
-        <p>EventID</p>
-        <p>api/getUser</p>
-        <p>Ideen: Counter bis zum Event, Lokalität des Events, Image</p>
+        <p>Event Address: {event.event_address}</p>
+        <p>Event Enddatum: {event.event_end_date}</p>
+        <p>Event Endzeit: {event.event_end_time}</p>
+        <p>Event Name: {event.event_name}</p>
+        <p>Event Startdatum: {event.event_start_time}</p>
+        <p>Event Startzeit: {event.event_start_date}</p>
       </div>
     </div>
   );
