@@ -25,11 +25,25 @@ const TripState = (props) => {
 
   //Add Trip
   const addTrip = (trip) => {
+    //Fix hardcoded data
+    trip.journey_id = uuidv4();
+    trip.event_id = 'eff7e9ae-9c58-42e1-8835-0d51c33dc480';
+    trip.event_start_date = 'Test';
+    trip.event_start_time = 'Test';
+    trip.event_address = 'Test';
+    trip.journey_date = 'Test';
+
     // Dev Data
     // Api call to backend goes here
-    trip.id = uuidv4();
-    trip.user_id = uuidv4();
-    trip.status = 'true';
+
+    /*try {
+      const res = await axios.post('/api/journey', {
+
+      })
+    } catch (err) {
+
+    } */
+
     dispatch({
       type: ADD_TRIP,
       payload: trip,
