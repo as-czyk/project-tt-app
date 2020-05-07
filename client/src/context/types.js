@@ -12,3 +12,7 @@ export const USER_LOADED = 'USER_LOADED';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGOUT = 'LOGOUT';
+export const SET_LOADING = 'SET_LOADING';
+
+// Event
+export const EVENT_LOADED = 'EVENT_LOADED';

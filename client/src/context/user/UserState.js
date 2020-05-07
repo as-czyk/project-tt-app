@@ -9,15 +9,19 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   LOGOUT,
+  LOAD_ERROR,
+  EVENT_LOADED,
+  SET_LOADING,
 } from '../types';
 
 const UserState = (props) => {
   const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
-    loading: null,
+    loading: false,
     user: null,
     error: null,
+    event: null,
   };
 
   const [state, dispatch] = useReducer(UseReducer, initialState);
@@ -26,7 +30,30 @@ const UserState = (props) => {
    * Api Calls / Functionality
    */
 
-  //User Loaded
+  //Load Event
+  const loadEvent = async (eventId) => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+
+    try {
+      const res = await axios.get('/api/event', {
+        params: {
+          event_id: eventId,
+        },
+      });
+      dispatch({
+        type: EVENT_LOADED,
+        payload: res.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: LOAD_ERROR,
+      });
+    }
+  };
+
+  //Load User
   const loadUser = async () => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
@@ -46,6 +73,7 @@ const UserState = (props) => {
 
   //Login User
   const login = async (loginData) => {
+    setLoading();
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -67,6 +95,9 @@ const UserState = (props) => {
   //Logout
   const logout = () => dispatch({ type: LOGOUT });
 
+  //Set Loading
+  const setLoading = () => dispatch({ type: SET_LOADING });
+
   return (
     <UserContext.Provider
       value={{
@@ -75,9 +106,11 @@ const UserState = (props) => {
         loading: state.loading,
         user: state.user,
         error: state.error,
+        event: state.event,
         login,
         loadUser,
         logout,
+        loadEvent,
       }}
     >
       {props.children}
