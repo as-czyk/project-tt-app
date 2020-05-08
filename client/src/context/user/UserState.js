@@ -12,6 +12,8 @@ import {
   LOAD_ERROR,
   EVENT_LOADED,
   SET_LOADING,
+  REGISTER_FAIL,
+  REGISTER_SUCCESS,
 } from '../types';
 
 const UserState = (props) => {
@@ -71,6 +73,30 @@ const UserState = (props) => {
     }
   };
 
+  //Register User
+  const registerUser = async (registerData) => {
+    setLoading();
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    console.log(registerData);
+
+    try {
+      const res = await axios.post('/api/user', registerData, config);
+      dispatch({
+        type: REGISTER_SUCCESS,
+        payload: res.data,
+      });
+      loadUser();
+    } catch (err) {
+      dispatch({
+        type: REGISTER_FAIL,
+      });
+    }
+  };
+
   //Login User
   const login = async (loginData) => {
     setLoading();
@@ -111,6 +137,7 @@ const UserState = (props) => {
         loadUser,
         logout,
         loadEvent,
+        registerUser,
       }}
     >
       {props.children}
