@@ -175,9 +175,7 @@ def create_user():
             #To Do - Keine Hart verdrahteten Werte
             user = {
             'user_id' : str(uuid.uuid4()),
-            'user_prename' : 'Test',
-            'user_alias' : 'username',
-            'user_name': data['user_name'],
+            'username': data['user_name'],
             'user_email': data['user_email'],
             'user_password': hashed_password,
             'ticket_id': data['user_ticket_ID'],
