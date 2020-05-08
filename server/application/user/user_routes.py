@@ -146,10 +146,8 @@ def get_auth_user(current_user):
     for q in result:
         output = {
             'user_id' : q['user_id'],
-            'user_prename' : q['user_prename'],
-            'user_name' : q['user_name'],
+            'username' : q['username'],
             'user_email' : q['user_email'],
-            'user_alias' : q['user_alias'],
             'ticket_id' : q['ticket_id'],
             'event_id' : q['event_id']
         }
@@ -167,7 +165,6 @@ def create_user():
 
     try:
         email = collection.find_one( {'user_email': email} )
-        print(email)
         if email != None:
             return ({'msg': 'the user already exists'})
         else:
@@ -175,7 +172,7 @@ def create_user():
             #To Do - Keine Hart verdrahteten Werte
             user = {
             'user_id' : str(uuid.uuid4()),
-            'username': data['user_name'],
+            'username': data['username'],
             'user_email': data['user_email'],
             'user_password': hashed_password,
             'ticket_id': data['user_ticket_ID'],
