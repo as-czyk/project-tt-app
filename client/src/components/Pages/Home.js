@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import Event from '../event/Event';
 import Weather from '../weather/Weather';
+import Countdown from '../event/Countdown';
 
 import UserContext from '../../context/user/UserContext';
 
@@ -9,7 +10,7 @@ const Home = () => {
   const { event, loading, loadEvent, user } = userContext;
 
   useEffect(() => {
-    if (!loading) {
+    if (!loading && user != undefined) {
       loadEvent(user.user.event_id);
     }
   }, [loading]);
@@ -17,6 +18,7 @@ const Home = () => {
   if (!loading && event != undefined) {
     return (
       <Fragment>
+        <Countdown />
         <Event />
         <Weather />
       </Fragment>
