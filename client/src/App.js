@@ -14,6 +14,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Profile from './components/Pages/Profile';
 import TripsReservation from './components/trips/TipsReservation';
+import ChangeForm from './components/profile/ChangeForm';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
                   path='/tripsreservation'
                   component={TripsReservation}
                 />
+                <PrivateRoute exact path='/changeform' component={ChangeForm} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
               </Switch>

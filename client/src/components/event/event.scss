@@ -24,3 +24,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.counter__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid red;
+  margin: 2em;
+  min-height: 10em;
+}
