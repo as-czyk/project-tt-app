@@ -9,14 +9,18 @@ import {
   LOAD_TRIPS,
   LOAD_ERROR,
   SET_LOADING,
+  USER_TRIPS,
+  DELETE_TRIP,
 } from '../types';
 import axios from 'axios';
 
 const TripState = (props) => {
   const initialState = {
     trips: [],
+    userTrips: [],
     filtered: null,
     loading: false,
+    errors: null,
   };
 
   const [state, dispatch] = useReducer(TripReducer, initialState);
@@ -65,6 +69,45 @@ const TripState = (props) => {
     }
   };
 
+  //Get Trips
+  const getTripsForUser = async (userID) => {
+    try {
+      const res = await axios.get('/api/tripUser', {
+        params: {
+          id: userID,
+        },
+      });
+      dispatch({
+        type: USER_TRIPS,
+        payload: res.data.tripUser,
+      });
+    } catch (err) {
+      dispatch({
+        type: LOAD_ERROR,
+      });
+    }
+  };
+
+  //Delete Trip
+  const deleteTrip = async (tripID) => {
+    try {
+      const res = await axios.delete('/api/trip', {
+        params: {
+          id: tripID,
+        },
+      });
+      dispatch({
+        type: DELETE_TRIP,
+        payload: tripID,
+      });
+      console.log(res);
+    } catch (err) {
+      dispatch({
+        type: LOAD_ERROR,
+      });
+    }
+  };
+
   // Filter Trips
   const filterTrips = (text) => {
     dispatch({
@@ -89,10 +132,14 @@ const TripState = (props) => {
         trips: state.trips,
         filtered: state.filtered,
         loading: state.loading,
+        userTrips: state.userTrips,
+        errors: state.errors,
         addTrip,
         filterTrips,
         clearFilter,
         loadTrips,
+        getTripsForUser,
+        deleteTrip,
       }}
     >
       {props.children}

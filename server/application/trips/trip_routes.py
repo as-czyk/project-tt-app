@@ -96,3 +96,13 @@ def create_trip():
         "journey_start_time":data['journey_start_time']}
     result = table_journey_db.insert_one(journey)
     return "Successfully inserted with ObjectID: " + str(result.inserted_id)
+
+@trips_bp.route("/api/tripUser", methods=["GET"])
+def journey_for_user_id():
+    table_journey_db = client.table.journey
+    result = table_journey_db.find( {'user_id': request.args.get("id")} )
+    results = [x for x in result]
+    return Response(
+    json_util.dumps({'tripUser' : results}),
+    mimetype='application/json'
+)

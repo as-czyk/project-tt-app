@@ -15,8 +15,6 @@ const Trips = () => {
     loadTrips(user.user.event_id);
   }, []);
 
-  console.log(loading);
-
   if (!loading) {
     return (
       <Fragment>
