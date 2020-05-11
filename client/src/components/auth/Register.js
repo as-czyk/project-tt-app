@@ -1,9 +1,16 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react';
 import UserContext from '../../context/user/UserContext';
+import AlertContext from '../../context/alert/AlertContext';
+import Alerts from './Alerts';
 import './auth.scss';
 
 const Register = (props) => {
+  const alertState = useContext(AlertContext);
   const userContext = useContext(UserContext);
+
+  const { setAlert } = alertState;
+  const { error, clearErrors, isAuthenticated } = userContext;
+
   const [user, setUser] = useState({
     username: '',
     user_email: '',
@@ -14,16 +21,30 @@ const Register = (props) => {
   const { username, user_email, user_password, user_ticket_ID } = user;
 
   useEffect(() => {
-    if (userContext.isAuthenticated) {
+    if (isAuthenticated) {
       props.history.push('/');
     }
-  });
+    if (error === 'the user already exists') {
+      setAlert(error, 'danger');
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
 
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    userContext.registerUser(user);
+    if (
+      username == '' ||
+      user_email == '' ||
+      user_password == '' ||
+      user_ticket_ID == ''
+    ) {
+      alertState.setAlert('Please fill in all fields', 'danger');
+    } else {
+      userContext.registerUser(user);
+    }
     setUser({
       username: '',
       user_email: '',
@@ -34,6 +55,7 @@ const Register = (props) => {
 
   return (
     <Fragment>
+      <Alerts />
       <form onSubmit={onSubmit} className='auth__form'>
         <div className='input__wrapper'>
           <i className='fas fa-user fa-lg'></i>
@@ -69,7 +91,7 @@ const Register = (props) => {
           <i className='fas fa-key fa-lg'></i>
           <input
             type='password'
-            name='password2'
+            name='user_password2'
             placeholder='Confirm Password'
           />
         </div>
