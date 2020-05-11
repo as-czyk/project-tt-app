@@ -14,6 +14,7 @@ import {
   SET_LOADING,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
+  CLEAR_ERRORS,
 } from '../types';
 
 const UserState = (props) => {
@@ -81,8 +82,6 @@ const UserState = (props) => {
         'Content-Type': 'application/json',
       },
     };
-    console.log(registerData);
-
     try {
       const res = await axios.post('/api/user', registerData, config);
       dispatch({
@@ -90,9 +89,10 @@ const UserState = (props) => {
         payload: res.data,
       });
       loadUser();
-    } catch (err) {
+    } catch (error) {
       dispatch({
         type: REGISTER_FAIL,
+        payload: error.response.data.msg,
       });
     }
   };
@@ -114,7 +114,10 @@ const UserState = (props) => {
       });
       loadUser();
     } catch (error) {
-      dispatch({ type: LOGIN_FAIL });
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: error.response.data.msg,
+      });
     }
   };
 
@@ -123,6 +126,9 @@ const UserState = (props) => {
 
   //Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
+
+  //Clear Errors
+  const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
   return (
     <UserContext.Provider
@@ -138,6 +144,7 @@ const UserState = (props) => {
         logout,
         loadEvent,
         registerUser,
+        clearErrors,
       }}
     >
       {props.children}
