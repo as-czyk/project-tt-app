@@ -32,3 +32,22 @@
   align-items: center;
   padding-left: 5px;
 }
+
+/** Alert Component */
+.alert {
+  padding: 0.7rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: #444;
+  color: #333;
+}
+
+.alert-danger {
+  background: red;
+  color: #fff;
+}
+
+.alert-success {
+  background: green;
+  color: #ffffff;
+}

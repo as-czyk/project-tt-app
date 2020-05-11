@@ -12,10 +12,8 @@ export const UserData = () => {
       <h1>User Data goes here</h1>
       <p>{user.user.event_id}</p>
       <p>{user.user.ticket_id}</p>
-      <p>{user.user.user_alias}</p>
       <p>{user.user.user_email}</p>
-      <p>{user.user.user_name}</p>
-      <p>{user.user.user_prename}</p>
+      <p>{user.user.username}</p>
     </div>
   );
 };

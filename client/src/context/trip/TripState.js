@@ -8,13 +8,19 @@ import {
   CLEAR_FILTER,
   LOAD_TRIPS,
   LOAD_ERROR,
+  SET_LOADING,
+  USER_TRIPS,
+  DELETE_TRIP,
 } from '../types';
 import axios from 'axios';
 
 const TripState = (props) => {
   const initialState = {
     trips: [],
+    userTrips: [],
     filtered: null,
+    loading: false,
+    errors: null,
   };
 
   const [state, dispatch] = useReducer(TripReducer, initialState);
@@ -24,20 +30,28 @@ const TripState = (props) => {
    */
 
   //Add Trip
-  const addTrip = (trip) => {
-    // Dev Data
-    // Api call to backend goes here
-    trip.id = uuidv4();
-    trip.user_id = uuidv4();
-    trip.status = 'true';
-    dispatch({
-      type: ADD_TRIP,
-      payload: trip,
-    });
+  const addTrip = async (trip) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    try {
+      const res = await axios.post('/api/trip', trip, config);
+      dispatch({
+        type: ADD_TRIP,
+        payload: trip,
+      });
+    } catch (err) {
+      dispatch({
+        type: LOAD_ERROR,
+      });
+    }
   };
 
   //Load Trips
   const loadTrips = async (eventID) => {
+    setLoading();
     try {
       const res = await axios.get('/api/trip_event', {
         params: {
@@ -46,8 +60,47 @@ const TripState = (props) => {
       });
       dispatch({
         type: LOAD_TRIPS,
-        payload: res.data,
+        payload: res.data.trip_event,
       });
+    } catch (err) {
+      dispatch({
+        type: LOAD_ERROR,
+      });
+    }
+  };
+
+  //Get Trips
+  const getTripsForUser = async (userID) => {
+    try {
+      const res = await axios.get('/api/tripUser', {
+        params: {
+          id: userID,
+        },
+      });
+      dispatch({
+        type: USER_TRIPS,
+        payload: res.data.tripUser,
+      });
+    } catch (err) {
+      dispatch({
+        type: LOAD_ERROR,
+      });
+    }
+  };
+
+  //Delete Trip
+  const deleteTrip = async (tripID) => {
+    try {
+      const res = await axios.delete('/api/trip', {
+        params: {
+          id: tripID,
+        },
+      });
+      dispatch({
+        type: DELETE_TRIP,
+        payload: tripID,
+      });
+      console.log(res);
     } catch (err) {
       dispatch({
         type: LOAD_ERROR,
@@ -70,15 +123,23 @@ const TripState = (props) => {
     });
   };
 
+  //Set Loading
+  const setLoading = () => dispatch({ type: SET_LOADING });
+
   return (
     <TripContext.Provider
       value={{
         trips: state.trips,
         filtered: state.filtered,
+        loading: state.loading,
+        userTrips: state.userTrips,
+        errors: state.errors,
         addTrip,
         filterTrips,
         clearFilter,
         loadTrips,
+        getTripsForUser,
+        deleteTrip,
       }}
     >
       {props.children}

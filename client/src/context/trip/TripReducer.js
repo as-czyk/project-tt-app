@@ -1,4 +1,12 @@
-import { ADD_TRIP, FILTER_TRIPS, CLEAR_FILTER, LOAD_TRIPS } from '../types';
+import {
+  ADD_TRIP,
+  FILTER_TRIPS,
+  CLEAR_FILTER,
+  LOAD_TRIPS,
+  SET_LOADING,
+  USER_TRIPS,
+  DELETE_TRIP,
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -13,20 +21,42 @@ export default (state, action) => {
         ...state,
         filtered: state.trips.filter((trip) => {
           const regex = new RegExp(`${action.payload}`, 'gi');
-          return trip.meeting_point.match(regex);
+          return trip.journey_text.match(regex);
         }),
+      };
+
+    case DELETE_TRIP:
+      return {
+        ...state,
+        userTrips: state.userTrips.filter(
+          (userTrip) => userTrip.journey_id !== action.payload
+        ),
       };
 
     case LOAD_TRIPS:
       return {
         ...state,
-        trips: [...state.trips, action.payload],
+        trips: action.payload,
+        loading: false,
+      };
+
+    case USER_TRIPS:
+      return {
+        ...state,
+        userTrips: action.payload,
+        loading: false,
       };
 
     case CLEAR_FILTER:
       return {
         ...state,
         filtered: null,
+      };
+
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
 
     default:

@@ -1,17 +1,26 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react';
 import UserContext from '../../context/user/UserContext';
+import AlertState from '../../context/alert/AlertContext';
+import Alerts from './Alerts';
 import './auth.scss';
 
 const Login = (props) => {
   const userContext = useContext(UserContext);
+  const alertState = useContext(AlertState);
 
-  const { login, isAuthenticated, error } = userContext;
+  const { login, isAuthenticated, error, clearErrors } = userContext;
 
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push('/');
     }
-  });
+
+    if (error === 'Please provide valid credentials') {
+      alertState.setAlert(error, 'danger');
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     email: '',
@@ -23,7 +32,7 @@ const Login = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (email === '' || password === '') {
-      console.log('Please fill in fields');
+      alertState.setAlert('Please fill in all fields', 'danger');
     } else {
       login({
         user_email: email,
@@ -36,6 +45,7 @@ const Login = (props) => {
 
   return (
     <Fragment>
+      <Alerts />
       <form onSubmit={onSubmit} className='auth__form'>
         <div className='input__wrapper'>
           <i className='far fa-envelope fa-lg'></i>
@@ -47,7 +57,7 @@ const Login = (props) => {
           />
         </div>
         <div className='input__wrapper'>
-          <i class='fas fa-key fa-lg'></i>
+          <i className='fas fa-key fa-lg'></i>
           <input
             onChange={onChange}
             type='password'
