@@ -31,8 +31,6 @@ const Countdown = () => {
     };
   };
 
-  console.log(event.event_start_time);
-
   setTimeout(() => {
     const time = getTimeToEvent(event.event_start_date, event.event_start_time);
     setCounter({

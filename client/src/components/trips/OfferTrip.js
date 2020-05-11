@@ -1,12 +1,16 @@
 import React, { Fragment, useState, useContext } from 'react';
 import TripsContext from '../../context/trip/TripContext';
 import UserContext from '../../context/user/UserContext';
+import AlertContext from '../../context/alert/AlertContext';
+import Alerts from '../auth/Alerts';
 
 const OfferTrip = () => {
   const tripContext = useContext(TripsContext);
   const userContext = useContext(UserContext);
+  const alertContext = useContext(AlertContext);
 
   const { user, event } = userContext;
+  const { setAlert } = alertContext;
 
   const [trip, setTrip] = useState({
     pickup_zip_code: '',
@@ -20,24 +24,6 @@ const OfferTrip = () => {
     event_id: user.user.event_id,
   });
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    tripContext.addTrip(trip);
-    setTrip({
-      pickup_zip_code: '',
-      journey_start_time: '',
-      journey_car: '',
-      journey_text: '',
-      journey_empty_spaces: '',
-      journey_date: '',
-    });
-    return <p>Fahrt erfolgreich submitted</p>;
-  };
-
-  const onChange = (e) => {
-    setTrip({ ...trip, [e.target.name]: e.target.value });
-  };
-
   const {
     pickup_zip_code,
     journey_start_time,
@@ -47,8 +33,38 @@ const OfferTrip = () => {
     journey_date,
   } = trip;
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (
+      pickup_zip_code == '' ||
+      journey_start_time == '' ||
+      journey_car == '' ||
+      journey_text == '' ||
+      journey_empty_spaces == '' ||
+      journey_date == ''
+    ) {
+      setAlert('Please fill in all fields', 'danger');
+    } else {
+      tripContext.addTrip(trip);
+      setAlert('Trip was successfully submitted', 'success');
+      setTrip({
+        pickup_zip_code: '',
+        journey_start_time: '',
+        journey_car: '',
+        journey_text: '',
+        journey_empty_spaces: '',
+        journey_date: '',
+      });
+    }
+  };
+
+  const onChange = (e) => {
+    setTrip({ ...trip, [e.target.name]: e.target.value });
+  };
+
   return (
     <Fragment>
+      <Alerts />
       <h1>Heading for submitting Form</h1>
       <form onSubmit={onSubmit} className='trips__form'>
         <input

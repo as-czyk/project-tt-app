@@ -9,6 +9,7 @@ import {
   SET_LOADING,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  CLEAR_ERRORS,
 } from '../types';
 
 export default (state, action) => {
@@ -50,6 +51,12 @@ export default (state, action) => {
         loading: false,
         user: null,
         error: action.payload,
+      };
+
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
       };
 
     case SET_LOADING:

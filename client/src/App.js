@@ -2,6 +2,7 @@ import React, { Fragment, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TripState from './context/trip/TripState';
 import UserState from './context/user/UserState';
+import AlertState from './context/alert/AlertState';
 
 import './App.css';
 
@@ -21,32 +22,38 @@ function App() {
   return (
     <UserState>
       <TripState>
-        <Router>
-          <div className='main__container'>
-            <div className='navbar__container'>
-              <Navigation />
+        <AlertState>
+          <Router>
+            <div className='main__container'>
+              <div className='navbar__container'>
+                <Navigation />
+              </div>
+              <div className='content__container'>
+                <Switch>
+                  <PrivateRoute exact path='/' component={Home} />
+                  <PrivateRoute exact path='/trips' component={Trips} />
+                  <PrivateRoute exact path='/offertrip' component={OfferTrip} />
+                  <PrivateRoute exact path='/profile' component={Profile} />
+                  <PrivateRoute
+                    exact
+                    path='/tripsreservation'
+                    component={TripsReservation}
+                  />
+                  <PrivateRoute
+                    exact
+                    path='/changeform'
+                    component={ChangeForm}
+                  />
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/register' component={Register} />
+                </Switch>
+              </div>
+              <div className='className=footer__container'>
+                <Footer />
+              </div>
             </div>
-            <div className='content__container'>
-              <Switch>
-                <PrivateRoute exact path='/' component={Home} />
-                <PrivateRoute exact path='/trips' component={Trips} />
-                <PrivateRoute exact path='/offertrip' component={OfferTrip} />
-                <PrivateRoute exact path='/profile' component={Profile} />
-                <PrivateRoute
-                  exact
-                  path='/tripsreservation'
-                  component={TripsReservation}
-                />
-                <PrivateRoute exact path='/changeform' component={ChangeForm} />
-                <Route exact path='/login' component={Login} />
-                <Route exact path='/register' component={Register} />
-              </Switch>
-            </div>
-            <div className='className=footer__container'>
-              <Footer />
-            </div>
-          </div>
-        </Router>
+          </Router>
+        </AlertState>
       </TripState>
     </UserState>
   );
