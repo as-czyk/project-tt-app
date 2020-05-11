@@ -18,26 +18,27 @@ trips_bp = Blueprint('trips_bp', __name__,
 @trips_bp.route("/api/trip", methods=["GET", "POST", "DELETE", "PATCH"])
 def get_one_journey():
     table_journey_db = client.table.journey
+    table_user_db = client.table.user
     if request.method == 'GET':
         result = table_journey_db.find( {'journey_id': request.args.get("id")} )
-    if not result: 
-        return jsonify({'message': 'No trip found!'})
-    output = {}
-    for q in result:
-        output = {
-            'event_address': q['event_address'],
-            "event_id":q['event_id'],
-            "event_start_date": q['event_start_date'],
-            "event_start_time":q['event_start_time'],
-            "pickup_zip_code":q['pickup_zip_code'],
-            "user_id":q['user_id'],
-            "journey_id":q['journey_id'],
-            "journey_empty_spaces":q['journey_empty_spaces'],
-            "journey_car":q['journey_car'],
-            "journey_text":q['journey_text'],
-            "journey_date":q['journey_date'],
-            "journey_start_time":q['journey_start_time']}
-    return jsonify({'trip': output})
+        if not result: 
+            return jsonify({'message': 'No trip found!'})
+        output = {}
+        for q in result:
+            output = {
+                'event_address': q['event_address'],
+                "event_id":q['event_id'],
+                "event_start_date": q['event_start_date'],
+                "event_start_time":q['event_start_time'],
+                "pickup_zip_code":q['pickup_zip_code'],
+                "user_id":q['user_id'],
+                "journey_id":q['journey_id'],
+                "journey_empty_spaces":q['journey_empty_spaces'],
+                "journey_car":q['journey_car'],
+                "journey_text":q['journey_text'],
+                "journey_date":q['journey_date'],
+                "journey_start_time":q['journey_start_time']}
+        return jsonify({'trip': output})
     if request.method == 'POST':
         insert = {
             'event_address': request.args.get('event_address'),
