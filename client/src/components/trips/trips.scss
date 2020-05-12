@@ -140,3 +140,26 @@
   text-align: center;
   margin-top: 20px;
 }
+
+/** Styling for make reservation */
+
+.reservation__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  line-height: 1.5;
+  min-height: 25em;
+  border: 1px solid red;
+
+  input {
+    width: 90%;
+    height: 90%;
+    border: transparent;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
