@@ -1,23 +1,76 @@
 @import '../../App.css';
+@import '../main.scss';
 
 .nav__wrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  text-align: center;
   align-items: center;
-  height: 100vh;
+  min-height: 150vh;
   width: 200px;
+  background-color: $primary;
 
   ul {
     margin-top: 100px;
   }
-
-  li {
-    list-style: none;
-    padding: 10px;
-    font-size: 1.5em;
+  :link {
+    text-decoration: none;
   }
 }
+
+.navigation__freeLinks {
+  list-style: none;
+  padding: 10px;
+  font-size: 1.5em;
+  color: $base;
+
+  &:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 3px;
+    left: 70%;
+    position: relative;
+    background: $base;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+
+  &:hover:after {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.navigation__authLinks {
+  list-style: none;
+  padding: 10px;
+  font-size: 1.5em;
+  color: $base;
+
+  &:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 3px;
+    left: 70%;
+    position: relative;
+    background: $base;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+
+  &:hover:after {
+    width: 100%;
+    left: 0;
+  }
+}
+
+// Imported Nav styles for burger menu
+// May not be used
 
 .bm-burger-button {
   position: fixed;

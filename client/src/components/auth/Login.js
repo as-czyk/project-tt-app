@@ -2,6 +2,8 @@ import React, { Fragment, useContext, useState, useEffect } from 'react';
 import UserContext from '../../context/user/UserContext';
 import AlertState from '../../context/alert/AlertContext';
 import Alerts from './Alerts';
+import Logo from './Logo';
+
 import './auth.scss';
 
 const Login = (props) => {
@@ -45,8 +47,9 @@ const Login = (props) => {
 
   return (
     <Fragment>
+      <Logo />
       <Alerts />
-      <form onSubmit={onSubmit} className='auth__form'>
+      <form onSubmit={onSubmit} className='auth__form__login'>
         <div className='input__wrapper'>
           <i className='far fa-envelope fa-lg'></i>
           <input
@@ -65,7 +68,7 @@ const Login = (props) => {
             placeholder='Password'
           />
         </div>
-        <button type='submit' value='Login'>
+        <button type='submit' value='Login' className='auth__button'>
           Login
         </button>
       </form>
