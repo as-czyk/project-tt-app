@@ -64,52 +64,68 @@ const OfferTrip = () => {
 
   return (
     <Fragment>
-      <Alerts />
-      <h1>Heading for submitting Form</h1>
+      <h1 className='heading'>Erstelle eine Fahrt</h1>
       <form onSubmit={onSubmit} className='trips__form'>
-        <input
-          type='text'
-          placeholder='Abfahrtsort'
-          name='pickup_zip_code'
-          value={pickup_zip_code}
-          onChange={onChange}
-        />
-        <input
-          type='text'
-          placeholder='Abfahrtszeit'
-          name='journey_start_time'
-          value={journey_start_time}
-          onChange={onChange}
-        />
-        <input
-          type='text'
-          placeholder='Abfahrtsdatum'
-          name='journey_date'
-          value={journey_date}
-          onChange={onChange}
-        />
-        <input
-          type='text'
-          placeholder='Beschreibung'
-          name='journey_text'
-          value={journey_text}
-          onChange={onChange}
-        />
-        <input
-          type='text'
-          placeholder='Car'
-          name='journey_car'
-          value={journey_car}
-          onChange={onChange}
-        />
-        <input
-          type='text'
-          placeholder='Seats'
-          name='journey_empty_spaces'
-          value={journey_empty_spaces}
-          onChange={onChange}
-        />
-        <button className='btn btn-sumbit'>Submit</button>
+        <div className='fields'>
+          <div className='input__wrapper'>
+            <input
+              type='text'
+              placeholder='Abfahrtsort'
+              name='pickup_zip_code'
+              value={pickup_zip_code}
+              onChange={onChange}
+            />
+          </div>
+          <div className='input__wrapper'>
+            <input
+              type='text'
+              placeholder='Abfahrtszeit'
+              name='journey_start_time'
+              value={journey_start_time}
+              onChange={onChange}
+            />
+          </div>
+          <div className='input__wrapper'>
+            <input
+              type='text'
+              placeholder='Abfahrtsdatum'
+              name='journey_date'
+              value={journey_date}
+              onChange={onChange}
+            />
+          </div>
+          <div className='input__wrapper'>
+            <input
+              type='text'
+              placeholder='Car'
+              name='journey_car'
+              value={journey_car}
+              onChange={onChange}
+            />
+          </div>
+          <div className='input__wrapper'>
+            <input
+              type='text'
+              placeholder='Seats'
+              name='journey_empty_spaces'
+              value={journey_empty_spaces}
+              onChange={onChange}
+            />
+          </div>
+        </div>
+        <div className='free__text'>
+          <textarea
+            type='text'
+            placeholder='Beschreibung'
+            name='journey_text'
+            value={journey_text}
+            onChange={onChange}
+          />
+        </div>
+        <div className='button__wrapper'>
+          <Alerts />
+          <button className='button'>Submit</button>
+        </div>
       </form>
     </Fragment>
   );

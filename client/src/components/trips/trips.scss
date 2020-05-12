@@ -1,3 +1,4 @@
+@import '../main.scss';
 .trips__container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -36,28 +37,6 @@
   }
 }
 
-.trips__form {
-  margin: 10px;
-  line-height: 1.5;
-  border: 1px solid blue;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 25em;
-
-  input {
-    padding: 1em;
-    width: 40%;
-    border: 1px solid red;
-    margin: 10px;
-
-    &:focus {
-      outline: none;
-    }
-  }
-}
-
 .switch__container {
   border: 1px solid red;
   display: flex;
@@ -79,4 +58,85 @@
   &:focus {
     outline: none;
   }
+}
+
+/** Style for submitting trip form */
+.trips__form {
+  margin: 10px;
+  line-height: 1.5;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 100px;
+  grid-template-areas:
+    'fields freitext'
+    'btn btn';
+  min-height: 35em;
+
+  input {
+    width: 90%;
+    height: 90%;
+    border: transparent;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.fields {
+  grid-area: fields;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.free__text {
+  grid-area: freitext;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+
+  textarea {
+    height: 60%;
+    width: 70%;
+    font-family: $text;
+    border: 1px solid $primary;
+    resize: none;
+    font-size: 15px;
+    padding: 10px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.button__wrapper {
+  grid-area: btn;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input__wrapper {
+  border-bottom: 1px solid $primary;
+  margin: 10px;
+  width: 40%;
+  height: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.heading {
+  text-align: center;
+  margin-top: 20px;
 }
