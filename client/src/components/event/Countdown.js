@@ -43,10 +43,30 @@ const Countdown = () => {
 
   return (
     <div className='counter__wrapper'>
-      <p>Days: {counter.days}</p>
-      <p>Hours: {counter.hours}</p>
-      <p>Minutes: {counter.minutes}</p>
-      <p>Seconds: {counter.seconds}</p>
+      <div className='counter'>
+        <div className='counter__wrapper__text'>
+          <p className='count'>{counter.days}</p>
+        </div>
+        <p className='counter__text'>Tage</p>
+      </div>
+      <div className='counter'>
+        <div className='counter__wrapper__text'>
+          <p className='count'>{counter.hours}</p>
+        </div>
+        <p className='counter__text'>Stunden</p>
+      </div>
+      <div className='counter'>
+        <div className='counter__wrapper__text'>
+          <p className='count'>{counter.minutes}</p>
+        </div>
+        <p className='counter__text'>Minuten</p>
+      </div>
+      <div className='counter'>
+        <div className='counter__wrapper__text'>
+          <p className='count'>{counter.seconds}</p>
+        </div>
+        <p className='counter__text'>Sekunden</p>
+      </div>
     </div>
   );
 };
