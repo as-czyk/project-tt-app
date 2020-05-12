@@ -49,7 +49,7 @@ function App() {
                   <Route exact path='/register' component={Register} />
                 </Switch>
               </div>
-              <div className='className=footer__container'>
+              <div className='footer__container'>
                 <Footer />
               </div>
             </div>
