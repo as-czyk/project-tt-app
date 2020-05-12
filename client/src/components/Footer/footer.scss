@@ -1,0 +1,18 @@
+@import '../main.scss';
+
+.footer__wrapper {
+  background-color: $primary;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: $base;
+}
+
+.footer__content {
+  width: 400px;
+  margin-left: 200px;
+  height: 80%;
+  border-right: 1px solid $base;
+}
