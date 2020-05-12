@@ -17,13 +17,11 @@
 .navbar__container {
   grid-area: nav;
   min-height: 100vh;
-  border: 1px solid red;
 }
 
 .content__container {
   grid-area: ctn;
   min-height: 100vh;
-  border: 1px solid red;
 }
 
 .footer__container {

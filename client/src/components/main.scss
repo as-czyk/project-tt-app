@@ -1,0 +1,36 @@
+/** Color and Fonts */
+
+$primary: #2c334a;
+$secondary: #cb2e2e;
+
+$action: #ae2427;
+$base: #ffffff;
+
+$heading: 'Dosis' sans-serif;
+$text: 'Muli', sans-serif;
+
+body {
+  font-family: $text;
+}
+
+h1 h2 h3 h4 h5 h6 {
+  font-family: $heading;
+}
+
+input[type='text'] {
+  font-family: $text;
+  font-size: 15px;
+  &:focus {
+    outline: none;
+  }
+}
+
+input[type='email'] {
+  font-family: $text;
+  font-size: 15px;
+}
+
+input[type='password'] {
+  font-family: $text;
+  font-size: 15px;
+}
