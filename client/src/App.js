@@ -5,6 +5,7 @@ import UserState from './context/user/UserState';
 import AlertState from './context/alert/AlertState';
 
 import './App.css';
+import './components/main.scss';
 
 import Trips from './components/Pages/Trips';
 import OfferTrip from './components/trips/OfferTrip';
