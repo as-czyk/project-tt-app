@@ -1,13 +1,35 @@
-.auth__form {
+@import '../main.scss';
+
+.auth__form__register {
   margin: 10px;
   line-height: 1.5;
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 25em;
+  min-height: 25em;
+  input {
+    width: 90%;
+    height: 90%;
+    margin-left: 5px;
+    border: transparent;
+    padding-left: 10px;
 
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.auth__form__login {
+  margin: 10px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 80px;
+  height: 25em;
   input {
     width: 90%;
     height: 90%;
@@ -22,7 +44,7 @@
 }
 
 .input__wrapper {
-  border: 1px solid green;
+  border-bottom: 1px solid $primary;
   margin: 10px;
   width: 40%;
   height: 3em;
@@ -33,21 +55,48 @@
   padding-left: 5px;
 }
 
+.auth__button {
+  border-radius: 25px;
+  width: 300px;
+  height: 50px;
+  margin-top: 40px;
+  font-family: $text;
+  font-size: 16px;
+  background-color: $action;
+  color: $base;
+  border: none;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  &:focus {
+    outline: 0;
+  }
+}
+
+.logo__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-eye {
+  margin-right: 20px;
+}
+
+.fa-eye-slash {
+  margin-right: 20px;
+}
+
 /** Alert Component */
 .alert {
-  padding: 0.7rem;
-  margin: 1rem 0;
-  opacity: 0.9;
-  background: #444;
   color: #333;
 }
 
 .alert-danger {
-  background: red;
-  color: #fff;
+  color: $action;
 }
 
 .alert-success {
-  background: green;
-  color: #ffffff;
+  color: green;
 }

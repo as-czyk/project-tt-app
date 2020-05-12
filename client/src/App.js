@@ -5,6 +5,7 @@ import UserState from './context/user/UserState';
 import AlertState from './context/alert/AlertState';
 
 import './App.css';
+import './components/main.scss';
 
 import Trips from './components/Pages/Trips';
 import OfferTrip from './components/trips/OfferTrip';
@@ -48,7 +49,7 @@ function App() {
                   <Route exact path='/register' component={Register} />
                 </Switch>
               </div>
-              <div className='className=footer__container'>
+              <div className='footer__container'>
                 <Footer />
               </div>
             </div>
