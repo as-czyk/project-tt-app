@@ -65,7 +65,6 @@ const Register = (props) => {
 
   return (
     <Fragment>
-      <Alerts />
       <Logo />
       <form onSubmit={onSubmit} className='auth__form__register'>
         <div className='input__wrapper'>
@@ -126,6 +125,7 @@ const Register = (props) => {
             onChange={onChange}
           />
         </div>
+        <Alerts />
         <button type='submit' value='Login' className='auth__button'>
           Register
         </button>

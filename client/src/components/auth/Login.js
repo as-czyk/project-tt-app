@@ -48,7 +48,6 @@ const Login = (props) => {
   return (
     <Fragment>
       <Logo />
-      <Alerts />
       <form onSubmit={onSubmit} className='auth__form__login'>
         <div className='input__wrapper'>
           <i className='far fa-envelope fa-lg'></i>
@@ -68,6 +67,7 @@ const Login = (props) => {
             placeholder='Password'
           />
         </div>
+        <Alerts />
         <button type='submit' value='Login' className='auth__button'>
           Login
         </button>

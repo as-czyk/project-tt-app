@@ -68,6 +68,9 @@
   &:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+  &:focus {
+    outline: 0;
+  }
 }
 
 .logo__wrapper {
@@ -87,16 +90,11 @@
 
 /** Alert Component */
 .alert {
-  padding: 0.7rem;
-  margin: 1rem 0;
-  opacity: 0.9;
-  background: #444;
   color: #333;
 }
 
 .alert-danger {
-  background: red;
-  color: #fff;
+  color: $action;
 }
 
 .alert-success {
