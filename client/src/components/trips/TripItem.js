@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import TripsReservation from './TipsReservation';
-import PrivateRoute from '../routing/PrivateRoute';
+import UserContext from '../../context/user/UserContext';
 import './trips.scss';
 
-export const TripItem = ({ trip }) => {
+const TripItem = ({ trip }) => {
+  const userContext = useContext(UserContext);
+
   const [current, setCurrent] = useState({
     id: '',
   });
@@ -12,6 +13,7 @@ export const TripItem = ({ trip }) => {
   useEffect(() => {
     setCurrent({
       id: journey_id,
+      user_id: userContext.user.user.user_id,
     });
   }, []);
 
