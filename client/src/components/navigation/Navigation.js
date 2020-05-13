@@ -30,8 +30,8 @@ const Navigation = () => {
       <Link to='/offertrip'>
         <li className='navigation__authLinks'>Offer Trips</li>
       </Link>
-      <Link to='/offertrip'>
-        <li className='navigation__authLinks'>Nachrichten</li>
+      <Link to='/chat'>
+        <li className='navigation__authLinks'>Chat</li>
       </Link>
       <li className='navigation__logoutLink'>
         <a onClick={onLogout} href='/login'>

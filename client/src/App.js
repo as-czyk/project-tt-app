@@ -18,6 +18,7 @@ import Register from './components/auth/Register';
 import Profile from './components/Pages/Profile';
 import TripsReservation from './components/trips/TipsReservation';
 import ChangeForm from './components/profile/ChangeForm';
+import Chat from './components/chat/Chat';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
                       path='/changeform'
                       component={ChangeForm}
                     />
+                    <PrivateRoute exact path='/chat' component={Chat} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/register' component={Register} />
                   </Switch>
