@@ -2,6 +2,8 @@ import React, { Fragment, useState, useContext, useEffect } from 'react';
 import UserContext from '../../context/user/UserContext';
 import AlertContext from '../../context/alert/AlertContext';
 import Alerts from './Alerts';
+import Logo from './Logo';
+
 import './auth.scss';
 
 const Register = (props) => {
@@ -53,10 +55,18 @@ const Register = (props) => {
     });
   };
 
+  const [password, setPassword] = useState({
+    passwordActive: false,
+  });
+
+  const showPassword = () => {
+    setPassword({ passwordActive: !password.passwordActive });
+  };
+
   return (
     <Fragment>
-      <Alerts />
-      <form onSubmit={onSubmit} className='auth__form'>
+      <Logo />
+      <form onSubmit={onSubmit} className='auth__form__register'>
         <div className='input__wrapper'>
           <i className='fas fa-user fa-lg'></i>
           <input
@@ -80,20 +90,30 @@ const Register = (props) => {
         <div className='input__wrapper'>
           <i className='fas fa-key fa-lg'></i>
           <input
-            type='password'
+            type={password.passwordActive ? 'text' : 'password'}
             name='user_password'
             placeholder='Password'
             value={user_password}
             onChange={onChange}
           />
+          {password.passwordActive ? (
+            <i class='fas fa-eye-slash' onClick={showPassword}></i>
+          ) : (
+            <i class='fas fa-eye' onClick={showPassword}></i>
+          )}
         </div>
         <div className='input__wrapper'>
           <i className='fas fa-key fa-lg'></i>
           <input
-            type='password'
+            type={password.passwordActive ? 'text' : 'password'}
             name='user_password2'
             placeholder='Confirm Password'
           />
+          {password.passwordActive ? (
+            <i class='fas fa-eye-slash' onClick={showPassword}></i>
+          ) : (
+            <i class='fas fa-eye' onClick={showPassword}></i>
+          )}
         </div>
         <div className='input__wrapper'>
           <i className='fas fa-ticket-alt fa-lg'></i>
@@ -105,7 +125,8 @@ const Register = (props) => {
             onChange={onChange}
           />
         </div>
-        <button type='submit' value='Login'>
+        <Alerts />
+        <button type='submit' value='Login' className='auth__button'>
           Register
         </button>
       </form>

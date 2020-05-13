@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
-import TripContext from '../../context/trip/TripContext';
+import ReservationContext from '../../context/reservation/ReservationContext';
 import UserContext from '../../context/user/UserContext';
 
 class TipsReservation extends Component {
+  static contextType = ReservationContext;
+
   state = {
     journey_id: this.props.location.state.current.id,
-    journey_seats: '',
-    journey_text: '',
+    reservation_requested_seats: null,
+    reservation_text: '',
+    user_id: this.props.location.state.current.user_id,
   };
 
   onSubmit = (e) => {
     e.preventDefault();
-    //Call Function from TripState here
+    this.context.addReservation(this.state);
     console.log('Submitted Reservation');
     this.setState({
-      journey_seats: '',
-      journey_text: '',
+      reservation_requested_seats: '',
+      reservation_text: '',
     });
   };
 
@@ -29,23 +32,26 @@ class TipsReservation extends Component {
         <h1>
           Hello this is a single trip form for the id: {this.state.journey_id}
         </h1>
-        <form onSubmit={this.onSubmit} className='trips__form'>
-          <h3>Heading for submitting Form</h3>
-          <input
-            type='text'
-            placeholder='Anzahl der Plätze'
-            name='journey_seats'
-            value={this.state.journey_seats}
-            onChange={this.onChange}
-          />
-          <input
-            type='text'
-            placeholder='Nachricht an den Fahrer'
-            name='journey_text'
-            value={this.state.journey_text}
-            onChange={this.onChange}
-          />
-          <button className='btn btn-sumbit'>Submit</button>
+        <form onSubmit={this.onSubmit} className='reservation__form'>
+          <div className='input__wrapper'>
+            <input
+              type='text'
+              placeholder='Anzahl der Plätze'
+              name='reservation_requested_seats'
+              value={this.state.reservation_requested_seats}
+              onChange={this.onChange}
+            />
+          </div>
+          <div className='input__wrapper'>
+            <input
+              type='text'
+              placeholder='Nachricht an den Fahrer'
+              name='reservation_text'
+              value={this.state.reservation_text}
+              onChange={this.onChange}
+            />
+          </div>
+          <button className='button'>Submit</button>
         </form>
       </div>
     );
