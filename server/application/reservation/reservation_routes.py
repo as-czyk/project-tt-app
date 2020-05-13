@@ -20,29 +20,31 @@ reservation_bp = Blueprint('reservation_bp', __name__,
 
 # GET route
 # email wenn gebucht
-@reservation_bp.route("/api/reservation/messages/", methods = ["GET"])
+@reservation_bp.route("/api/reservation/messages", methods = ["GET"])
 def check_reservation(): 
-    # TODO: @Aron kannst du hier noch die Token User ID reinmachen?
-    if client.table.reservation.count_documents({ "journey_user_id": "fc6898c7-8871-482c-ace2-68284bcb5862" }, limit = 1):
-        result = client.table.reservation.find( {"journey_user_id": "fc6898c7-8871-482c-ace2-68284bcb5862"} )
+    userID = request.args.get("id")
+    if client.table.reservation.count_documents({ "journey_user_id": userID }, limit = 1):
+        result = client.table.reservation.find( {"journey_user_id": userID } )
         results = []
         for x in result:
             results.append(x)
         data=[]
         for text in results:
             item = {"reservation_text": text["reservation_text"],
-                    "reservation_money": text["reservation_money"]}
+                    "reservation_requested_seats": text["reservation_requested_seats"],
+                    "user_id": text['user_id'],
+                    "reservation_id": text['reservation_id']}
             data.append(item)
         return jsonify(data)
     else:
-        return "No reservations were found"
+        return jsonify({'msg': "No reservations were found"})
 
 
 # sched = BackgroundScheduler(daemon=True)
 # sched.add_job(check_reservation,'interval',seconds=60)
 # sched.start()
 
-@reservation_bp.route("/api/reservation/", methods=["POST"])
+@reservation_bp.route("/api/reservation", methods=["POST"])
 def make_reservation():
     data = request.get_json()
     table_journey_db = client.table.journey
@@ -60,11 +62,10 @@ def make_reservation():
             "reservation_text": data["reservation_text"],
             "user_id": data["user_id"],
             "journey_user_id": results[0]["user_id"],
-            "reservation_money": data["reservation_money"],
             "reservation_status" : "pending"
             }
     if reservation["reservation_requested_seats"] > reservation["journey_empty_spaces"]:
-        return "Unfortunately your requested journey does not have the requested seats free"
+        return jsonify({'msg': "Unfortunately your requested journey does not have the requested seats free"})
     else:
         insert_reservation = collection.insert_one(reservation)
         return "Successfully inserted with ObjectID: " + str(insert_reservation.inserted_id)

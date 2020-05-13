@@ -176,7 +176,7 @@ def create_user():
             'user_email': data['user_email'],
             'user_password': hashed_password,
             'ticket_id': data['user_ticket_ID'],
-            'event_id' : 'e6930b99-e8ca-49f8-9583-89f54366dc14'
+            'event_id' : '2ab60824-b539-4a1f-ae1a-f7d94d2d55bb'
             }
             result = collection.insert_one(user)
             token = jwt.encode({'user_id' : user['user_id'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=60)}, app.config['SECRET_KEY'])
