@@ -12,6 +12,8 @@ import json
 client = pymongo.MongoClient(
     "mongodb+srv://yannik:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority")
 
+# GET route
+# email wenn gebucht
 def check_reservation(): # jwt.decode(token)["user_id"]
     """ Function which checks the reservations for user_id. """
     # TODO: @Aron kannst du hier noch die Token User ID reinmachen?
@@ -50,14 +52,14 @@ def make_reservation():
         results.append(x)
     #TODO: Reservation ID 
     reservation = {
-            #'reservation_id' : str(uuid.uuid4()),
+            "reservation_id" : str(uuid.uuid4()),
             "journey_id": data["journey_id"],
             "reservation_requested_seats": data["reservation_requested_seats"],
             "journey_empty_spaces": results[0]["journey_empty_spaces"],
             "reservation_text": data["reservation_text"],
             "user_id": data["user_id"],
             "journey_user_id": results[0]["user_id"],
-            #"reservation_status" : "pending"
+            "reservation_status" : "pending"
             }
     if reservation["reservation_requested_seats"] > reservation["journey_empty_spaces"]:
         return "Unfortunately your requested journey does not have the requested seats free"
