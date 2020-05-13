@@ -6,40 +6,41 @@ from bson import Binary, Code
 from bson.json_util import dumps
 from flask import Response 
 from bson import json_util
-from apscheduler.schedulers.background import BackgroundScheduler
+#from apscheduler.schedulers.background import BackgroundScheduler
 import json
+import uuid
 
 client = pymongo.MongoClient(
     "mongodb+srv://yannik:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority")
-
-# GET route
-# email wenn gebucht
-def check_reservation(): # jwt.decode(token)["user_id"]
-    """ Function which checks the reservations for user_id. """
-    # TODO: @Aron kannst du hier noch die Token User ID reinmachen?
-    if client.table.reservation.count_documents({ "user_id": "58d96f87-c364-4582-8e54-76b099a96ccd" }, limit = 1):
-        print("user_id was requested for a reservation!")
-        result = client.table.reservation.find( {"user_id": "58d96f87-c364-4582-8e54-76b099a96ccd"} )
-        results = []
-        for x in result:
-            results.append(x)
-        data=[]
-        for text in results:
-            item = {"reservation_text": text["reservation_text"]}
-            data.append(item)
-        return json.dumps(data)
-    else:
-        return "No reservations were found"
-
-
-sched = BackgroundScheduler(daemon=True)
-sched.add_job(check_reservation,'interval',seconds=60)
-sched.start()
 
 # Set up a Blueprint
 reservation_bp = Blueprint('reservation_bp', __name__,
                           template_folder='templates',
                           static_folder='static')
+
+# GET route
+# email wenn gebucht
+@reservation_bp.route("/api/reservation/messages/", methods = ["GET"])
+def check_reservation(): 
+    # TODO: @Aron kannst du hier noch die Token User ID reinmachen?
+    if client.table.reservation.count_documents({ "journey_user_id": "fc6898c7-8871-482c-ace2-68284bcb5862" }, limit = 1):
+        result = client.table.reservation.find( {"journey_user_id": "fc6898c7-8871-482c-ace2-68284bcb5862"} )
+        results = []
+        for x in result:
+            results.append(x)
+        data=[]
+        for text in results:
+            item = {"reservation_text": text["reservation_text"],
+                    "reservation_money": text["reservation_money"]}
+            data.append(item)
+        return jsonify(data)
+    else:
+        return "No reservations were found"
+
+
+# sched = BackgroundScheduler(daemon=True)
+# sched.add_job(check_reservation,'interval',seconds=60)
+# sched.start()
 
 @reservation_bp.route("/api/reservation/", methods=["POST"])
 def make_reservation():
@@ -59,6 +60,7 @@ def make_reservation():
             "reservation_text": data["reservation_text"],
             "user_id": data["user_id"],
             "journey_user_id": results[0]["user_id"],
+            "reservation_money": data["reservation_money"],
             "reservation_status" : "pending"
             }
     if reservation["reservation_requested_seats"] > reservation["journey_empty_spaces"]:
