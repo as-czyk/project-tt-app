@@ -18,10 +18,8 @@ reservation_bp = Blueprint('reservation_bp', __name__,
                           template_folder='templates',
                           static_folder='static')
 
-# GET route
-# email wenn gebucht
 @reservation_bp.route("/api/reservation/messages", methods = ["GET"])
-def check_reservation(): 
+def check_messages(): 
     userID = request.args.get("id")
     if client.table.reservation.count_documents({ "journey_user_id": userID }, limit = 1):
         result = client.table.reservation.find( {"journey_user_id": userID } )
@@ -39,10 +37,40 @@ def check_reservation():
     else:
         return jsonify({'msg': "No reservations were found"})
 
-
 # sched = BackgroundScheduler(daemon=True)
 # sched.add_job(check_reservation,'interval',seconds=60)
 # sched.start()
+
+@reservation_bp.route("/api/reservation/status")
+
+@reservation_bp.route("/api/reservation/status", methods=["GET", "PATCH", "DELETE"])
+def check_reservation_status():
+    if request.method == 'GET':
+        data = request.get_json()
+        if client.table.reservation.count_documents({ "reservation_id": data["reservation_id"] }, limit = 1):
+            result = client.table.reservation.find( {"reservation_id": data["reservation_id"] } )
+            results = []
+            for x in result:
+                results.append(x)
+            data=[]
+            for text in results:
+                item = {"reservation_status": text["reservation_status"]}
+                data.append(item)
+            return jsonify(data)
+        else:
+            return jsonify({'msg': "No reservations were found"})
+    if request.method == 'PATCH':
+        data = request.get_json()
+        client.table.reservation.update_one( {"reservation_id": data["reservation_id"] }, { "$set": {"reservation_status": "accepted"}} )
+        return "Successfully accepted"
+    if request.method == "DELETE":
+        data = request.get_json()
+        db_response = client.table.reservation.delete_one({"reservation_id": data["reservation_id"] })
+        if db_response.deleted_count == 1:
+            response = {'ok': True, 'message': 'record deleted'}
+        else:
+            response = {'ok': True, 'message': 'no record found'}
+        return jsonify(response), 200
 
 @reservation_bp.route("/api/reservation", methods=["POST"])
 def make_reservation():
