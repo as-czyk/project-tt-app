@@ -36,12 +36,12 @@ const OfferTrip = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (
-      pickup_zip_code == '' ||
-      journey_start_time == '' ||
-      journey_car == '' ||
-      journey_text == '' ||
-      journey_empty_spaces == '' ||
-      journey_date == ''
+      pickup_zip_code === '' ||
+      journey_start_time === '' ||
+      journey_car === '' ||
+      journey_text === '' ||
+      journey_empty_spaces === '' ||
+      journey_date === ''
     ) {
       setAlert('Please fill in all fields', 'danger');
     } else {

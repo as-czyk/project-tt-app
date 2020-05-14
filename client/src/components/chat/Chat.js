@@ -6,14 +6,13 @@ const Chat = () => {
   const userContext = useContext(UserContext);
   const reservationContext = useContext(ReservationContext);
 
-  const { getReservation, reciviedReservation, loading } = reservationContext;
+  const { getReservation, reciviedReservation } = reservationContext;
   const { user } = userContext;
 
   useEffect(() => {
     getReservation(user.user.user_id);
+    // eslint-disable-next-line
   }, []);
-
-  console.log(reciviedReservation);
 
   if (!reciviedReservation.length) {
     return <p>Loading</p>;

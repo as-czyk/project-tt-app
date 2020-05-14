@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TripState from './context/trip/TripState';
 import UserState from './context/user/UserState';

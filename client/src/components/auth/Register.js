@@ -38,10 +38,10 @@ const Register = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (
-      username == '' ||
-      user_email == '' ||
-      user_password == '' ||
-      user_ticket_ID == ''
+      username === '' ||
+      user_email === '' ||
+      user_password === '' ||
+      user_ticket_ID === ''
     ) {
       alertState.setAlert('Please fill in all fields', 'danger');
     } else {

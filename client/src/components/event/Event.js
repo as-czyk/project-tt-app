@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import UserContext from '../../context/user/UserContext';
 import EventPicture from './EventPicture';
 import './event.scss';

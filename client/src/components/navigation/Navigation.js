@@ -1,4 +1,4 @@
-import React, { useContext, Fragment, useState } from 'react';
+import React, { useContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import UserContext from '../../context/user/UserContext';
 //import { stack as Menu } from 'react-burger-menu';
@@ -7,10 +7,7 @@ import './navigation.scss';
 
 const Navigation = () => {
   const userContext = useContext(UserContext);
-  const { isAuthenticated, user } = userContext;
-  const [active, setActive] = useState({
-    activeItem: 'login',
-  });
+  const { isAuthenticated } = userContext;
 
   const onLogout = () => {
     userContext.logout();
