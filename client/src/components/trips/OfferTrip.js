@@ -45,6 +45,7 @@ const OfferTrip = () => {
     ) {
       setAlert('Please fill in all fields', 'danger');
     } else {
+      console.log(trip);
       tripContext.addTrip(trip);
       setAlert('Trip was successfully submitted', 'success');
       setTrip({
@@ -52,14 +53,18 @@ const OfferTrip = () => {
         journey_start_time: '',
         journey_car: '',
         journey_text: '',
-        journey_empty_spaces: '',
+        journey_empty_spaces: null,
         journey_date: '',
       });
     }
   };
 
   const onChange = (e) => {
-    setTrip({ ...trip, [e.target.name]: e.target.value });
+    setTrip({
+      ...trip,
+      [e.target.name]:
+        e.target.type === 'number' ? parseInt(e.target.value) : e.target.value,
+    });
   };
 
   return (
@@ -105,7 +110,7 @@ const OfferTrip = () => {
           </div>
           <div className='input__wrapper'>
             <input
-              type='text'
+              type='number'
               placeholder='Seats'
               name='journey_empty_spaces'
               value={journey_empty_spaces}

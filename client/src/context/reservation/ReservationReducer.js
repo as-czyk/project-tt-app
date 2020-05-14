@@ -11,7 +11,7 @@ export default (state, action) => {
     case GET_RESERVATION:
       return {
         ...state,
-        makeReservation: action.payload,
+        reciviedReservation: action.payload,
         loading: false,
       };
     case SET_LOADING: {
