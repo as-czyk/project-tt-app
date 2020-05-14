@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReservationContext from '../../context/reservation/ReservationContext';
-import UserContext from '../../context/user/UserContext';
 
 class TipsReservation extends Component {
   static contextType = ReservationContext;
@@ -23,7 +22,10 @@ class TipsReservation extends Component {
   };
 
   onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      [e.target.name]:
+        e.target.type === 'number' ? parseInt(e.target.value) : e.target.value,
+    });
   };
 
   render() {
@@ -35,7 +37,7 @@ class TipsReservation extends Component {
         <form onSubmit={this.onSubmit} className='reservation__form'>
           <div className='input__wrapper'>
             <input
-              type='text'
+              type='number'
               placeholder='Anzahl der Plätze'
               name='reservation_requested_seats'
               value={this.state.reservation_requested_seats}

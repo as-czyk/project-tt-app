@@ -44,7 +44,7 @@ const ReservationState = (props) => {
     setLoading();
 
     try {
-      const res = await axios.get('/api/reservation', {
+      const res = await axios.get('/api/reservation/messages', {
         params: {
           id: userId,
         },
@@ -66,6 +66,7 @@ const ReservationState = (props) => {
       value={{
         makeReservation: state.makeReservation,
         reciviedReservation: state.reciviedReservation,
+        loading: state.loading,
         addReservation,
         getReservation,
       }}

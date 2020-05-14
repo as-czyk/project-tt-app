@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import pictureClubdome from './worldclubdome.jpg';
-import pictureRock from './rockamring.jpg';
+import pictureSGE from './eintracht.jpg';
 import UserContext from '../../context/user/UserContext';
 
 const EventPicture = () => {
@@ -11,7 +11,7 @@ const EventPicture = () => {
     <img
       className='event__picture'
       src={
-        event.event_name === 'World Club Dome' ? pictureClubdome : pictureRock
+        event.event_name === 'World Club Dome' ? pictureClubdome : pictureSGE
       }
     ></img>
   );

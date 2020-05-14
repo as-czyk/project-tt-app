@@ -29,6 +29,7 @@ const TripItem = ({ trip }) => {
     journey_text,
     pickup_zip_code,
     user_id,
+    journey_money,
   } = trip;
 
   return (
@@ -44,6 +45,7 @@ const TripItem = ({ trip }) => {
       <p>Freitext: {journey_text}</p>
       <p>PLZ: {pickup_zip_code}</p>
       <p>User_id: {user_id}</p>
+      <p>Geld: {journey_money}</p>
       <Link
         to={{
           pathname: '/tripsreservation',
