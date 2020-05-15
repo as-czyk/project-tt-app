@@ -2,10 +2,19 @@ from flask import Flask, request, jsonify, render_template
 import os
 import sys
 import pymongo
+
+# For deployment
 from server.application.trips import trip_routes
 from server.application.user import user_routes
 from server.application.reservation import reservation_routes
 from server.application.event import event_routes
+
+# for local use
+# from application.trips import trip_routes
+# from application.user import user_routes
+# from application.reservation import reservation_routes
+# from application.event import event_routes
+
 
 client = pymongo.MongoClient(
     "mongodb+srv://yannik:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority")
