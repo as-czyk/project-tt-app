@@ -6,7 +6,7 @@ import './auth.scss';
 const Logo = () => {
   return (
     <div className='logo__wrapper'>
-      <img src={logo} width={500} height={150} />
+      <img src={logo} width={500} height={150} alt='Logo' />
     </div>
   );
 };

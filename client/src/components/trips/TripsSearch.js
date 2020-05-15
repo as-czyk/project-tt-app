@@ -14,7 +14,7 @@ const TripsSearch = () => {
   });
 
   const onChange = (e) => {
-    if (text.current.value != '') {
+    if (text.current.value !== '') {
       filterTrips(e.target.value);
     } else {
       clearFilter();

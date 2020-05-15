@@ -10,12 +10,13 @@ const Home = () => {
   const { event, loading, loadEvent, user } = userContext;
 
   useEffect(() => {
-    if (!loading && user != undefined) {
+    if (!loading && user !== undefined) {
       loadEvent(user.user.event_id);
     }
+    // eslint-disable-next-line
   }, [loading]);
 
-  if (!loading && event != undefined) {
+  if (!loading && event !== undefined) {
     return (
       <Fragment>
         <Countdown />

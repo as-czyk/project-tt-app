@@ -20,5 +20,9 @@ export default (state, action) => {
         loading: true,
       };
     }
+    default:
+      return {
+        ...state,
+      };
   }
 };

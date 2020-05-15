@@ -66,12 +66,19 @@
   line-height: 1.5;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr 100px;
-  grid-template-areas:
-    'fields freitext'
-    'btn btn';
+  grid-template-areas: 'ctn img';
+  border: 1px solid red;
   min-height: 35em;
+}
 
+.form__ctn {
+  grid-area: ctn;
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
   input {
     width: 90%;
     height: 90%;
@@ -81,29 +88,8 @@
       outline: none;
     }
   }
-}
-
-.fields {
-  grid-area: fields;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-}
-
-.free__text {
-  grid-area: freitext;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-
   textarea {
-    height: 60%;
+    height: 40%;
     width: 70%;
     font-family: $text;
     border: 1px solid $primary;
@@ -117,12 +103,31 @@
   }
 }
 
-.button__wrapper {
-  grid-area: btn;
+.form__img {
+  grid-area: img;
+  border: 1px solid blue;
+  margin: 10px;
+}
+
+.form__steps {
+  width: 80%;
+  height: 20%;
+  border: 1px solid red;
+  margin: 30px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.form__text {
+  width: 80%;
+  height: 5%;
+  margin-bottom: 30px;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .input__wrapper {
@@ -136,9 +141,29 @@
   align-items: flex-start;
 }
 
-.heading {
-  text-align: center;
+.fa-arrow-circle-right {
   margin-top: 20px;
+}
+.fa-arrow-circle-left {
+  margin-top: 20px;
+}
+
+.button__wrapper {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.confirm__wrapper {
+  display: flex;
+  margin: 10px;
+  min-height: 25em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
 }
 
 /** Styling for make reservation */

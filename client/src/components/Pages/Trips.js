@@ -13,6 +13,7 @@ const Trips = () => {
 
   useEffect(() => {
     loadTrips(user.user.event_id);
+    // eslint-disable-next-line
   }, []);
 
   if (!loading) {

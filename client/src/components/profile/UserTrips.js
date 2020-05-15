@@ -11,9 +11,10 @@ const UserTrips = () => {
 
   useEffect(() => {
     getTripsForUser(userContext.user.user.user_id);
+    // eslint-disable-next-line
   }, []);
 
-  if (!loading && userTrips != undefined) {
+  if (!loading && userTrips !== undefined) {
     return (
       <Fragment>
         <div className='userdata__container'>

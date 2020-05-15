@@ -10,6 +10,7 @@ const EventPicture = () => {
   return (
     <img
       className='event__picture'
+      alt='Event'
       src={
         event.event_name === 'World Club Dome' ? pictureClubdome : pictureSGE
       }

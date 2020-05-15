@@ -1,7 +1,6 @@
 import React, { useReducer } from 'react';
 import TripContext from './TripContext';
 import TripReducer from './TripReducer';
-import { v4 as uuidv4 } from 'uuid';
 import {
   ADD_TRIP,
   FILTER_TRIPS,

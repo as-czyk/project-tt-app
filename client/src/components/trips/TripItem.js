@@ -15,6 +15,7 @@ const TripItem = ({ trip }) => {
       id: journey_id,
       user_id: userContext.user.user.user_id,
     });
+    // eslint-disable-next-line
   }, []);
 
   const {
