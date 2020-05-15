@@ -10,6 +10,8 @@ from application.event import event_routes
 client = pymongo.MongoClient(
     "mongodb+srv://yannik:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority")
 
+port = 5000
+
 # Init app
 app = Flask(__name__, instance_relative_config=False)
 
@@ -28,4 +30,4 @@ def index():
 
 # Run Server
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=port)
