@@ -59,7 +59,7 @@ const TripsDetails = (props) => {
             />
           </div>
           <Alert />
-          <i class='fas fa-arrow-circle-right fa-2x' onClick={validate}></i>
+          <i className='fas fa-arrow-circle-right fa-2x' onClick={validate}></i>
         </div>
         <div className='form__img'>
           <p>Bild</p>

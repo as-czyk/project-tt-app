@@ -1,0 +1,26 @@
+TODOs:
+
+Backend: 
+1. Requests überarbeiten (Yannik)
+    1.1 Trips (Delete)
+2. Email (Yannik)
+
+
+Frontend:
+1. Trips PATCH anbinden
+    1.1 PATCH anbinden
+2. User Profil
+    2.1 PATCH anbinden
+3. Reservation
+    3.1 PATCH -> Bestätigen 
+    3.2 DELETE -> Ablehnen
+4. Design
+    4.1 Profile ("Deine Fahrten", "Dein Profil", "Deine Anfragen")
+
+Deployment:
+
+
+
+
+Known - Bugs: 
+#1 Page Reload -> Logout -> Redirect to /login bei jedem Page Reload
