@@ -18,9 +18,10 @@ Frontend:
     4.1 Profile ("Deine Fahrten", "Dein Profil", "Deine Anfragen")
 
 Deployment:
-
+- Script was nach jedem npm run build alle files in die server ordner kopiert
 
 
 
 Known - Bugs: 
 #1 Page Reload -> Logout -> Redirect to /login bei jedem Page Reload
+#2 Logout -> Redirect not working
