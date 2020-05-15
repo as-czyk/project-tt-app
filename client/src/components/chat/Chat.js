@@ -1,6 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import UserContext from '../../context/user/UserContext';
 import ReservationContext from '../../context/reservation/ReservationContext';
+import ReservationItem from './ReservationItem';
+
+import './chat.scss';
 
 const Chat = () => {
   const userContext = useContext(UserContext);
@@ -19,15 +22,15 @@ const Chat = () => {
   } else {
     return (
       <div>
-        <h1>This is the Chat Componenent</h1>
-        <p>Id der Reservierung: {reciviedReservation[0].reservation_id}</p>
-        <p>
-          Angefragte Sitze: {reciviedReservation[0].reservation_requested_seats}
-        </p>
-        <p>
-          Freitext der Reservierung: {reciviedReservation[0].reservation_text}
-        </p>
-        <p>ID des Mitfahrer: {reciviedReservation[0].user_id}</p>
+        <h1>This is the Reservation Componenent</h1>
+        <div className='chat__wrapper'>
+          {reciviedReservation.map((reservation) => (
+            <ReservationItem
+              key={reservation.reservation_id}
+              reservation={reservation}
+            />
+          ))}
+        </div>
       </div>
     );
   }
