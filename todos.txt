@@ -2,8 +2,9 @@ TODOs:
 
 Backend: 
 1. Requests überarbeiten (Yannik)
-    1.1 Trips (Delete)
 2. Email (Yannik)
+3. Verfikation Email
+4. How to set up a Config file for blueprints?
 
 
 Frontend:
@@ -24,4 +25,3 @@ Deployment:
 
 Known - Bugs: 
 #1 Page Reload -> Logout -> Redirect to /login bei jedem Page Reload
-#2 Logout -> Redirect not working

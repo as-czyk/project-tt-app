@@ -1,21 +1,16 @@
 from flask import Blueprint, render_template
 from flask import current_app as app
-import pymongo
-import json
+import pymongo, json, mongoengine, jwt, datetime, uuid, os
 from flask import Flask, request, jsonify, render_template, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
-import mongoengine
 from mongoengine import *
 from bson import Binary, Code
 from bson.json_util import dumps
-import jwt
-import datetime
 from functools import wraps
-import uuid
 
-connect(
+connect( #FIXME: What does this do?
     db='table',
-    host='mongodb+srv://yannik:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority'
+    host="mongodb+srv://" + os.environ.get("DB_USER") + ":" + os.environ.get("DB_PASSWORD")  + "@connext-en64e.mongodb.net/test?retryWrites=true&w=majority"
 )
 
 client = pymongo.MongoClient(
