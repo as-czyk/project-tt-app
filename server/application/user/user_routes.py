@@ -7,6 +7,7 @@ from mongoengine import *
 from bson import Binary, Code
 from bson.json_util import dumps
 from functools import wraps
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 connect( #FIXME: What does this do?
     db='table',
@@ -24,7 +25,7 @@ class User(Document):
     name = StringField(required=True)
     email = EmailField(max_length=50)
     password = StringField(required=True)
-    ticket_ID = StringField(required=True)
+    ticket_ID = StringField(required=True) # FIXME: Is that still necessary?
 
     def json(self):
         user_dict = {
