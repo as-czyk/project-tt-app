@@ -25,3 +25,5 @@ Deployment:
 
 Known - Bugs: 
 #1 Page Reload -> Logout -> Redirect to /login bei jedem Page Reload
+#2 Filter auf Freitext
+#3 No submit for changing trip

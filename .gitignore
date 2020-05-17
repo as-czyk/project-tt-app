@@ -3,6 +3,18 @@
 /client/.pnp
 /client/.pnp.js
 
+# vs code
+.vscode
+
+# pycache
+/server/__pycache__
+/server/application/__pycache__
+/server/application/event/__pycache__
+/server/application/reservation/__pycache__
+/server/application/trips/__pycache__
+/server/application/user/__pycache__
+/server/application/venv
+
 # testing
 /coverage
 

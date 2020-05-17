@@ -108,6 +108,7 @@ def get_one_journey():
                             data['journey_text'],
                             data['journey_date'],
                             data['journey_start_time']).dict()
+            print(output)
         return jsonify({'trip': output})
     if not result: 
         return jsonify({'message': 'No trip found!'})
