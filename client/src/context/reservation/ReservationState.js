@@ -2,12 +2,19 @@ import React, { useReducer } from 'react';
 import ReservationContext from './ReservationContext';
 import ReservationReducer from './ReservationReducer';
 import axios from 'axios';
-import { MAKE_RESERVATION, SET_LOADING, GET_RESERVATION } from '../types';
+import {
+  MAKE_RESERVATION,
+  SET_LOADING,
+  GET_RESERVATION,
+  DECLINE_RESERVATION,
+  ACCEPT_RESERVATION,
+} from '../types';
 
 const ReservationState = (props) => {
   const initialState = {
     makeReservation: [],
     reciviedReservation: [],
+    acceptedReservation: [],
     loading: false,
   };
 
@@ -58,6 +65,36 @@ const ReservationState = (props) => {
     }
   };
 
+  //Accept reservation
+  const acceptReservation = async (reservationID) => {
+    setLoading();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const res = await axios.patch(
+        '/api/reservation/status',
+        reservationID,
+        config
+      );
+
+      dispatch({
+        type: ACCEPT_RESERVATION,
+        payload: reservationID,
+      });
+    } catch (err) {
+      console.log('error', err);
+    }
+  };
+
+  const declineReservation = () => {
+    setLoading();
+  };
+
   //Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
 
@@ -67,8 +104,11 @@ const ReservationState = (props) => {
         makeReservation: state.makeReservation,
         reciviedReservation: state.reciviedReservation,
         loading: state.loading,
+        acceptedReservation: state.acceptedReservation,
         addReservation,
         getReservation,
+        acceptReservation,
+        declineReservation,
       }}
     >
       {props.children}

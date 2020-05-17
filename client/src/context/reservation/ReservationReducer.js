@@ -1,4 +1,9 @@
-import { MAKE_RESERVATION, SET_LOADING, GET_RESERVATION } from '../types';
+import {
+  MAKE_RESERVATION,
+  SET_LOADING,
+  GET_RESERVATION,
+  ACCEPT_RESERVATION,
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -14,6 +19,13 @@ export default (state, action) => {
         reciviedReservation: action.payload,
         loading: false,
       };
+    case ACCEPT_RESERVATION:
+      return {
+        ...state,
+        acceptedReservation: action.payload,
+        loading: false,
+      };
+
     case SET_LOADING: {
       return {
         ...state,
