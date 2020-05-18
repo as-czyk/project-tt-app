@@ -1,6 +1,6 @@
 import React, { useContext, Fragment } from 'react';
 import UserContext from '../../context/user/UserContext';
-import EventPicture from './EventPicture';
+import EventPicture from '../event/EventPicture';
 import './event.scss';
 
 const Event = () => {
@@ -10,21 +10,28 @@ const Event = () => {
   return (
     <Fragment>
       <div className='event__ctn'>
-        <h1>{event.event_name}</h1>
-        <div className='event_inf_ctn'>
-          <h2>Where?</h2>
-          <p>{event.event_address}</p>
-          <h2>When?</h2>
-          <p>
-            {event.event_start_date} at {event.event_start_time}
-          </p>
-          <h2>What else?</h2>
-          <p>Event Spezifischer Content</p>
+        <div className='event__ctn__inf'>
+          <h1>Next Event</h1>
+          <div className='event_inf_ctn'>
+            <div className='info__wrapper'>
+              <i class='fas fa-thumbtack'></i>
+              <p>{event.event_address}</p>
+            </div>
+            <div className='info__wrapper'>
+              <i class='fas fa-calendar-day'></i>
+              <p>{event.event_start_date}</p>
+            </div>
+            <div className='info__wrapper'>
+              <i class='far fa-clock'></i>
+              <p>{event.event_start_time}</p>
+            </div>
+          </div>
+        </div>
+        <div className='event__ctn__inf'>
+          <EventPicture />
         </div>
       </div>
-      <div className='event__ctn__sec'>
-        <p>Test</p>
-      </div>
+      <div className='event__ctn__sec'></div>
     </Fragment>
   );
 };
