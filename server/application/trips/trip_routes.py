@@ -7,6 +7,7 @@ from bson.json_util import dumps
 from flask import Response 
 from bson import json_util
 import uuid
+import json
 
 client = pymongo.MongoClient(
     "mongodb+srv://yannik:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority")
@@ -16,7 +17,7 @@ trips_bp = Blueprint('trips_bp', __name__,
                      template_folder='templates',
                      static_folder='static')
 
-@trips_bp.route("/api/trip", methods=["GET", "DELETE", "PATCH"])
+@trips_bp.route("/api/trip", methods=["GET", "PATCH"])
 def get_one_journey():
     table_journey_db = client.table.journey
     result = {}
@@ -40,13 +41,6 @@ def get_one_journey():
             "journey_date":q['journey_date'],
             "journey_start_time":q['journey_start_time']}
     return jsonify({'trip': output})
-    if request.method == 'DELETE':
-        db_response = table_journey_db.delete_one({'journey_id': request.args.get("id")})
-        if db_response.deleted_count == 1:
-            response = {'ok': True, 'message': 'record deleted'}
-        else:
-            response = {'ok': True, 'message': 'no record found'}
-        return jsonify(response), 200
     if request.method == 'PATCH':
         query = request.args
         before = table_journey_db.find( {'journey_id': request.args.get("journey_id")} )
@@ -66,6 +60,19 @@ def get_one_journey():
             "journey_start_time":request.args.get('journey_start_time')
         }})
         return jsonify({'ok': True, 'message': 'record updated'}), 200
+
+
+@trips_bp.route('/api/trip', methods=['DELETE'])
+def deleteTrip():
+    deleteData = request.get_json()
+    print(deleteData)
+    db_response = client.table.journey.delete_one({"journey_id": deleteData["journey_id"]})
+    if db_response.deleted_count == 1:
+        response = {'ok': True, 'message': 'record deleted'}
+    else:
+        response = {'ok': True, 'message': 'no record found'}
+    return jsonify(response), 200
+
 
 @trips_bp.route("/api/trip_event", methods=["GET"])
 def get_all_journeys_for_one_event_id():
