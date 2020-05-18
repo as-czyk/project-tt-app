@@ -104,7 +104,6 @@ const TripState = (props) => {
         },
         config
       );
-      console.log(tripID);
       dispatch({
         type: DELETE_TRIP,
         payload: tripID,

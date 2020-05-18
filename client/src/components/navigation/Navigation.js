@@ -28,7 +28,7 @@ const Navigation = () => {
         <li className='navigation__authLinks'>Offer Trips</li>
       </Link>
       <Link to='/chat'>
-        <li className='navigation__authLinks'>Chat</li>
+        <li className='navigation__authLinks'>Anfragen</li>
       </Link>
       <li className='navigation__logoutLink'>
         <a onClick={onLogout} href='/login'>

@@ -17,10 +17,10 @@ const Register = (props) => {
     username: '',
     user_email: '',
     user_password: '',
-    user_ticket_ID: '',
+    event: '',
   });
 
-  const { username, user_email, user_password, user_ticket_ID } = user;
+  const { username, user_email, user_password, event } = user;
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -41,7 +41,7 @@ const Register = (props) => {
       username === '' ||
       user_email === '' ||
       user_password === '' ||
-      user_ticket_ID === ''
+      event === ''
     ) {
       alertState.setAlert('Please fill in all fields', 'danger');
     } else {
@@ -51,7 +51,7 @@ const Register = (props) => {
       username: '',
       user_email: '',
       user_password: '',
-      user_ticket_ID: '',
+      event: '',
     });
   };
 
@@ -97,9 +97,9 @@ const Register = (props) => {
             onChange={onChange}
           />
           {password.passwordActive ? (
-            <i class='fas fa-eye-slash' onClick={showPassword}></i>
+            <i className='fas fa-eye-slash' onClick={showPassword}></i>
           ) : (
-            <i class='fas fa-eye' onClick={showPassword}></i>
+            <i className='fas fa-eye' onClick={showPassword}></i>
           )}
         </div>
         <div className='input__wrapper'>
@@ -110,20 +110,24 @@ const Register = (props) => {
             placeholder='Confirm Password'
           />
           {password.passwordActive ? (
-            <i class='fas fa-eye-slash' onClick={showPassword}></i>
+            <i className='fas fa-eye-slash' onClick={showPassword}></i>
           ) : (
-            <i class='fas fa-eye' onClick={showPassword}></i>
+            <i className='fas fa-eye' onClick={showPassword}></i>
           )}
         </div>
-        <div className='input__wrapper'>
-          <i className='fas fa-ticket-alt fa-lg'></i>
-          <input
-            type='text'
-            name='user_ticket_ID'
-            placeholder='Ticket ID'
-            value={user_ticket_ID}
+        <div className='input__wrapper__dropdown'>
+          <select
+            value={user.event}
             onChange={onChange}
-          />
+            name='event'
+            selected='Please select your event'
+          >
+            <option value='' seclected disabled hidden>
+              Please select your event
+            </option>
+            <option value='Eintracht Frankfurt'>Eintracht Frankfurt</option>
+            <option value='World Club Dome'>World Club Dome</option>
+          </select>
         </div>
         <Alerts />
         <button type='submit' value='Login' className='auth__button'>

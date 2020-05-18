@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, Fragment } from 'react';
 import UserContext from '../../context/user/UserContext';
 import EventPicture from './EventPicture';
 import './event.scss';
@@ -8,11 +8,8 @@ const Event = () => {
   const { event } = userContext;
 
   return (
-    <div className='event__container'>
+    <Fragment>
       <div className='event__ctn'>
-        <EventPicture />
-      </div>
-      <div className='event__inf'>
         <h1>{event.event_name}</h1>
         <div className='event_inf_ctn'>
           <h2>Where?</h2>
@@ -25,7 +22,10 @@ const Event = () => {
           <p>Event Spezifischer Content</p>
         </div>
       </div>
-    </div>
+      <div className='event__ctn__sec'>
+        <p>Test</p>
+      </div>
+    </Fragment>
   );
 };
 

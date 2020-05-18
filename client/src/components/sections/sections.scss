@@ -1,0 +1,25 @@
+@import '../Pages/home.scss';
+
+.findSection {
+  grid-area: section1;
+  border: 1px solid red;
+  margin: 5px;
+}
+
+.offerSection {
+  grid-area: section2;
+  border: 1px solid red;
+  margin: 5px;
+}
+
+.weatherSection {
+  grid-area: section3;
+  border: 1px solid red;
+  margin: 5px;
+}
+
+.nextEventSection {
+  grid-area: section4;
+  border: 1px solid red;
+  margin: 5px;
+}

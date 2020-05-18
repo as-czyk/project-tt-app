@@ -1,0 +1,12 @@
+.home__wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'countdown countdown countdown countdown'
+    'primary primary primary secondary'
+    'section1 section2 section3 section4';
+  border: 1px solid red;
+  margin: 5px;
+  min-width: 100%;
+}

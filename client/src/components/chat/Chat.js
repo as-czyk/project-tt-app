@@ -18,7 +18,7 @@ const Chat = () => {
   }, []);
 
   if (!reciviedReservation.length) {
-    return <p>Loading</p>;
+    return <p>There are currently no Reservation Requests</p>;
   } else {
     return (
       <div>
