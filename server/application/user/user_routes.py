@@ -8,12 +8,10 @@ import jwt
 import datetime
 from functools import wraps
 import uuid
+from settings import *
 
 
-client = pymongo.MongoClient(
-    "mongodb+srv://aron:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority")
-db = client['table']
-collection = db['user']
+collection = get_collection("user")
 
 
 # User Model
@@ -67,8 +65,7 @@ def token_required(f):
 @user_bp.route('/api/user', methods=['GET'])
 @token_required
 def get_one_user(current_user):
-    user_table = client.table.user
-    result = user_table.find({"user_email": request.args.get("email")})
+    result = collection.find({"user_email": request.args.get("email")})
     if not result:
         return jsonify({'message': 'No user found!'})
     output = {}
@@ -91,8 +88,7 @@ def get_one_user(current_user):
 @user_bp.route('/api/user', methods=['DELETE'])
 @token_required
 def delete_user(current_user):
-    user_table = client.table.user
-    result = user_table.delete_one({"user_email": request.args.get("email")})
+    result = collection.delete_one({"user_email": request.args.get("email")})
     if result.deleted_count == 1:
         response = {'ok': True, 'message': 'record deleted'}
     else:
@@ -106,7 +102,6 @@ def delete_user(current_user):
 
 @user_bp.route('/api/allusers', methods=['GET'])
 def get_all_user():
-    user = client.table.user
     output = []
     for q in user.find():
         output.append({
@@ -127,8 +122,7 @@ def get_all_user():
 @user_bp.route('/api/auth', methods=['GET'])
 @token_required
 def get_auth_user(current_user):
-    user_table = client.table.user
-    result = user_table.find({"user_id": current_user['user_id']})
+    result = collection.find({"user_id": current_user['user_id']})
     if not result:
         return jsonify({'message': 'No user found!'})
     output = {}
@@ -173,7 +167,7 @@ def create_user():
             collection.insert_one(user)
             token = jwt.encode({'user_id': user['user_id'],
                                 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60)},
-                                app.config['SECRET_KEY'])
+                               app.config['SECRET_KEY'])
 
             return jsonify({'token': token.decode('UTF-8')})
     except:
@@ -205,7 +199,7 @@ def auth_user():
     if check_password_hash(user['user_password'], password):
         token = jwt.encode({'user_id': user['user_id'],
                             'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60)},
-                            app.config['SECRET_KEY'])
+                           app.config['SECRET_KEY'])
 
         return jsonify({'token': token.decode('UTF-8')})
 

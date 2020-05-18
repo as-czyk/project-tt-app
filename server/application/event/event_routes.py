@@ -3,11 +3,12 @@ import pymongo
 from flask import request, jsonify, Blueprint
 import jwt
 from functools import wraps
+from settings import *
 
-client = pymongo.MongoClient(
-    "mongodb+srv://aron:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority")
-db = client['table']
-collection = db['events']
+
+# get collection
+collection = get_collection("events")
+
 
 # Set up a Blueprint
 event_bp = Blueprint('event_bp', __name__,

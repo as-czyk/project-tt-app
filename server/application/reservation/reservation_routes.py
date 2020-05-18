@@ -2,9 +2,12 @@ import pymongo
 from flask import request, jsonify, Blueprint
 # from apscheduler.schedulers.background import BackgroundScheduler
 import uuid
+from settings import *
 
-client = pymongo.MongoClient(
-    "mongodb+srv://yannik:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority")
+
+# get collection
+collection = get_collection("reservation")
+
 
 # Set up a Blueprint
 reservation_bp = Blueprint('reservation_bp', __name__,
@@ -15,8 +18,8 @@ reservation_bp = Blueprint('reservation_bp', __name__,
 @reservation_bp.route("/api/reservation/messages", methods=["GET"])
 def check_messages():
     userID = request.args.get("id")
-    if client.table.reservation.count_documents({"journey_user_id": userID}, limit=1):
-        result = client.table.reservation.find({"journey_user_id": userID})
+    if collection.count_documents({"journey_user_id": userID}, limit=1):
+        result = collection.find({"journey_user_id": userID})
         results = []
         for x in result:
             results.append(x)
@@ -41,8 +44,8 @@ def check_messages():
 def check_reservation_status():
     if request.method == 'GET':
         data = request.get_json()
-        if client.table.reservation.count_documents({"reservation_id": data["reservation_id"]}, limit=1):
-            result = client.table.reservation.find({"reservation_id": data["reservation_id"]})
+        if collection.count_documents({"reservation_id": data["reservation_id"]}, limit=1):
+            result = collection.find({"reservation_id": data["reservation_id"]})
             results = []
             for x in result:
                 results.append(x)
@@ -55,7 +58,7 @@ def check_reservation_status():
             return jsonify({'msg': "No reservations were found"})
     if request.method == 'PATCH':
         data = request.get_json()
-        client.table.reservation.update_one({"reservation_id": data["reservation_id"]},
+        collection.update_one({"reservation_id": data["reservation_id"]},
                                             {"$set":
                                                 {"reservation_status": data["reservation_status"]}})
         return "Successfully status updated"
@@ -65,7 +68,6 @@ def check_reservation_status():
 def make_reservation():
     data = request.get_json()
     table_journey_db = client.table.journey
-    collection = client.table.reservation
     result = table_journey_db.find({'journey_id': data["journey_id"]})
     results = []
     for x in result:

@@ -8,3 +8,4 @@
 
 # production
 client/build
+server/settings.py

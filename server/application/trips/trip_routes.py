@@ -3,9 +3,12 @@ from flask import request, jsonify, Blueprint
 from flask import Response
 from bson import json_util
 import uuid
+from settings import *
 
-client = pymongo.MongoClient(
-    "mongodb+srv://yannik:techtalents2020@connext-en64e.mongodb.net/test?retryWrites=true&w=majority")
+
+# get collection
+collection = get_collection("journey")
+
 
 # Set up a Blueprint
 trips_bp = Blueprint('trips_bp', __name__,
@@ -15,10 +18,9 @@ trips_bp = Blueprint('trips_bp', __name__,
 
 @trips_bp.route("/api/trip", methods=["GET", "PATCH"])
 def get_one_journey():
-    table_journey_db = client.table.journey
     result = {}
     if request.method == 'GET':
-        result = table_journey_db.find({'journey_id': request.args.get("id")})
+        result = collection.find({'journey_id': request.args.get("id")})
     if not result:
         return jsonify({'message': 'No trip found!'})
     output = {}
@@ -38,7 +40,7 @@ def get_one_journey():
             "journey_start_time": q['journey_start_time']}
     return jsonify({'trip': output})
     if request.method == 'PATCH':  # TODO: Change to get JSON!
-        table_journey_db.update_one(
+        collection.update_one(
             {'journey_id': request.args.get("journey_id")},
             {'$set': {
                 "event_address": request.args.get('event_address'),
@@ -61,7 +63,7 @@ def get_one_journey():
 def deleteTrip():
     deleteData = request.get_json()
     print(deleteData)
-    db_response = client.table.journey.delete_one({"journey_id": deleteData["journey_id"]})
+    db_response = collection.delete_one({"journey_id": deleteData["journey_id"]})
     if db_response.deleted_count == 1:
         response = {'ok': True, 'message': 'record deleted'}
     else:
@@ -71,8 +73,7 @@ def deleteTrip():
 
 @trips_bp.route("/api/trip_event", methods=["GET"])
 def get_all_journeys_for_one_event_id():
-    table_journey_db = client.table.journey
-    result = table_journey_db.find({'event_id': request.args.get("id")})
+    result = collection.find({'event_id': request.args.get("id")})
     results = [x for x in result]
     return Response(
         json_util.dumps({'trip_event': results}),
@@ -82,7 +83,6 @@ def get_all_journeys_for_one_event_id():
 @trips_bp.route('/api/trip', methods=['POST'])
 def create_trip():
     data = request.get_json()
-    table_journey_db = client.table.journey
     journey = {
         'event_address': data['event_address'],
         "event_id": data['event_id'],
@@ -96,14 +96,13 @@ def create_trip():
         "journey_text": data['journey_text'],
         "journey_date": data['journey_date'],
         "journey_start_time": data['journey_start_time']}
-    result = table_journey_db.insert_one(journey)
+    result = collection.insert_one(journey)
     return "Successfully inserted with ObjectID: " + str(result.inserted_id)
 
 
 @trips_bp.route("/api/tripUser", methods=["GET"])
 def journey_for_user_id():
-    table_journey_db = client.table.journey
-    result = table_journey_db.find({'user_id': request.args.get("id")})
+    result = collection.find({'user_id': request.args.get("id")})
     results = [x for x in result]
     return Response(
         json_util.dumps({'tripUser': results}),
