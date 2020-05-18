@@ -37,7 +37,7 @@ def check_messages():
 
 
 @reservation_bp.route("/api/reservation/status",
-                      methods=["GET", "PATCH", "DELETE"])
+                      methods=["GET", "PATCH"])
 def check_reservation_status():
     if request.method == 'GET':
         data = request.get_json()
@@ -55,16 +55,11 @@ def check_reservation_status():
             return jsonify({'msg': "No reservations were found"})
     if request.method == 'PATCH':
         data = request.get_json()
-        client.table.reservation.update_one({"reservation_id": data["reservation_id"]}, {"$set": {"reservation_status": "accepted"}})
-        return "Successfully accepted"
-    if request.method == "DELETE":
-        data = request.get_json()
-        db_response = client.table.reservation.delete_one({"reservation_id": data["reservation_id"]})
-        if db_response.deleted_count == 1:
-            response = {'ok': True, 'message': 'record deleted'}
-        else:
-            response = {'ok': True, 'message': 'no record found'}
-        return jsonify(response), 200
+        client.table.reservation.update_one({"reservation_id": data["reservation_id"]},
+                                            {"$set":
+                                                {"reservation_status": data["reservation_status"]}})
+        return "Successfully status updated"
+
 
 @reservation_bp.route("/api/reservation", methods=["POST"])
 def make_reservation():
