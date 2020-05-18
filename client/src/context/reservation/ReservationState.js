@@ -8,6 +8,7 @@ import {
   GET_RESERVATION,
   DECLINE_RESERVATION,
   ACCEPT_RESERVATION,
+  DELETE_TRIP,
 } from '../types';
 
 const ReservationState = (props) => {
@@ -15,6 +16,7 @@ const ReservationState = (props) => {
     makeReservation: [],
     reciviedReservation: [],
     acceptedReservation: [],
+    declinedReservation: [],
     loading: false,
   };
 
@@ -78,7 +80,7 @@ const ReservationState = (props) => {
     try {
       const res = await axios.patch(
         '/api/reservation/status',
-        reservationID,
+        { reservation_id: reservationID.id },
         config
       );
 
@@ -91,8 +93,36 @@ const ReservationState = (props) => {
     }
   };
 
-  const declineReservation = () => {
+  const declineReservation = async (reservationID) => {
     setLoading();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const res = await axios.delete(
+        '/api/reservation/status',
+        {
+          data: {
+            reservation_id: reservationID.id,
+          },
+        },
+        config
+      );
+
+      console.log(reservationID.id);
+      console.log(res);
+
+      dispatch({
+        type: DECLINE_RESERVATION,
+        payload: reservationID,
+      });
+    } catch (err) {
+      console.log('error', err);
+    }
   };
 
   //Set Loading
@@ -105,6 +135,7 @@ const ReservationState = (props) => {
         reciviedReservation: state.reciviedReservation,
         loading: state.loading,
         acceptedReservation: state.acceptedReservation,
+        declinedReservation: state.declinedReservation,
         addReservation,
         getReservation,
         acceptReservation,

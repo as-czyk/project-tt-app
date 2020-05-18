@@ -1,7 +1,10 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Event from '../event/Event';
-import Weather from '../weather/Weather';
 import Countdown from '../event/Countdown';
+import FindSection from '../sections/FindSection';
+import OfferSection from '../sections/OfferSection';
+import WeatherSection from '../sections/WeatherSection';
+import NextSection from '../sections/NextSections';
 
 import UserContext from '../../context/user/UserContext';
 
@@ -18,11 +21,14 @@ const Home = () => {
 
   if (!loading && event !== undefined) {
     return (
-      <Fragment>
+      <div className='home__wrapper'>
         <Countdown />
         <Event />
-        <Weather />
-      </Fragment>
+        <FindSection />
+        <OfferSection />
+        <WeatherSection />
+        <NextSection />
+      </div>
     );
   } else {
     return <p>Loading</p>;

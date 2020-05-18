@@ -3,6 +3,7 @@ import {
   SET_LOADING,
   GET_RESERVATION,
   ACCEPT_RESERVATION,
+  DECLINE_RESERVATION,
 } from '../types';
 
 export default (state, action) => {
@@ -23,6 +24,19 @@ export default (state, action) => {
       return {
         ...state,
         acceptedReservation: action.payload,
+        reciviedReservation: state.reciviedReservation.filter(
+          (reservation) => reservation.reservation_id !== action.payload.id
+        ),
+        loading: false,
+      };
+
+    case DECLINE_RESERVATION:
+      return {
+        ...state,
+        declinedReservation: action.payload,
+        reciviedReservation: state.reciviedReservation.filter(
+          (reservation) => reservation.reservation_id !== action.payload.id
+        ),
         loading: false,
       };
 

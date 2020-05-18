@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import UserContext from '../../context/user/UserContext';
 
+import './event.scss';
+
 const Countdown = () => {
   const userContext = useContext(UserContext);
   const { event } = userContext;
@@ -43,30 +45,14 @@ const Countdown = () => {
 
   return (
     <div className='counter__wrapper'>
-      <div className='counter'>
-        <div className='counter__wrapper__text'>
-          <p className='count'>{counter.days}</p>
-        </div>
-        <p className='counter__text'>Tage</p>
-      </div>
-      <div className='counter'>
-        <div className='counter__wrapper__text'>
-          <p className='count'>{counter.hours}</p>
-        </div>
-        <p className='counter__text'>Stunden</p>
-      </div>
-      <div className='counter'>
-        <div className='counter__wrapper__text'>
-          <p className='count'>{counter.minutes}</p>
-        </div>
-        <p className='counter__text'>Minuten</p>
-      </div>
-      <div className='counter'>
-        <div className='counter__wrapper__text'>
-          <p className='count'>{counter.seconds}</p>
-        </div>
-        <p className='counter__text'>Sekunden</p>
-      </div>
+      <p className='counter__text'>Tage</p>
+      <p className='count'>{counter.days}</p>
+      <p className='counter__text'>Stunden</p>
+      <p className='count'>{counter.hours}</p>
+      <p className='counter__text'>Minuten</p>
+      <p className='count'>{counter.minutes}</p>
+      <p className='counter__text'>Sekunden</p>
+      <p className='count'>{counter.seconds}</p>
     </div>
   );
 };

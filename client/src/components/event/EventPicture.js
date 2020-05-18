@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import pictureClubdome from './worldclubdome.jpg';
-import pictureSGE from './eintracht.jpg';
+import sgeLogo from '../../resources/eintracht-logo.png';
+import bayernLogo from '../../resources/bayern-logo.png';
 import UserContext from '../../context/user/UserContext';
 
 const EventPicture = () => {
@@ -8,13 +8,11 @@ const EventPicture = () => {
   const { event } = userContext;
 
   return (
-    <img
-      className='event__picture'
-      alt='Event'
-      src={
-        event.event_name === 'World Club Dome' ? pictureClubdome : pictureSGE
-      }
-    ></img>
+    <div className='event__wrapper'>
+      <img src={sgeLogo} className='img-size'></img>
+      <p>:</p>
+      <img src={bayernLogo} className='img-size'></img>
+    </div>
   );
 };
 

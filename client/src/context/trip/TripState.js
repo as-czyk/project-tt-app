@@ -89,17 +89,25 @@ const TripState = (props) => {
 
   //Delete Trip
   const deleteTrip = async (tripID) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
     try {
-      const res = await axios.delete('/api/trip', {
-        params: {
-          id: tripID,
+      const res = await axios.delete(
+        '/api/trip',
+        {
+          data: {
+            journey_id: tripID,
+          },
         },
-      });
+        config
+      );
       dispatch({
         type: DELETE_TRIP,
         payload: tripID,
       });
-      console.log(res);
     } catch (err) {
       dispatch({
         type: LOAD_ERROR,

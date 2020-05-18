@@ -148,7 +148,6 @@ def get_auth_user(current_user):
             'user_id' : q['user_id'],
             'username' : q['username'],
             'user_email' : q['user_email'],
-            'ticket_id' : q['ticket_id'],
             'event_id' : q['event_id']
         }
     
@@ -162,6 +161,12 @@ def get_auth_user(current_user):
 def create_user(): 
     data = request.get_json()
     email = data['user_email']
+    event = data['event']
+
+    if event == 'Eintracht Frankfurt':
+        eventID = '2ab60824-b539-4a1f-ae1a-f7d94d2d55bb'
+    else:
+        eventID = '7be626b0-c1cd-4a26-a111-60afb13ba940'
 
     try:
         email = collection.find_one( {'user_email': email} )
@@ -169,15 +174,14 @@ def create_user():
             return make_response({'msg': 'the user already exists'}), 400
         else:
             hashed_password = generate_password_hash(data['user_password'], method='sha256')
-            #To Do - Keine Hart verdrahteten Werte
             user = {
             'user_id' : str(uuid.uuid4()),
             'username': data['username'],
             'user_email': data['user_email'],
             'user_password': hashed_password,
-            'ticket_id': data['user_ticket_ID'],
-            'event_id' : '2ab60824-b539-4a1f-ae1a-f7d94d2d55bb'
+            'event_id' : eventID
             }
+            print(user)
             result = collection.insert_one(user)
             token = jwt.encode({'user_id' : user['user_id'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=60)}, app.config['SECRET_KEY'])
 

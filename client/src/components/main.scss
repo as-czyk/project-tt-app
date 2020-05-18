@@ -40,6 +40,11 @@ input[type='number'] {
   font-size: 15px;
 }
 
+select {
+  font-family: $text;
+  font-size: 15px;
+}
+
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
 }

@@ -1,40 +1,33 @@
 @import '../main.scss';
+@import '../Pages/home.scss';
 
 /** Event Container Styling */
 
-.event__container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: 'ctn inf';
-  margin: 5em;
-  height: 25em;
+.event__ctn {
+  grid-area: primary;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid green;
+  margin: 20px;
 }
 
-.event__ctn {
-  grid-area: ctn;
-  margin: 10px;
+.event__ctn__inf {
+  width: 90%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    overflow: hidden;
-    border-radius: 50%;
-  }
+  align-items: flex-start;
+  border: 1px solid red;
+  margin: 10px;
 }
 
-.event__inf {
-  grid-area: inf;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #f4f8f7;
-  padding: 10px;
+.event__ctn__sec {
+  grid-area: secondary;
+  border: 1px solid rgb(9, 9, 10);
+  margin: 20px;
 }
 
 .event_inf_ctn {
@@ -43,44 +36,49 @@
   justify-content: center;
   align-items: flex-start;
   height: 80%;
-  line-height: 2em;
+}
+
+.info__wrapper {
+  margin: 5px;
+  width: 100%;
+  height: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+
+  p {
+    margin-left: 5px;
+  }
+}
+
+.event__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-size {
+  height: 150px;
+  width: 150px;
 }
 
 /** Styling for counter */
 
 .counter__wrapper {
+  grid-area: countdown;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin: 2em;
-  min-height: 10em;
-}
-
-.counter {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  border: 2px solid $primary;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.counter__wrapper__text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 50%;
+  margin-top: 20px;
 }
 
 .counter__text {
   border-bottom: 1px solid $action;
   font-size: 18px;
-  margin-bottom: 20px;
 }
 
 .count {

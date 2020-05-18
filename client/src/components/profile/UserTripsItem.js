@@ -36,7 +36,6 @@ const UserTripsItem = ({ userTrip }) => {
 
   const tripdelete = () => {
     deleteTrip(current.id);
-    console.log(current.id);
   };
 
   return (
