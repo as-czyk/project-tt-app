@@ -1,6 +1,4 @@
-from flask import Flask, request, jsonify, render_template
-import os
-import sys
+from flask import Flask, render_template
 import pymongo
 
 # For deployment
@@ -36,6 +34,7 @@ app.register_blueprint(event_routes.event_bp)
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 # Run Server
 if __name__ == '__main__':

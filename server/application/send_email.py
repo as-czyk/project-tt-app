@@ -1,5 +1,6 @@
 import smtplib
 
+
 def send_email(user, password, recipient, subject, body):
 
     gmail_user = user

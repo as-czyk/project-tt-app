@@ -1,10 +1,7 @@
-from flask import Blueprint, render_template
 from flask import current_app as app
 import pymongo
-import json
-from flask import Flask, request, jsonify, render_template, make_response
+from flask import request, jsonify, Blueprint
 import jwt
-import datetime
 from functools import wraps
 
 client = pymongo.MongoClient(
@@ -17,7 +14,8 @@ event_bp = Blueprint('event_bp', __name__,
                      template_folder='templates',
                      static_folder='static')
 
-# Check for valid token 
+
+# Check for valid token
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -26,21 +24,21 @@ def token_required(f):
         if 'x-access-token' in request.headers:
             token = request.headers['x-access-token']
 
-        if not token: 
-            return jsonify({'msg' : 'Token is missing'})
-        
+        if not token:
+            return jsonify({'msg': 'Token is missing'})
+
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'])
-            current_user = collection.find_one({'user_id' : data['user_id']})
+            current_user = collection.find_one({'user_id': data['user_id']})
         except:
-            return jsonify({'msg' : 'Token is invalid'})
-        
+            return jsonify({'msg': 'Token is invalid'})
+
         return f(current_user, *args, **kwargs)
-    
+
     return decorated
 
 
-# Event Routes 
+# Event Routes
 # 'api/event', methods=['GET']
 # Private Route
 @event_bp.route('/api/event', methods=['GET'])
@@ -48,7 +46,7 @@ def token_required(f):
 def get_event(current_user):
     event = request.args.get('event_id')
     print(event)
-    result = collection.find({'event_id' : event})
+    result = collection.find({'event_id': event})
     if not result:
         return jsonify({'message': 'Kein Event gefunden'})
     output = {}
@@ -62,4 +60,3 @@ def get_event(current_user):
             'event_end_time': q['event_end_time']
         }
     return jsonify({'event': output}), 200
-
