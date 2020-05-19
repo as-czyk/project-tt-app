@@ -13,6 +13,7 @@
     text-decoration: none;
     color: #000000;
   }
+  opacity: 0.9;
 }
 
 .offerSection {
@@ -26,6 +27,7 @@
   :link {
     text-decoration: none;
   }
+  opacity: 0.9;
 }
 
 .link__section {
@@ -36,12 +38,14 @@
   grid-area: section3;
   margin: 10px;
   background-color: $base;
+  opacity: 0.9;
 }
 
 .nextEventSection {
   grid-area: section4;
   margin: 10px;
   background-color: $base;
+  opacity: 0.9;
 }
 
 /** Icons */

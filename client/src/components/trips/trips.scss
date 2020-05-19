@@ -1,11 +1,35 @@
 @import '../main.scss';
+
+/** Find trips */
 .trips__container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  border: 1px solid blue;
   margin: 10px;
   line-height: 1.5;
-  height: 20em;
+  height: 22em;
+  min-width: 90%;
+  border: 1px solid black;
+}
+
+.trips__container__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  line-height: 1em;
+  margin: 5px;
+  padding-top: 20px;
+}
+
+.trips__container__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.5em;
+  padding: 20px;
+  background-color: black;
+  color: $base;
 }
 
 .trips__wrapper {
@@ -15,22 +39,21 @@
   align-items: flex-start;
   margin: 5em;
   flex-wrap: wrap;
-  border: 1px solid red;
 }
 
 .search__trips {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid green;
   height: 5em;
   margin: 5em;
+  background-color: $sgePrimary;
 }
 
 .search__bar {
-  width: 30em;
+  width: 40em;
   height: 3em;
-  border: 1px solid blue;
+  border: none;
 
   &:focus {
     outline: none;
@@ -48,16 +71,41 @@
   height: 4em;
 }
 
-.btn {
-  border: 1px solid red;
+.button__trips {
   border-radius: 25px;
-  width: 40%;
-  height: 10%;
-  margin-top: 2em;
-
-  &:focus {
-    outline: none;
+  width: 200px;
+  height: 50px;
+  font-family: $text;
+  font-size: 16px;
+  background-color: $sgePrimary;
+  color: $base;
+  border: none;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+  &:focus {
+    outline: 0;
+  }
+  margin-top: 30px;
+}
+
+.info__wrapper {
+  margin: 5px;
+  width: 100%;
+  height: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+
+  p {
+    margin-left: 5px;
+  }
+}
+
+.trip__details {
+  margin: 10px;
 }
 
 /** Style for submitting trip form */
@@ -108,6 +156,7 @@
   img {
     width: 100%;
     height: 100%;
+    border-radius: 300px;
   }
 }
 
@@ -164,7 +213,38 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
+  line-height: 2em;
+}
+
+.confirm__ctn__wrapper {
+  margin: 20px;
+  min-height: 30em;
+}
+
+.button__wrapper__confirm {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.form__steps__confirm {
+  width: 80%;
+  height: 20%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.success__wrapper {
+  color: green;
+  margin: 100px;
+  text-align: center;
+  min-height: 10em;
 }
 
 /** Styling for make reservation */

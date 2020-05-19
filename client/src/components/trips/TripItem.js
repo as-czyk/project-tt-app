@@ -35,28 +35,43 @@ const TripItem = ({ trip }) => {
 
   return (
     <div className='trips__container'>
-      <p>FahrtID: {journey_id}</p>
-      <p>Event ID: {event_id}</p>
-      <p>Event Adress: {event_address}</p>
-      <p>Start Datum: {event_start_date}</p>
-      <p>Start Zeit: {event_start_time}</p>
-      <p>Auto: {journey_car}</p>
-      <p>Date: {journey_date}</p>
-      <p>Sitze: {journey_empty_spaces}</p>
-      <p>Freitext: {journey_text}</p>
-      <p>PLZ: {pickup_zip_code}</p>
-      <p>User_id: {user_id}</p>
-      <p>Geld: {journey_money}</p>
-      <Link
-        to={{
-          pathname: '/tripsreservation',
-          state: {
-            current,
-          },
-        }}
-      >
-        Click me
-      </Link>
+      <div className='trips__container__left'>
+        <h2>Trip Details</h2>
+        <div className='trip__details'>
+          <div className='info__wrapper'>
+            <i class='fas fa-thumbtack'></i>
+            <p>{pickup_zip_code}</p>
+          </div>
+          <div className='info__wrapper'>
+            <i class='fas fa-calendar-day'></i>
+            <p>{journey_date}</p>
+          </div>
+          <div className='info__wrapper'>
+            <i class='far fa-clock'></i>
+            <p>Journey Time</p>
+          </div>
+          <div className='info__wrapper'>
+            <p>Freie Sitzplätze: {journey_empty_spaces}</p>
+          </div>
+          <div className='info__wrapper'>
+            <i class='fas fa-dollar-sign'></i>
+            <p>{journey_money}</p>
+          </div>
+        </div>
+      </div>
+      <div className='trips__container__right'>
+        <i>"{journey_text}"</i>
+        <Link
+          to={{
+            pathname: '/tripsreservation',
+            state: {
+              current,
+            },
+          }}
+        >
+          <button className='button__trips'> Make a Reservation</button>
+        </Link>
+      </div>
     </div>
   );
 };

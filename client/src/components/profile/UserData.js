@@ -9,9 +9,7 @@ export const UserData = () => {
 
   return (
     <div className='userdata__container'>
-      <h1>User Data goes here</h1>
       <p>{user.user.event_id}</p>
-      <p>{user.user.ticket_id}</p>
       <p>{user.user.user_email}</p>
       <p>{user.user.username}</p>
     </div>

@@ -11,6 +11,7 @@
   align-items: center;
   background-color: $sgePrimary;
   margin: 10px;
+  opacity: 0.9;
 }
 
 .event__ctn__inf {
@@ -28,6 +29,7 @@
   grid-area: secondary;
   margin: 10px;
   background-color: $base;
+  opacity: 0.9;
 }
 
 .event_inf_ctn {
@@ -77,6 +79,7 @@
   margin-left: 10px;
   margin-right: 10px;
   background-color: $base;
+  opacity: 0.9;
 }
 
 .counter__text {

@@ -21,23 +21,26 @@ const Confirm = (props) => {
   };
 
   return (
-    <Fragment>
-      <div className='form__steps'>
-        <p>Step {step} of 4</p>
+    <div className='confirm__ctn__wrapper'>
+      <div className='form__steps__confirm'>
+        <h2>Step {step} of 4</h2>
+      </div>
+      <div className='form__steps__confirm'>
+        <h3>Please check your and confirm your input:</h3>
       </div>
       <form onSubmit={onSubmit} className='confirm__wrapper'>
         <p>Abfahrtsort: {trip.pickup_zip_code}</p>
         <p>Abfahrtszeit: {trip.journey_start_time}</p>
         <p>Datum: {trip.journey_date}</p>
         <p>Auto: {trip.journey_car}</p>
-        <p>Verfügbare Plätze: {trip.seats}</p>
+        <p>Verfügbare Plätze: {trip.journey_empty_spaces}</p>
         <p>Kosten: {trip.journey_money}</p>
-        <div className='button__wrapper'>
-          <i class='fas fa-arrow-circle-left fa-2x' onClick={previousStep}></i>
+        <div className='button__wrapper__confirm'>
           <button className='button'>Submit</button>
+          <i class='fas fa-arrow-circle-left fa-2x' onClick={previousStep}></i>
         </div>
       </form>
-    </Fragment>
+    </div>
   );
 };
 
