@@ -1,13 +1,26 @@
-import pymongo
-from flask import request, jsonify, Blueprint
-from flask import Response
+from flask import request, jsonify, Blueprint, Response
 from bson import json_util
 import uuid
 from settings import *
-
+from mongoengine import *
 
 # get collection
 collection = get_collection("journey")
+
+
+# User Model
+class journey(Document):
+    event_address = StringField(required=True)
+    event_id = UUIDField(required=True)
+    event_start_time = DateTimeField(required=True)
+    pickup_zip_code = IntField(min_value=10000, max_value=99999)
+    user_id = UUIDField(required=True)
+    journey_id = UUIDField(required=True)
+    journey_empty_spaces = IntField(min_value=1)
+    journey_car = StringField(required=True)
+    journey_text = StringField(required=True)
+    journey_date = DateTimeField(required=True)
+    journey_start_time = DateTimeField(required=True)
 
 
 # Set up a Blueprint
@@ -20,25 +33,30 @@ trips_bp = Blueprint('trips_bp', __name__,
 def get_one_journey():
     result = {}
     if request.method == 'GET':
-        result = collection.find({'journey_id': request.args.get("id")})
+        result = journey.objects.to_json()
+        #(journey_id=request.args.get("id")).to_json()
+        #result = collection.find({'journey_id': request.args.get("id")})
     if not result:
         return jsonify({'message': 'No trip found!'})
     output = {}
-    for q in result:
-        output = {
-            'event_address': q['event_address'],
-            "event_id": q['event_id'],
-            "event_start_date": q['event_start_date'],
-            "event_start_time": q['event_start_time'],
-            "pickup_zip_code": q['pickup_zip_code'],
-            "user_id": q['user_id'],
-            "journey_id": q['journey_id'],
-            "journey_empty_spaces": q['journey_empty_spaces'],
-            "journey_car": q['journey_car'],
-            "journey_text": q['journey_text'],
-            "journey_date": q['journey_date'],
-            "journey_start_time": q['journey_start_time']}
-    return jsonify({'trip': output})
+    # for q in result:
+    #     output = {
+    #         'event_address': q['event_address'],
+    #         "event_id": q['event_id'],
+    #         "event_start_date": q['event_start_date'],
+    #         "event_start_time": q['event_start_time'],
+    #         "pickup_zip_code": q['pickup_zip_code'],
+    #         "user_id": q['user_id'],
+    #         "journey_id": q['journey_id'],
+    #         "journey_empty_spaces": q['journey_empty_spaces'],
+    #         "journey_car": q['journey_car'],
+    #         "journey_text": q['journey_text'],
+    #         "journey_date": q['journey_date'],
+    #         "journey_start_time": q['journey_start_time']}
+    #     print(output)
+        #print(journey().json())
+    return result
+    # return jsonify({'trip': output})
     if request.method == 'PATCH':  # TODO: Change to get JSON!
         collection.update_one(
             {'journey_id': request.args.get("journey_id")},
