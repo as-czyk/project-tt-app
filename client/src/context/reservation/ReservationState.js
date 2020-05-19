@@ -93,6 +93,7 @@ const ReservationState = (props) => {
     }
   };
 
+  // Decline Reservation
   const declineReservation = async (reservationID) => {
     setLoading();
 

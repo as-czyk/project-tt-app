@@ -1,19 +1,16 @@
 Backend: 
-1. Requests überarbeiten (Yannik)
-    1.1 Trips (Delete)
-2. Email (Yannik)
-3. PATCH für User
-4. Verfication user-email
+- Email (Yannik)
+- PATCH für User
+- Verfication user-email
+- delete trip -> patch trip damit das Object besetehen bleibt 
+- service -> Input: user_id Output: Active / Declined Reservierungen
 
 Frontend:
-1. Reservation
-    1.1 PATCH -> Bestätigen 
-    1.2 DELETE -> Ablehnen
-2. Design
-    2.1 Komponenten Design
-3. Trips PATCH anbinden (WIP)
-4. User Profil
-    3.1 PATCH anbinden (WIP)
+- Design
+    - Komponenten Design
+- Trips PATCH anbinden (WIP)
+- User Profil
+    - PATCH anbinden (WIP)
 
 Deployment:
 - Script was nach jedem npm run build alle files in die server ordner kopiert
@@ -21,5 +18,4 @@ Deployment:
 
 Known - Bugs: 
 #1 Page Reload -> Logout -> Redirect to /login bei jedem Page Reload
-#2 Logout -> Redirect not working
-#3 Boxen für gefunde Fahrten -> einheitliche Größe
+#2 Boxen für gefunde Fahrten -> einheitliche Größe

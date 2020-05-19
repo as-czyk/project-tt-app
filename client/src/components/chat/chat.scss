@@ -6,6 +6,27 @@
   margin: 5em;
   flex-wrap: wrap;
   min-height: 10em;
+  border: 1px solid red;
+}
+
+.requested__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid blue;
+  min-height: 10em;
+  margin: 5em;
+}
+
+.requested__item__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+  width: 90%;
+  border: 1px solid red;
 }
 
 .reservation__item__wrapper {

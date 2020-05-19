@@ -23,7 +23,7 @@ const Confirm = (props) => {
   return (
     <Fragment>
       <div className='form__steps'>
-        <p>{step}</p>
+        <p>Step {step} of 4</p>
       </div>
       <form onSubmit={onSubmit} className='confirm__wrapper'>
         <p>Abfahrtsort: {trip.pickup_zip_code}</p>
