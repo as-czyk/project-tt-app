@@ -1,6 +1,8 @@
 import React, { Fragment, useContext } from 'react';
 import AlertContext from '../../../context/alert/AlertContext';
 import Alert from '../../auth/Alerts';
+import picture from '../../../resources/eintracht-images/choreo1.jpg';
+
 import '../trips.scss';
 
 const TripsDetails = (props) => {
@@ -26,10 +28,10 @@ const TripsDetails = (props) => {
       <div className='trips__form'>
         <div className='form__ctn'>
           <div className='form__steps'>
-            <p>{step}</p>
+            <h2>Step {step} of 4</h2>
           </div>
           <div className='form__text'>
-            <p>When and where do you want to start?</p>
+            <h3>When and where do you want to start?</h3>
           </div>
           <div className='input__wrapper'>
             <input
@@ -62,7 +64,7 @@ const TripsDetails = (props) => {
           <i className='fas fa-arrow-circle-right fa-2x' onClick={validate}></i>
         </div>
         <div className='form__img'>
-          <p>Bild</p>
+          <img src={picture} />
         </div>
       </div>
     </Fragment>

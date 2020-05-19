@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import UserContext from '../../context/user/UserContext';
 import ReservationContext from '../../context/reservation/ReservationContext';
 import ReservationItem from './ReservationItem';
+import RequestedItem from './RequestedItem';
 
 import './chat.scss';
 
@@ -24,12 +25,17 @@ const Chat = () => {
       <div>
         <h1>This is the Reservation Componenent</h1>
         <div className='chat__wrapper'>
+          <h1>Deine Anfragen</h1>
           {reciviedReservation.map((reservation) => (
             <ReservationItem
               key={reservation.reservation_id}
               reservation={reservation}
             />
           ))}
+        </div>
+        <div className='requested__item'>
+          <h1>Deine angefragten Fahrten</h1>
+          <RequestedItem />
         </div>
       </div>
     );

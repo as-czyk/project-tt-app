@@ -1,25 +1,54 @@
 @import '../Pages/home.scss';
+@import '../main.scss';
 
 .findSection {
   grid-area: section1;
-  border: 1px solid red;
-  margin: 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $base;
+  :link {
+    text-decoration: none;
+    color: #000000;
+  }
 }
 
 .offerSection {
   grid-area: section2;
-  border: 1px solid red;
-  margin: 20px;
+  background-color: $sgePrimary;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  :link {
+    text-decoration: none;
+  }
+}
+
+.link__section {
+  color: #000000;
 }
 
 .weatherSection {
   grid-area: section3;
-  border: 1px solid red;
-  margin: 20px;
+  margin: 10px;
+  background-color: $base;
 }
 
 .nextEventSection {
   grid-area: section4;
-  border: 1px solid red;
-  margin: 20px;
+  margin: 10px;
+  background-color: $base;
+}
+
+/** Icons */
+.fa-car {
+  margin-top: 20px;
+}
+
+.fa-glasses {
+  margin-top: 20px;
 }

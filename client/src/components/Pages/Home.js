@@ -22,12 +22,14 @@ const Home = () => {
   if (!loading && event !== undefined) {
     return (
       <div className='home__wrapper'>
-        <Countdown />
-        <Event />
-        <FindSection />
-        <OfferSection />
-        <WeatherSection />
-        <NextSection />
+        <div className='home__content__wrapper'>
+          <Countdown />
+          <Event />
+          <FindSection />
+          <OfferSection />
+          <WeatherSection />
+          <NextSection />
+        </div>
       </div>
     );
   } else {
