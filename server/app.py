@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import settings, pymongo
+import settings
 
 # For deployment
 # from server.application.trips import trip_routes

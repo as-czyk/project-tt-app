@@ -1,4 +1,3 @@
-import pymongo
 from flask import request, jsonify, Blueprint
 # from apscheduler.schedulers.background import BackgroundScheduler
 import uuid

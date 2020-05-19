@@ -1,5 +1,4 @@
 from flask import current_app as app
-import pymongo
 import json
 from flask import request, jsonify, make_response, Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
