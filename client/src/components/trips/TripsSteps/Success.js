@@ -2,8 +2,10 @@ import React from 'react';
 
 const Success = () => {
   return (
-    <div>
-      <h1>Success</h1>
+    <div className='success__wrapper'>
+      <h1>Congratulations</h1>
+      <h2>Your submitted a trip!</h2>
+      <i class='fas fa-check-square fa-7x'></i>
     </div>
   );
 };
