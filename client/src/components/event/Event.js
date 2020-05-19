@@ -14,15 +14,15 @@ const Event = () => {
           <h1>Next Event</h1>
           <div className='event_inf_ctn'>
             <div className='info__wrapper'>
-              <i class='fas fa-thumbtack'></i>
+              <i className='fas fa-thumbtack'></i>
               <p>{event.event_address}</p>
             </div>
             <div className='info__wrapper'>
-              <i class='fas fa-calendar-day'></i>
+              <i className='fas fa-calendar-day'></i>
               <p>{event.event_start_date}</p>
             </div>
             <div className='info__wrapper'>
-              <i class='far fa-clock'></i>
+              <i className='far fa-clock'></i>
               <p>{event.event_start_time}</p>
             </div>
           </div>

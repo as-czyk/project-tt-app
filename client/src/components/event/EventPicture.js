@@ -11,15 +11,15 @@ const EventPicture = () => {
   if (event.event_name === 'World Club Dome') {
     return (
       <div className='event__wrapper'>
-        <img src={wcdLogo} className='img-size'></img>
+        <img src={wcdLogo} className='img-size' alt='WCD'></img>
       </div>
     );
   } else {
     return (
       <div className='event__wrapper'>
-        <img src={sgeLogo} className='img-size'></img>
+        <img src={sgeLogo} className='img-size' alt='Eintracht Frankfurt'></img>
         <p style={{ fontSize: '40px' }}> : </p>
-        <img src={bayernLogo} className='img-size'></img>
+        <img src={bayernLogo} className='img-size' alt='FC Bayern Munich'></img>
       </div>
     );
   }

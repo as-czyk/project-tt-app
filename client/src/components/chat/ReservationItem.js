@@ -16,6 +16,8 @@ const ReservationItem = ({ reservation }) => {
 
   const [id, setId] = useState({
     id: reservation_id,
+    seats: reservation_requested_seats,
+    status: '',
   });
 
   const accept = () => {
@@ -23,6 +25,10 @@ const ReservationItem = ({ reservation }) => {
   };
 
   const decline = () => {
+    setId({
+      ...id,
+      status: 'declined',
+    });
     declineReservation(id);
   };
 

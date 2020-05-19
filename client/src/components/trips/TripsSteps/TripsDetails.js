@@ -64,7 +64,7 @@ const TripsDetails = (props) => {
           <i className='fas fa-arrow-circle-right fa-2x' onClick={validate}></i>
         </div>
         <div className='form__img'>
-          <img src={picture} />
+          <img src={picture} alt='Eintracht Frankfurt' />
         </div>
       </div>
     </Fragment>

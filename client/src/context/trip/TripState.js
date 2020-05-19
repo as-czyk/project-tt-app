@@ -36,7 +36,7 @@ const TripState = (props) => {
       },
     };
     try {
-      const res = await axios.post('/api/trip', trip, config);
+      await axios.post('/api/trip', trip, config);
       dispatch({
         type: ADD_TRIP,
         payload: trip,
@@ -95,7 +95,7 @@ const TripState = (props) => {
       },
     };
     try {
-      const res = await axios.delete(
+      await axios.delete(
         '/api/trip',
         {
           data: {

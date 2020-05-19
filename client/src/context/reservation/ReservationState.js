@@ -8,7 +8,6 @@ import {
   GET_RESERVATION,
   DECLINE_RESERVATION,
   ACCEPT_RESERVATION,
-  DELETE_TRIP,
 } from '../types';
 
 const ReservationState = (props) => {
@@ -37,7 +36,7 @@ const ReservationState = (props) => {
     };
 
     try {
-      const res = await axios.post('/api/reservation', reservation, config);
+      await axios.post('/api/reservation', reservation, config);
 
       dispatch({
         type: MAKE_RESERVATION,
@@ -70,6 +69,7 @@ const ReservationState = (props) => {
   //Accept reservation
   const acceptReservation = async (reservationID) => {
     setLoading();
+    console.log(reservationID);
 
     const config = {
       headers: {
@@ -78,9 +78,13 @@ const ReservationState = (props) => {
     };
 
     try {
-      const res = await axios.patch(
+      await axios.patch(
         '/api/reservation/status',
-        { reservation_id: reservationID.id },
+        {
+          reservation_id: reservationID.id,
+          reservation_seats: reservationID.seats,
+          reservation_status: reservationID.status,
+        },
         config
       );
 

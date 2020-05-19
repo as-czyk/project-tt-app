@@ -6,7 +6,7 @@ class TipsReservation extends Component {
 
   state = {
     journey_id: this.props.location.state.current.id,
-    reservation_requested_seats: null,
+    reservation_requested_seats: undefined,
     reservation_text: '',
     user_id: this.props.location.state.current.user_id,
   };

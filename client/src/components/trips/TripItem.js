@@ -39,22 +39,22 @@ const TripItem = ({ trip }) => {
         <h2>Trip Details</h2>
         <div className='trip__details'>
           <div className='info__wrapper'>
-            <i class='fas fa-thumbtack'></i>
+            <i className='fas fa-thumbtack'></i>
             <p>{pickup_zip_code}</p>
           </div>
           <div className='info__wrapper'>
-            <i class='fas fa-calendar-day'></i>
+            <i className='fas fa-calendar-day'></i>
             <p>{journey_date}</p>
           </div>
           <div className='info__wrapper'>
-            <i class='far fa-clock'></i>
+            <i className='far fa-clock'></i>
             <p>Journey Time</p>
           </div>
           <div className='info__wrapper'>
             <p>Freie Sitzplätze: {journey_empty_spaces}</p>
           </div>
           <div className='info__wrapper'>
-            <i class='fas fa-dollar-sign'></i>
+            <i className='fas fa-dollar-sign'></i>
             <p>{journey_money}</p>
           </div>
         </div>

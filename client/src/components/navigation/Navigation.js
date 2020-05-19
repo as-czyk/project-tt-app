@@ -16,7 +16,7 @@ const Navigation = () => {
 
   const authLinks = (
     <Fragment>
-      <img className='custom__logo__wrapper' src={sgeLogo} />
+      <img className='custom__logo__wrapper' src={sgeLogo} alt='Logo' />
       <Link to='/'>
         <li className='navigation__authLinks' style={{ marginTop: '30px' }}>
           Home

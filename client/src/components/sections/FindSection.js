@@ -8,7 +8,7 @@ const FindSection = () => {
     <div className='findSection'>
       <Link className='link__section' to='/trips'>
         <h2>Find a Trip</h2>
-        <i class='fas fa-glasses fa-7x'></i>
+        <i className='fas fa-glasses fa-7x'></i>
       </Link>
     </div>
   );

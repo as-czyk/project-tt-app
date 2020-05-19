@@ -64,12 +64,15 @@ const TripsInfo = (props) => {
         </div>
         <Alert />
         <div className='button__wrapper'>
-          <i class='fas fa-arrow-circle-left fa-2x' onClick={previousStep}></i>
-          <i class='fas fa-arrow-circle-right fa-2x' onClick={validate}></i>
+          <i
+            className='fas fa-arrow-circle-left fa-2x'
+            onClick={previousStep}
+          ></i>
+          <i className='fas fa-arrow-circle-right fa-2x' onClick={validate}></i>
         </div>
       </div>
       <div className='form__img'>
-        <img src={picture} />
+        <img src={picture} alt='Eintracht Frankfurt' />
       </div>
     </div>
   );

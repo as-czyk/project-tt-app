@@ -8,7 +8,7 @@ const OfferSection = () => {
     <div className='offerSection'>
       <Link className='link__section' to='/offertrip'>
         <h2>Offer a Trip</h2>
-        <i class='fas fa-car fa-7x'></i>
+        <i className='fas fa-car fa-7x'></i>
       </Link>
     </div>
   );

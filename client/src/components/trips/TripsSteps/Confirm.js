@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import TripContext from '../../../context/trip/TripContext';
 
 const Confirm = (props) => {
@@ -37,7 +37,10 @@ const Confirm = (props) => {
         <p>Kosten: {trip.journey_money}</p>
         <div className='button__wrapper__confirm'>
           <button className='button'>Submit</button>
-          <i class='fas fa-arrow-circle-left fa-2x' onClick={previousStep}></i>
+          <i
+            className='fas fa-arrow-circle-left fa-2x'
+            onClick={previousStep}
+          ></i>
         </div>
       </form>
     </div>

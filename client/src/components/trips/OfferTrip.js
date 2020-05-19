@@ -1,8 +1,7 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import TripsContext from '../../context/trip/TripContext';
 import UserContext from '../../context/user/UserContext';
 import AlertContext from '../../context/alert/AlertContext';
-import Alerts from '../auth/Alerts';
 
 import TripsDetails from './TripsSteps/TripsDetails';
 import TripsInfo from './TripsSteps/TripsInfo';
@@ -28,7 +27,7 @@ const OfferTrip = () => {
     journey_text: '',
     journey_empty_spaces: '',
     journey_date: '',
-    journey_money: null,
+    journey_money: undefined,
     user_id: user.user.user_id,
     event_address: event.event_address,
     event_id: user.user.event_id,
