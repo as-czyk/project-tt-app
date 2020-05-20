@@ -16,7 +16,7 @@ trips_bp = Blueprint('trips_bp', __name__,
                      static_folder='static')
 
 
-@trips_bp.route("/api/trip", methods=["GET", "PATCH"])
+@trips_bp.route("/api/trip", methods=["GET"])
 def get_one_journey():
     result = {}
     if request.method == 'GET':
@@ -39,24 +39,26 @@ def get_one_journey():
             "journey_date": q['journey_date'],
             "journey_start_time": q['journey_start_time']}
     return jsonify({'trip': output})
-    if request.method == 'PATCH':  # TODO: Change to get JSON!
-        collection.update_one(
-            {'journey_id': request.args.get("journey_id")},
-            {'$set': {
-                "event_address": request.args.get('event_address'),
-                "event_id": request.args.get('event_id'),
-                "event_start_date": request.args.get('event_start_date'),
-                "event_start_time": request.args.get('event_start_time'),
-                "pickup_zip_code": request.args.get('pickup_zip_code'),
-                "user_id": request.args.get('user_id'),
-                "journey_id": request.args.get('journey_id'),
-                "journey_empty_spaces": request.args.get('journey_empty_spaces'),
-                "journey_car": request.args.get('journey_car'),
-                "journey_text": request.args.get('journey_text'),
-                "journey_date": request.args.get('journey_date'),
-                "journey_start_time": request.args.get('journey_start_time')
-            }})
-        return jsonify({'ok': True, 'message': 'record updated'}), 200
+
+@trips_bp.route('/api/trip', methods =['PATCH'])
+def change_trip():
+    data = request.get_json()
+    journeyID = data['journey_id']
+    check = collection.find({'journey_id': journeyID})
+    results = [x for x in check]
+    if not results:
+        return jsonify({'msg': 'No Journey was found'})
+    collection.update_one(
+        {'journey_id': journeyID},
+        {'$set': {
+            'journey_empty_spaces' : data['journey_empty_spaces'],
+            'journey_car' : data['journey_car'],
+            'journey_date' : data['journey_date'],
+            'journey_text' : data['journey_text'],
+            'pickup_zip_code' : data['pickup_zip_code']
+        }}
+    )
+    return jsonify({'ok': True, 'message': 'record updated'}), 200
 
 
 @trips_bp.route('/api/trip', methods=['DELETE'])

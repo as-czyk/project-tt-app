@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
+import TripContext from '../../context/trip/TripContext';
 
 class ChangeForm extends Component {
+  static contextType = TripContext;
   state = {
     journey_id: this.props.location.state.current.id,
-    event_id: this.props.location.state.current.event_id,
-    event_start_time: this.props.location.state.current.event_start_time,
-    event_start_date: this.props.location.state.current.event_start_date,
-    event_address: this.props.location.state.current.event_address,
     journey_car: this.props.location.state.current.journey_car,
     journey_date: this.props.location.state.current.journey_date,
     journey_empty_spaces: this.props.location.state.current
       .journey_empty_spaces,
     journey_text: this.props.location.state.current.journey_text,
     pickup_zip_code: this.props.location.state.current.pickup_zip_code,
-    user_id: this.props.location.state.current.user_id,
   };
 
   onChange = (e) => {
@@ -22,11 +19,13 @@ class ChangeForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    //Call Function from TripState here
-    console.log('Submitted Reservation');
+    this.context.updateTrip(this.state);
     this.setState({
-      journey_seats: '',
       journey_text: '',
+      journey_date: '',
+      journey_empty_spaces: '',
+      journey_car: '',
+      pickup_zip_code: '',
     });
   };
 
@@ -70,6 +69,7 @@ class ChangeForm extends Component {
             value={this.state.pickup_zip_code}
             onChange={this.onChange}
           />
+          <button className='button'>Submit</button>
         </form>
       </div>
     );

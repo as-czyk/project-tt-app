@@ -21,6 +21,7 @@ const ReservationItem = ({ reservation }) => {
   });
 
   const accept = () => {
+    console.log(id);
     acceptReservation(id);
   };
 
@@ -32,6 +33,20 @@ const ReservationItem = ({ reservation }) => {
     declineReservation(id);
   };
 
+  const acceptHover = () => {
+    setId({
+      ...id,
+      status: 'accepted',
+    });
+  };
+
+  const declineHover = () => {
+    setId({
+      ...id,
+      status: 'declined',
+    });
+  };
+
   return (
     <div className='reservation__item__wrapper'>
       <p>Id: {reservation_id}</p>
@@ -39,10 +54,10 @@ const ReservationItem = ({ reservation }) => {
       <p>Texte: {reservation_text}</p>
       <p>UserId: {user_id}</p>
       <div className='reservation__button__wrapper'>
-        <button onClick={accept} className='button'>
+        <button onClick={accept} onMouseOver={acceptHover} className='button'>
           Anfrage bestätigen
         </button>
-        <button onClick={decline} className='button'>
+        <button onClick={decline} onMouseOver={declineHover} className='button'>
           Anfrage ablehnen
         </button>
       </div>

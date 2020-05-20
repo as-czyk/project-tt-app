@@ -108,19 +108,15 @@ const ReservationState = (props) => {
     };
 
     try {
-      const res = await axios.delete(
+      const res = await axios.patch(
         '/api/reservation/status',
         {
-          data: {
-            reservation_id: reservationID.id,
-          },
+          reservation_id: reservationID.id,
+          reservation_seats: reservationID.seats,
+          reservation_status: reservationID.status,
         },
         config
       );
-
-      console.log(reservationID.id);
-      console.log(res);
-
       dispatch({
         type: DECLINE_RESERVATION,
         payload: reservationID,
