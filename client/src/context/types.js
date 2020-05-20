@@ -6,6 +6,7 @@ export const LOAD_TRIPS = 'LOAD_TRIPS';
 export const LOAD_ERROR = 'LOAD_ERROR';
 export const USER_TRIPS = 'USER_TRIPS';
 export const DELETE_TRIP = 'DELETE_TRIP';
+export const UPDATE_TRIP = 'UPDATE_TRIP';
 
 // Auth
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

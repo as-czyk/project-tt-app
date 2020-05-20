@@ -6,6 +6,7 @@ import {
   SET_LOADING,
   USER_TRIPS,
   DELETE_TRIP,
+  UPDATE_TRIP,
 } from '../types';
 
 export default (state, action) => {
@@ -45,6 +46,14 @@ export default (state, action) => {
         ...state,
         userTrips: action.payload,
         loading: false,
+      };
+
+    case UPDATE_TRIP:
+      return {
+        ...state,
+        userTrips: state.userTrips.filter(
+          (userTrip) => userTrip.journey_id !== action.payload.journey_id
+        ),
       };
 
     case CLEAR_FILTER:
