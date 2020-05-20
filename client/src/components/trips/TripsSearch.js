@@ -26,7 +26,7 @@ const TripsSearch = () => {
       <input
         className='search__bar'
         type='text'
-        placeholder='Filter Trips...'
+        placeholder='Filter your City...'
         ref={text}
         onChange={onChange}
       />

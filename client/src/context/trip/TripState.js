@@ -10,6 +10,7 @@ import {
   SET_LOADING,
   USER_TRIPS,
   DELETE_TRIP,
+  UPDATE_TRIP,
 } from '../types';
 import axios from 'axios';
 
@@ -36,7 +37,7 @@ const TripState = (props) => {
       },
     };
     try {
-      const res = await axios.post('/api/trip', trip, config);
+      await axios.post('/api/trip', trip, config);
       dispatch({
         type: ADD_TRIP,
         payload: trip,
@@ -95,7 +96,7 @@ const TripState = (props) => {
       },
     };
     try {
-      const res = await axios.delete(
+      await axios.delete(
         '/api/trip',
         {
           data: {
@@ -113,6 +114,37 @@ const TripState = (props) => {
         type: LOAD_ERROR,
       });
     }
+  };
+
+  //Change Trip
+  const updateTrip = async (formData) => {
+    setLoading();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      await axios.patch(
+        '/api/trip',
+        {
+          journey_id: formData.journey_id,
+          journey_empty_spaces: formData.journey_empty_spaces,
+          journey_car: formData.journey_car,
+          journey_date: formData.journey_date,
+          journey_text: formData.journey_text,
+          pickup_zip_code: formData.pickup_zip_code,
+        },
+        config
+      );
+
+      dispatch({
+        type: UPDATE_TRIP,
+        payload: formData,
+      });
+    } catch (err) {}
   };
 
   // Filter Trips
@@ -147,6 +179,7 @@ const TripState = (props) => {
         loadTrips,
         getTripsForUser,
         deleteTrip,
+        updateTrip,
       }}
     >
       {props.children}

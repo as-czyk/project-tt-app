@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import AlertContext from '../../../context/alert/AlertContext';
 import Alert from '../../auth/Alerts';
 
+import picture from '../../../resources/eintracht-images/choreo2.jpg';
+
 import '../trips.scss';
 
 const TripsInfo = (props) => {
@@ -26,12 +28,12 @@ const TripsInfo = (props) => {
     <div className='trips__form'>
       <div className='form__ctn'>
         <div className='form__steps'>
-          <p>{step}</p>
+          <h2>Step {step} of 4</h2>
         </div>
         <div className='form__text'>
-          <p>
+          <h3>
             How many seats you you have available and how much is each seat?
-          </p>
+          </h3>
         </div>
         <div className='input__wrapper'>
           <input
@@ -62,12 +64,15 @@ const TripsInfo = (props) => {
         </div>
         <Alert />
         <div className='button__wrapper'>
-          <i class='fas fa-arrow-circle-left fa-2x' onClick={previousStep}></i>
-          <i class='fas fa-arrow-circle-right fa-2x' onClick={validate}></i>
+          <i
+            className='fas fa-arrow-circle-left fa-2x'
+            onClick={previousStep}
+          ></i>
+          <i className='fas fa-arrow-circle-right fa-2x' onClick={validate}></i>
         </div>
       </div>
       <div className='form__img'>
-        <p>Picture</p>
+        <img src={picture} alt='Eintracht Frankfurt' />
       </div>
     </div>
   );

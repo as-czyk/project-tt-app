@@ -29,7 +29,7 @@ trips_bp = Blueprint('trips_bp', __name__,
                      static_folder='static')
 
 
-@trips_bp.route("/api/trip", methods=["GET", "PATCH"])
+@trips_bp.route("/api/trip", methods=["GET"])
 def get_one_journey():
     result = {}
     if request.method == 'GET':

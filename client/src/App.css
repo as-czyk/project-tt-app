@@ -17,12 +17,14 @@
 .navbar__container {
   grid-area: nav;
   min-height: 100vh;
-  background-color: #2c334a;
+  /*background-color: #2c334a;*/
+  background-color: black;
 }
 
 .content__container {
   grid-area: ctn;
-  min-height: 120vh;
+  min-height: 100vh;
+  background-image: none;
 }
 
 .footer__container {

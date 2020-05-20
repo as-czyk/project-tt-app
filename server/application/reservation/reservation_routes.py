@@ -17,11 +17,14 @@ reservation_bp = Blueprint('reservation_bp', __name__,
 @reservation_bp.route("/api/reservation/messages", methods=["GET"])
 def check_messages():
     userID = request.args.get("id")
-    if collection.count_documents({"journey_user_id": userID}, limit=1):
-        result = collection.find({"journey_user_id": userID})
+    if request.args.get('status') != None:
+        status = request.args.get('status')
+        result = collection.find({'journey_user_id': userID, 'reservation_status': status})
         results = []
         for x in result:
             results.append(x)
+        if not results:
+            return jsonify({'msg': 'There are currently no reservation with the status'})
         data = []
         for text in results:
             item = {"reservation_text": text["reservation_text"],
@@ -31,7 +34,21 @@ def check_messages():
             data.append(item)
         return jsonify(data)
     else:
-        return jsonify({'msg': "No reservations were found"})
+        if collection.count_documents({"journey_user_id": userID}, limit=1):
+            result = collection.find({"journey_user_id": userID})
+            results = []
+            for x in result:
+                results.append(x)
+            data = []
+            for text in results:
+                item = {"reservation_text": text["reservation_text"],
+                        "reservation_requested_seats": text["reservation_requested_seats"],
+                        "user_id": text['user_id'],
+                        "reservation_id": text['reservation_id']}
+                data.append(item)
+            return jsonify(data)
+        else:
+            return jsonify({'msg': "No reservations were found"})
 
 # sched = BackgroundScheduler(daemon=True)
 # sched.add_job(check_reservation,'interval',seconds=60)

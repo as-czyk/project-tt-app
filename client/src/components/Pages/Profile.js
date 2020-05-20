@@ -1,15 +1,17 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import UserData from '../profile/UserData';
 import UserTrips from '../profile/UserTrips';
 import UserReservation from '../profile/UserReservation.js';
 
+import './profile.scss';
+
 const Profile = () => {
   return (
-    <Fragment>
+    <div className='profile__wrapper'>
       <UserData />
       <UserTrips />
       <UserReservation />
-    </Fragment>
+    </div>
   );
 };
 

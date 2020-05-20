@@ -1,4 +1,5 @@
 import React from 'react';
+import picture from '../../../resources/eintracht-images/choreo3.jpg';
 
 import '../trips.scss';
 
@@ -9,10 +10,10 @@ const TripsText = (props) => {
     <div className='trips__form'>
       <div className='form__ctn'>
         <div className='form__steps'>
-          <p>{step}</p>
+          <h2>Step {step} of 4</h2>
         </div>
         <div className='form__text'>
-          <p>Anything else that you want your fellows to know?</p>
+          <h3>Anything else that you want your fellows to know?</h3>
         </div>
         <textarea
           type='text'
@@ -22,12 +23,15 @@ const TripsText = (props) => {
           onChange={onChange}
         />
         <div className='button__wrapper'>
-          <i class='fas fa-arrow-circle-left fa-2x' onClick={previousStep}></i>
-          <i class='fas fa-arrow-circle-right fa-2x' onClick={nextStep}></i>
+          <i
+            className='fas fa-arrow-circle-left fa-2x'
+            onClick={previousStep}
+          ></i>
+          <i className='fas fa-arrow-circle-right fa-2x' onClick={nextStep}></i>
         </div>
       </div>
       <div className='form__img'>
-        <p>Bild</p>
+        <img src={picture} alt='Eintracht Frankfurt' />
       </div>
     </div>
   );

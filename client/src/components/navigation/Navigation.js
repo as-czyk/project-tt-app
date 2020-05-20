@@ -1,6 +1,7 @@
 import React, { useContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import UserContext from '../../context/user/UserContext';
+import sgeLogo from '../../resources/eintracht-logo.png';
 //import { stack as Menu } from 'react-burger-menu';
 
 import './navigation.scss';
@@ -15,8 +16,11 @@ const Navigation = () => {
 
   const authLinks = (
     <Fragment>
+      <img className='custom__logo__wrapper' src={sgeLogo} alt='Logo' />
       <Link to='/'>
-        <li className='navigation__authLinks'>Home</li>
+        <li className='navigation__authLinks' style={{ marginTop: '30px' }}>
+          Home
+        </li>
       </Link>
       <Link to='/profile'>
         <li className='navigation__authLinks'>Profile</li>
@@ -28,7 +32,7 @@ const Navigation = () => {
         <li className='navigation__authLinks'>Offer Trips</li>
       </Link>
       <Link to='/chat'>
-        <li className='navigation__authLinks'>Anfragen</li>
+        <li className='navigation__authLinks'>Notifications</li>
       </Link>
       <li className='navigation__logoutLink'>
         <a onClick={onLogout} href='/login'>
@@ -43,7 +47,9 @@ const Navigation = () => {
   const freeLinks = (
     <Fragment>
       <Link to='/login'>
-        <li className='navigation__freeLinks'>Login</li>
+        <li className='navigation__freeLinks' style={{ marginTop: '50px' }}>
+          Login
+        </li>
       </Link>
       <Link to='/register'>
         <li className='navigation__freeLinks'>Register</li>
