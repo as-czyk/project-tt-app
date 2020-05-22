@@ -14,7 +14,6 @@ class TipsReservation extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.context.addReservation(this.state);
-    console.log('Submitted Reservation');
     this.setState({
       reservation_requested_seats: '',
       reservation_text: '',

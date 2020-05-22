@@ -1,7 +1,8 @@
 import React from 'react';
 import UserData from '../profile/UserData';
 import UserTrips from '../profile/UserTrips';
-import UserReservation from '../profile/UserReservation.js';
+import UserReservation from '../profile/UserReservation';
+import UserRequest from '../profile/UserRequest';
 
 import './profile.scss';
 
@@ -11,6 +12,7 @@ const Profile = () => {
       <UserData />
       <UserTrips />
       <UserReservation />
+      <UserRequest />
     </div>
   );
 };
