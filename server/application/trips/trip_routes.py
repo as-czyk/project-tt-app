@@ -32,7 +32,7 @@ trips_bp = Blueprint('trips_bp', __name__,
 def get_journey():
     data = request.get_json()
     if request.method == 'GET':
-        return jsonify(json.loads(Journey.objects(journey_id=data["journey_id"]).to_json()))
+        return jsonify(json.loads(Journey.objects(event_id=data["event_id"]).to_json()))
 
     if request.method == 'PATCH':
         Journey.objects(journey_id=data["journey_id"]).update_one(
