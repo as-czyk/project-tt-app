@@ -4,23 +4,26 @@ import uuid
 from settings import *
 from mongoengine import *
 
+
 # get collection
 collection = get_collection("journey")
 
 
-# User Model
-class journey(Document):
+# Journey Model
+class Journey(Document):
     event_address = StringField(required=True)
-    event_id = UUIDField(required=True)
-    event_start_time = DateTimeField(required=True)
+    event_id = StringField(required=True) # UUIDField(required=True)
+    event_start_date = StringField(required=True) # DateTimeField(required=True)
+    event_start_time = StringField(required=True) # DateTimeField(required=True)
     pickup_zip_code = IntField(min_value=10000, max_value=99999)
-    user_id = UUIDField(required=True)
-    journey_id = UUIDField(required=True)
-    journey_empty_spaces = IntField(min_value=1)
+    user_id = StringField(required=True) # UUIDField(required=True)
+    journey_id = StringField(required=True) # UUIDField(required=True)
+    journey_empty_spaces = StringField(required=True) # IntField(min_value=1)
     journey_car = StringField(required=True)
     journey_text = StringField(required=True)
-    journey_date = DateTimeField(required=True)
-    journey_start_time = DateTimeField(required=True)
+    journey_date = StringField(required=True) # DateTimeField(required=True)
+    journey_start_time = StringField(required=True) # DateTimeField(required=True)
+    journey_money = LongField(required=True)
 
 
 # Set up a Blueprint
@@ -31,32 +34,26 @@ trips_bp = Blueprint('trips_bp', __name__,
 
 @trips_bp.route("/api/trip", methods=["GET"])
 def get_one_journey():
-    result = {}
+    data = request.get_json()
+    # result = {}
     if request.method == 'GET':
-        result = journey.objects.to_json()
-        #(journey_id=request.args.get("id")).to_json()
-        #result = collection.find({'journey_id': request.args.get("id")})
+        result = Journey.objects(journey_id=data["journey_id"]).to_json()
+        # collection.find({'journey_id': data["journey_id"]})
     if not result:
         return jsonify({'message': 'No trip found!'})
-    output = {}
-    # for q in result:
-    #     output = {
-    #         'event_address': q['event_address'],
-    #         "event_id": q['event_id'],
-    #         "event_start_date": q['event_start_date'],
-    #         "event_start_time": q['event_start_time'],
-    #         "pickup_zip_code": q['pickup_zip_code'],
-    #         "user_id": q['user_id'],
-    #         "journey_id": q['journey_id'],
-    #         "journey_empty_spaces": q['journey_empty_spaces'],
-    #         "journey_car": q['journey_car'],
-    #         "journey_text": q['journey_text'],
-    #         "journey_date": q['journey_date'],
-    #         "journey_start_time": q['journey_start_time']}
-    #     print(output)
-        #print(journey().json())
-    return result
-    # return jsonify({'trip': output})
+    return jsonifyresult
+    #Journey(event_address=result["event_address"],
+                    #  event_id=result["event_id"],
+                    #  event_start_time=result["event_start_time"],
+                    #  pickup_zip_code=result["pickup_zip_code"],
+                    #  user_id=result["user_id"],
+                    #  journey_id=result["journey_id"],
+                    #  journey_empty_spaces=result["journey_empty_spaces"],
+                    #  journey_car=result["journey_car"],
+                    #  journey_text=result["journey_text"],
+                    #  journey_date=result["journey_date"],
+                    #  journey_start_time=result["journey_start_time"]).to_json()
+    #return output
     if request.method == 'PATCH':  # TODO: Change to get JSON!
         collection.update_one(
             {'journey_id': request.args.get("journey_id")},
