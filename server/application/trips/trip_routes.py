@@ -74,8 +74,8 @@ def get_journey():
 
 
 @trips_bp.route("/api/trip_event", methods=["GET"])
-def get_all_journeys_for_one_event_id():
-    return jsonify(json.loads(Journey.objects(event_id=request.args.get("id")).to_json()))  # TODO: Naming is not consisting
+def get_all_journeys_for_one_event_id():  #FIXME: The above function, does not have to be jsonified as trip_event
+    return jsonify({"trip_event": json.loads(Journey.objects(event_id=request.args.get("id")).to_json())})  # TODO: Naming is not consisting
 
 
 @trips_bp.route("/api/tripUser", methods=["GET"])  # TODO: API Naming is not consistened
