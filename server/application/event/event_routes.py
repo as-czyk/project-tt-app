@@ -52,4 +52,4 @@ def token_required(f):
 @event_bp.route('/api/event', methods=['GET'])  # TODO: Do we need this call?
 @token_required
 def get_event(current_user):
-    return jsonify(json.loads(Event.objects(event_id=request.args.get('event_id')).to_json()))  # TODO: Naming unconsistend
+    return jsonify({"event": json.loads(Event.objects(event_id=request.args.get('event_id')).to_json())})  # TODO: Naming unconsistend
