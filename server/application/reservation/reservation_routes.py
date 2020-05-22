@@ -7,6 +7,7 @@ from settings import *
 
 # get collection
 collection = get_collection("reservation")
+jounreyCollection = get_collection('journey')
 
 
 # Set up a Blueprint
@@ -25,13 +26,14 @@ def check_messages():
         for x in result:
             results.append(x)
         if not results:
-            return jsonify({'msg': 'There are currently no reservation with the status'})
+            return jsonify({'msg': 'There are currently no reservation with the status'}), 404
         data = []
         for text in results:
             item = {"reservation_text": text["reservation_text"],
                     "reservation_requested_seats": text["reservation_requested_seats"],
                     "user_id": text['user_id'],
-                    "reservation_id": text['reservation_id']}
+                    "reservation_id": text['reservation_id'],
+                    "status": text['reservation_status']}
             data.append(item)
         return jsonify(data)
     else:
@@ -45,11 +47,51 @@ def check_messages():
                 item = {"reservation_text": text["reservation_text"],
                         "reservation_requested_seats": text["reservation_requested_seats"],
                         "user_id": text['user_id'],
-                        "reservation_id": text['reservation_id']}
+                        "reservation_id": text['reservation_id'],
+                        "status": text['reservation_status']}
                 data.append(item)
             return jsonify(data)
         else:
-            return jsonify({'msg': "No reservations were found"})
+            return jsonify({'msg': "No reservations were found"}), 404
+
+@reservation_bp.route("/api/reservation/requests", methods=["GET"])
+def check_requests():
+    userID = request.args.get("id")
+    if request.args.get('status') != None:
+        status = request.args.get('status')
+        result = collection.find({'user_id': userID, 'reservation_status': status})
+        results = []
+        for x in result:
+            results.append(x)
+        if not results:
+            return jsonify({'msg': 'There are currently no reservation with the status'}), 404
+        data = []
+        for text in results:
+            item = {"reservation_text": text["reservation_text"],
+                    "reservation_requested_seats": text["reservation_requested_seats"],
+                    "user_id": text['user_id'],
+                    "reservation_id": text['reservation_id'],
+                    "status": text['reservation_status']}
+            data.append(item)
+        return jsonify(data)
+    else:
+        if collection.count_documents({"user_id": userID}, limit=1):
+            result = collection.find({"user_id": userID})
+            results = []
+            for x in result:
+                results.append(x)
+            data = []
+            for text in results:
+                item = {"reservation_text": text["reservation_text"],
+                        "reservation_requested_seats": text["reservation_requested_seats"],
+                        "user_id": text['user_id'],
+                        "reservation_id": text['reservation_id'],
+                        "status": text['reservation_status']}
+                data.append(item)
+            return jsonify(data)
+        else:
+            return jsonify({'msg': "No reservations were found"}), 404
+
 
 # sched = BackgroundScheduler(daemon=True)
 # sched.add_job(check_reservation,'interval',seconds=60)
@@ -84,8 +126,7 @@ def check_reservation_status():
 @reservation_bp.route("/api/reservation", methods=["POST"])
 def make_reservation():
     data = request.get_json()
-    table_journey_db = client.table.journey
-    result = table_journey_db.find({'journey_id': data["journey_id"]})
+    result = jounreyCollection.find({'journey_id': data["journey_id"]})
     results = []
     for x in result:
         results.append(x)
