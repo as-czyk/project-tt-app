@@ -4,7 +4,7 @@ import jwt
 from functools import wraps
 
 # For Deployment
-from server.settings import *
+from server import settings
 from server.models import Event
 
 # For Development

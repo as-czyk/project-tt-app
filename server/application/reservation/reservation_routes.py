@@ -3,7 +3,7 @@ from flask import request, jsonify, Blueprint
 import uuid
 
 # For Deployment
-from server.settings import *
+from server import settings
 
 # For Development
 # from settings import *

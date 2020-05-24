@@ -9,7 +9,7 @@ from functools import wraps
 import uuid
 
 # For Deployment
-from server.settings import *
+from server import settings
 
 # For Development
 # from settings import *
