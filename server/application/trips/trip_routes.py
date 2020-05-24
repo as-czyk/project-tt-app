@@ -4,7 +4,7 @@ import json
 from bson import json_util
 
 # For Deployment
-from server import settings
+from server.settings import *
 from server.models import Journey, Event
 
 # For Development
