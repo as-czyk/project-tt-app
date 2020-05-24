@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 
 # For deployment
-from server import settings
+from server.settings import *
 from server.application.trips import trip_routes
 from server.application.user import user_routes
 from server.application.reservation import reservation_routes
