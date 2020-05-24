@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import UserContext from '../../context/user/UserContext';
 import ReservationContext from '../../context/reservation/ReservationContext';
 import ReservationItem from './ReservationItem';
-import RequestedItem from './RequestedItem';
 
 import './chat.scss';
 
@@ -19,23 +18,25 @@ const Chat = () => {
   }, []);
 
   if (!reciviedReservation.length) {
-    return <p>There are currently no Reservation Requests</p>;
+    return (
+      <div className='background__wrapper'>
+        <div className='chat__wrapper__empty'>
+          <h1>You currently do no have reservation requests</h1>
+          <h2>Offer a trip to find your passengers!</h2>
+        </div>
+      </div>
+    );
   } else {
     return (
-      <div>
-        <h1>This is the Reservation Componenent</h1>
+      <div className='background__wrapper'>
         <div className='chat__wrapper'>
-          <h1>Deine Anfragen</h1>
+          <h1 style={{ paddingTop: '20px' }}>My Notifications</h1>
           {reciviedReservation.map((reservation) => (
             <ReservationItem
               key={reservation.reservation_id}
               reservation={reservation}
             />
           ))}
-        </div>
-        <div className='requested__item'>
-          <h1>Deine angefragten Fahrten</h1>
-          <RequestedItem />
         </div>
       </div>
     );

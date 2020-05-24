@@ -18,12 +18,21 @@ const UserTrips = () => {
     return (
       <Fragment>
         <div className='userdata__container'>
-          <h2>Your active trips</h2>
+          <h1 style={{ paddingLeft: '20px' }}>Your active trips</h1>
           {userTrips.map((userTrip) => (
             <UserTripsItem key={userTrip.journey_id} userTrip={userTrip} />
           ))}
         </div>
       </Fragment>
+    );
+  } else if (userTrips.length === 0) {
+    return (
+      <div className='userdata__container'>
+        <h1 style={{ paddingLeft: '20px' }}>Your active trips</h1>
+        <div className='empty__container__text'>
+          <p>You do not have any active trips!</p>
+        </div>
+      </div>
     );
   } else {
     return (

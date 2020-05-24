@@ -4,6 +4,8 @@ import {
   GET_RESERVATION,
   ACCEPT_RESERVATION,
   DECLINE_RESERVATION,
+  ERROR,
+  GET_REQUESTS,
 } from '../types';
 
 export default (state, action) => {
@@ -40,10 +42,21 @@ export default (state, action) => {
         loading: false,
       };
 
+    case GET_REQUESTS:
+      return {
+        ...state,
+        requests: action.payload,
+      };
     case SET_LOADING: {
       return {
         ...state,
         loading: true,
+      };
+    }
+    case ERROR: {
+      return {
+        ...state,
+        error: action.payload,
       };
     }
     default:

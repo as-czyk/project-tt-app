@@ -9,9 +9,21 @@ export const UserData = () => {
 
   return (
     <div className='userdata__container'>
-      <p>{user.user.event_id}</p>
-      <p>{user.user.user_email}</p>
-      <p>{user.user.username}</p>
+      <h1 style={{ paddingLeft: '20px' }}>Personal Details</h1>
+      <div className='userdata__container__content'>
+        <div className='userdata__container__picture'>
+          <i class='far fa-user fa-5x'></i>
+          <p>User Bewertung</p>
+        </div>
+        <div className='userdata__container__info'>
+          <p>E-Mail Adress: {user.user.user_email}</p>
+          <p>Username: {user.user.username}</p>
+          <div className='userdata__container__button'>
+            <button className='button__sge__2'>Update Profil</button>
+            <button className='button__sge__1'>Delete Profil</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

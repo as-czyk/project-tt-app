@@ -8,6 +8,8 @@ import {
   GET_RESERVATION,
   DECLINE_RESERVATION,
   ACCEPT_RESERVATION,
+  ERROR,
+  GET_REQUESTS,
 } from '../types';
 
 const ReservationState = (props) => {
@@ -17,6 +19,8 @@ const ReservationState = (props) => {
     acceptedReservation: [],
     declinedReservation: [],
     loading: false,
+    requests: [],
+    error: [],
   };
 
   const [state, dispatch] = useReducer(ReservationReducer, initialState);
@@ -34,7 +38,6 @@ const ReservationState = (props) => {
         'Content-Type': 'application/json',
       },
     };
-
     try {
       await axios.post('/api/reservation', reservation, config);
 
@@ -55,6 +58,7 @@ const ReservationState = (props) => {
       const res = await axios.get('/api/reservation/messages', {
         params: {
           id: userId,
+          status: 'pending',
         },
       });
       dispatch({
@@ -62,7 +66,33 @@ const ReservationState = (props) => {
         payload: res.data,
       });
     } catch (err) {
-      console.log('error');
+      dispatch({
+        type: ERROR,
+        payload: err.response.data.msg,
+      });
+    }
+  };
+
+  //Get accepted reservation
+  const getAcceptedReservation = async (userId) => {
+    setLoading();
+
+    try {
+      const res = await axios.get('/api/reservation/messages', {
+        params: {
+          id: userId,
+          status: 'accepted',
+        },
+      });
+      dispatch({
+        type: ACCEPT_RESERVATION,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: ERROR,
+        payload: err.response.data.msg,
+      });
     }
   };
 
@@ -126,6 +156,31 @@ const ReservationState = (props) => {
     }
   };
 
+  //Get requests
+  const getReservationRequests = async (userId) => {
+    setLoading();
+
+    try {
+      const res = await axios.get('/api/reservation/requests', {
+        params: {
+          id: userId,
+        },
+      });
+
+      dispatch({
+        type: GET_REQUESTS,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log(err);
+      /*
+      dispatch({
+        type: ERROR,
+        payload: err.response.data.msg,
+      }); */
+    }
+  };
+
   //Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
 
@@ -137,10 +192,14 @@ const ReservationState = (props) => {
         loading: state.loading,
         acceptedReservation: state.acceptedReservation,
         declinedReservation: state.declinedReservation,
+        error: state.error,
+        requests: state.requests,
         addReservation,
         getReservation,
         acceptReservation,
         declineReservation,
+        getAcceptedReservation,
+        getReservationRequests,
       }}
     >
       {props.children}

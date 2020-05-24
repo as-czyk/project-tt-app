@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import TripContext from '../../context/trip/TripContext';
 
 class ChangeForm extends Component {
@@ -31,47 +31,59 @@ class ChangeForm extends Component {
 
   render() {
     return (
-      <div>
-        <h1>You can change the form for trip id: {this.state.journey_id} </h1>
+      <Fragment>
+        <h1 style={{ paddingLeft: '20px' }}>Please update your trip</h1>
         <form onSubmit={this.onSubmit} className='change__form'>
-          <input
-            type='text'
-            placeholder='Anzahl der Plätze'
-            name='journey_empty_spaces'
-            value={this.state.journey_empty_spaces}
-            onChange={this.onChange}
-          />
-          <input
-            type='text'
-            placeholder='Auto'
-            name='journey_car'
-            value={this.state.journey_car}
-            onChange={this.onChange}
-          />
-          <input
-            type='text'
-            placeholder='Datum der Fahrt'
-            name='journey_date'
-            value={this.state.journey_date}
-            onChange={this.onChange}
-          />
-          <input
-            type='text'
-            placeholder='Freitext'
-            name='journey_text'
-            value={this.state.journey_text}
-            onChange={this.onChange}
-          />
-          <input
-            type='text'
-            placeholder='Abfahrtort'
-            name='pickup_zip_code'
-            value={this.state.pickup_zip_code}
-            onChange={this.onChange}
-          />
-          <button className='button'>Submit</button>
+          <div className='change__form__field'>
+            <div className='input__wrapper'>
+              <input
+                type='text'
+                placeholder='Anzahl der Plätze'
+                name='journey_empty_spaces'
+                value={this.state.journey_empty_spaces}
+                onChange={this.onChange}
+              />
+            </div>
+            <div className='input__wrapper'>
+              <input
+                type='text'
+                placeholder='Auto'
+                name='journey_car'
+                value={this.state.journey_car}
+                onChange={this.onChange}
+              />
+            </div>
+            <div className='input__wrapper'>
+              <input
+                type='text'
+                placeholder='Datum der Fahrt'
+                name='journey_date'
+                value={this.state.journey_date}
+                onChange={this.onChange}
+              />
+            </div>
+            <div className='input__wrapper'>
+              <input
+                type='text'
+                placeholder='Abfahrtort'
+                name='pickup_zip_code'
+                value={this.state.pickup_zip_code}
+                onChange={this.onChange}
+              />
+            </div>
+          </div>
+          <div className='change__form__text'>
+            <textarea
+              type='text'
+              placeholder='Freitext'
+              name='journey_text'
+              value={this.state.journey_text}
+              onChange={this.onChange}
+            />
+            <button className='button__sge__1'>Update</button>
+          </div>
         </form>
-      </div>
+      </Fragment>
     );
   }
 }
