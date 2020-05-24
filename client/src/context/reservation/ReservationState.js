@@ -167,9 +167,6 @@ const ReservationState = (props) => {
         },
       });
 
-      console.log(res.data);
-      console.log(res.status);
-
       dispatch({
         type: GET_REQUESTS,
         payload: res.data,

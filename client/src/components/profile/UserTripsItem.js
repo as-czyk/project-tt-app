@@ -41,28 +41,32 @@ const UserTripsItem = ({ userTrip }) => {
   return (
     <Fragment>
       <div className='usertrips__container'>
-        <p>FahrtID: {journey_id}</p>
-        <p>Event ID: {event_id}</p>
-        <p>Event Adress: {event_address}</p>
-        <p>Start Datum: {event_start_date}</p>
-        <p>Start Zeit: {event_start_time}</p>
-        <p>Auto: {journey_car}</p>
-        <p>Date: {journey_date}</p>
-        <p>Sitze: {journey_empty_spaces}</p>
-        <p>Freitext: {journey_text}</p>
-        <p>PLZ: {pickup_zip_code}</p>
-        <p>User_id: {user_id}</p>
-        <button onClick={tripdelete}>Delete Trip</button>
-        <Link
-          to={{
-            pathname: '/changeform',
-            state: {
-              current,
-            },
-          }}
-        >
-          Change trip
-        </Link>
+        <div className='usertrips__container__info'>
+          <p>Car: {journey_car}</p>
+          <p>Pick-up Date: {journey_date}</p>
+          <p>Available seats: {journey_empty_spaces}</p>
+          <p>Pick-up Location: {pickup_zip_code}</p>
+        </div>
+        <div className='usertrips__container__text'>
+          <p>Message for your passengers:</p>
+          <p>{journey_text}</p>
+          <div className='usertrips__container__button'>
+            <Link
+              to={{
+                pathname: '/changeform',
+                state: {
+                  current,
+                },
+              }}
+            >
+              <button className='button__sge__2'>Update Trip</button>
+            </Link>
+            <button className='button__sge__1' onClick={tripdelete}>
+              {' '}
+              Delete Trip
+            </button>
+          </div>
+        </div>
       </div>
     </Fragment>
   );

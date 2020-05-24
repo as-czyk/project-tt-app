@@ -16,9 +16,19 @@ const UserRequest = () => {
     // eslint-disable-next-line
   }, []);
 
+  if (requests.length === 0) {
+    return (
+      <div className='userequests__container'>
+        <h1 style={{ paddingLeft: '20px' }}>Overview Requests</h1>
+        <div className='empty__container__text'>
+          <p>You did not make any requests!</p>
+        </div>
+      </div>
+    );
+  }
   return (
-    <div className='usertrips__container'>
-      <h3>Overview Requests</h3>
+    <div className='userequests__container'>
+      <h1 style={{ paddingLeft: '20px' }}>Overview Requests</h1>
       {requests.map((request) => (
         <UserRequestItem key={request.reservation_id} request={request} />
       ))}

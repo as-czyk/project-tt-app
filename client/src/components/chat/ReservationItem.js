@@ -1,11 +1,15 @@
 import React, { useContext, useState } from 'react';
 import ReservationContext from '../../context/reservation/ReservationContext';
+import UserContext from '../../context/user/UserContext';
 
 import './chat.scss';
 
 const ReservationItem = ({ reservation }) => {
   const reservationContext = useContext(ReservationContext);
+  const userContext = useContext(UserContext);
+
   const { acceptReservation, declineReservation } = reservationContext;
+  const { event } = userContext;
 
   const {
     reservation_id,
@@ -21,7 +25,6 @@ const ReservationItem = ({ reservation }) => {
   });
 
   const accept = () => {
-    console.log(id);
     acceptReservation(id);
   };
 
@@ -49,17 +52,34 @@ const ReservationItem = ({ reservation }) => {
 
   return (
     <div className='reservation__item__wrapper'>
-      <p>Id: {reservation_id}</p>
-      <p>Sitze: {reservation_requested_seats}</p>
-      <p>Texte: {reservation_text}</p>
-      <p>UserId: {user_id}</p>
-      <div className='reservation__button__wrapper'>
-        <button onClick={accept} onMouseOver={acceptHover} className='button'>
-          Anfrage bestätigen
-        </button>
-        <button onClick={decline} onMouseOver={declineHover} className='button'>
-          Anfrage ablehnen
-        </button>
+      <div className='reservation__item__header'>
+        <p style={{ paddingLeft: '20px' }}>
+          {event.event_start_date} | {event.event_start_time} | Mitfahreranfrage
+          | {reservation_requested_seats} Plätze
+        </p>
+      </div>
+      <div className='reservation__item__content__wrapper'>
+        <div className='reservation__item__content'>
+          <b>Nachricht des Mitfahrers:</b>
+          <p>{reservation_text}</p>
+          <b>Angefragte Plätze: {reservation_requested_seats}</b>
+        </div>
+        <div className='reservation__item__buttons'>
+          <button
+            onClick={accept}
+            onMouseOver={acceptHover}
+            className='button__sge__2'
+          >
+            Anfrage bestätigen
+          </button>
+          <button
+            onClick={decline}
+            onMouseOver={declineHover}
+            className='button__sge__1'
+          >
+            Anfrage ablehnen
+          </button>
+        </div>
       </div>
     </div>
   );
