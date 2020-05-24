@@ -37,7 +37,7 @@ const Trips = () => {
       <Fragment>
         <TripsSearch />
         <div className='trips__wrapper'>
-          <h1>Loading</h1>;
+          <h1>Loading</h1>
         </div>
       </Fragment>
     );
