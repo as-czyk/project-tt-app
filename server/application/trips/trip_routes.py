@@ -4,12 +4,12 @@ import json
 from bson import json_util
 
 # For Deployment
-from server.settings import *
-from server.models import Journey, Event
+#from server.settings import *
+#from server.models import Journey, Event
 
 # For Development
-# from settings import *
-# from models import Journey, Event
+from settings import *
+from models import Journey, Event
 
 # Set up a Blueprint
 trips_bp = Blueprint('trips_bp', __name__,
@@ -25,19 +25,12 @@ def get_journey():
 
     if request.method == 'PATCH':
         Journey.objects(journey_id=data["journey_id"]).update_one(
-            set__event_address=data['event_address'],
-            set__event_id=data['event_id'],
-            set__event_start_date=data['event_start_date'],
-            set__event_start_time=data['event_start_time'],
             set__pickup_zip_code=data['pickup_zip_code'],
-            set__user_id=data['user_id'],
             set__journey_id=data['journey_id'],
             set__journey_empty_spaces=data['journey_empty_spaces'],
             set__journey_car=data['journey_car'],
             set__journey_text=data['journey_text'],
-            set__journey_date=data['journey_date'],
-            set__journey_start_time=data['journey_start_time'],
-            set__journey_money=data["journey_money"])
+            set__journey_date=data['journey_date'])
         return jsonify({"message": 'record updated'}), 200
 
     if request.method == "DELETE":

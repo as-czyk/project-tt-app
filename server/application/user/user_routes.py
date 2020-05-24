@@ -12,7 +12,7 @@ import uuid
 from server.settings import *
 
 # For Development
-# from settings import *
+#from settings import *
 
 collection = get_collection("user")
 

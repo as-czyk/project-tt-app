@@ -6,7 +6,7 @@ import uuid
 from server.settings import *
 
 # For Development
-# from settings import *
+#from settings import *
 
 # get collection
 collection = get_collection("reservation")

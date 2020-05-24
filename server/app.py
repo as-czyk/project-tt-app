@@ -8,7 +8,7 @@ from server.application.reservation import reservation_routes
 from server.application.event import event_routes
 
 # for local use
-# from application.trips import trip_routes
+#from application.trips import trip_routes
 #from application.user import user_routes
 #from application.reservation import reservation_routes
 #from application.event import event_routes

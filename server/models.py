@@ -15,19 +15,19 @@ class Event(Document):  # TODO: Look at the comments
 
 # Class Journey
 class Journey(Document):
-    event_address = StringField(required=True)
-    event_id = StringField(required=True)  # UUIDField(required=True)
-    event_start_date = StringField(required=True)  # DateTimeField(required=True)
-    event_start_time = StringField(required=True)  # DateTimeField(required=True)
+    event_address = StringField(required=False)
+    event_id = StringField(required=False)  # UUIDField(required=True)
+    event_start_date = StringField(required=False)  # DateTimeField(required=True)
+    event_start_time = StringField(required=False)  # DateTimeField(required=True)
     pickup_zip_code = StringField(required=True)  # IntField(min_value=10000, max_value=99999)
-    user_id = StringField(required=True)  # UUIDField(required=True)
+    user_id = StringField(required=False)  # UUIDField(required=True)
     journey_id = StringField(required=True)  # UUIDField(required=True)
     journey_empty_spaces = StringField(required=True)  # IntField(min_value=1)
     journey_car = StringField(required=True)
     journey_text = StringField(required=True)
     journey_date = StringField(required=True)  # DateTimeField(required=True)
-    journey_start_time = StringField(required=True)  # DateTimeField(required=True)
-    journey_money = LongField(required=True)
+    journey_start_time = StringField(required=False)  # DateTimeField(required=True)
+    journey_money = LongField(required=False)
 
 
 # Class Pickup-Mapper

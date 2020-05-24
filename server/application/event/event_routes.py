@@ -8,8 +8,8 @@ from server.settings import *
 from server.models import Event
 
 # For Development
-# from settings import *
-# from models import Event
+#from settings import *
+#from models import Event
 
 # get collection
 collection = get_collection("events")
