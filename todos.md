@@ -1,10 +1,11 @@
 Backend: 
-* [ ] Mongoengine classes 
+* [X] ~~*Mongoengine classes*~~ [2020-05-22] 
 * [ ] Die Felder in den DB Datenbanken sind noch nicht richtig!
 * [ ] Verifikation User Mail
 * [ ] Email wenn Fahrt erstellt
 * [ ] Email wenn Anfrage
 * [ ] PATCH für User
+* [ ] Zugang für Eventveranstalter
 * [ ] GET für angenommene Reservierungen - Fahrer
 * [ ] GET für angenommene Reservierungen - Beifahrer
 * [ ] PATCH für Sitze bei Reservierung, wenn Fahrt angenommen
@@ -15,6 +16,7 @@ Backend:
 * [ ] Auch das Format der Tabellenfelder aktualisieren
 * [ ] Wie kann ich Bilder in MongoDB speichern?
 * [ ] Push-Notifications (Wie sende ich etwas vom Backend ans Frontend?)
+* [ ] Mapper für Orten zu PLZs
 
 Frontend:
 1. Reservation

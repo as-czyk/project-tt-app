@@ -1,20 +1,12 @@
 from flask import current_app as app
 from flask import request, jsonify, Blueprint
 import jwt
-import json
 from functools import wraps
 from settings import *
-from mongoengine import Document, StringField
+from models import Event
 
-
-class Event(Document):  # TODO: Look at the comments
-    event_id = StringField(required=True)  # UUIDField
-    event_name = StringField(required=True)
-    event_address = StringField(required=True)
-    event_start_date = StringField(required=True)  # DateTimeField
-    event_end_date = StringField(required=True)  # DateTimeField
-    event_start_time = StringField(required=True)
-    event_end_time = StringField(required=True)
+# get collection
+collection = get_collection("events")
 
 
 # Set up a Blueprint
@@ -37,13 +29,14 @@ def token_required(f):
 
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'])
-            current_user = jsonify(json.loads(Event.object(user_id=data["user_id"]).to_json()))  # TODO: Might not work
-            # collection.find_one({'user_id': data['user_id']})
+            current_user = collection.find_one({'user_id': data['user_id']})
         except:
             return jsonify({'msg': 'Token is invalid'})
 
         return f(current_user, *args, **kwargs)
+
     return decorated
+
 
 
 # Event Routes
@@ -52,4 +45,19 @@ def token_required(f):
 @event_bp.route('/api/event', methods=['GET'])
 @token_required
 def get_event(current_user):
-    return jsonify({"event": json.loads(Event.objects(event_id=request.args.get('event_id')).to_json())}), 200  # TODO: Naming unconsistend
+    event = request.args.get('event_id')
+    print(event)
+    result = collection.find({'event_id': event})
+    if not result:
+        return jsonify({'message': 'Kein Event gefunden'})
+    output = {}
+    for q in result:
+        output = {
+            'event_name': q['event_name'],
+            'event_address': q['event_address'],
+            'event_start_date': q['event_start_date'],
+            'event_end_date': q['event_end_date'],
+            'event_start_time': q['event_start_time'],
+            'event_end_time': q['event_end_time']
+        }
+    return jsonify({'event': output}), 200
