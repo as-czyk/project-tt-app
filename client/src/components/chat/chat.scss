@@ -1,32 +1,28 @@
+@import '../main.scss';
+
 .chat__wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
-  margin: 5em;
+  margin: 3em;
+  padding-left: 20px;
   flex-wrap: wrap;
-  min-height: 10em;
-  border: 1px solid red;
+  min-height: 35em;
+  background-color: #f4f4f4;
+  opacity: 0.9;
 }
 
-.requested__item {
+.chat__wrapper__empty {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid blue;
-  min-height: 10em;
-  margin: 5em;
-}
-
-.requested__item__wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 2em;
-  width: 90%;
-  border: 1px solid red;
+  margin: 3em;
+  padding-left: 20px;
+  min-height: 35em;
+  background-color: #f4f4f4;
+  opacity: 0.9;
 }
 
 .reservation__item__wrapper {
@@ -34,15 +30,53 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2em;
   width: 90%;
+  border: 1px solid black;
+  margin: 20px;
 }
 
-.reservation__button__wrapper {
+.reservation__item__header {
+  background-color: black;
+  width: 100%;
+  height: 50px;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+}
+
+.reservation__item__content__wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.reservation__item__content {
+  height: 100%;
+  margin: 5px;
+  line-height: 2em;
+  padding: 10px;
+}
+
+.reservation__item__buttons {
+  height: 100%;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin: 2em;
-  width: 90%;
+  min-height: 10em;
+}
+
+//Background Wrapper
+.background__wrapper {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  background-image: url('../../resources/eintracht-images/choreo2.jpg');
+  background-size: cover;
 }
