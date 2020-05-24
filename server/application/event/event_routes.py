@@ -2,8 +2,14 @@ from flask import current_app as app
 from flask import request, jsonify, Blueprint
 import jwt
 from functools import wraps
-from settings import *
-from models import Event
+
+# For Deployment
+from server.settings import *
+from server.models import Event
+
+# For Development
+# from settings import *
+# from models import Event
 
 # get collection
 collection = get_collection("events")

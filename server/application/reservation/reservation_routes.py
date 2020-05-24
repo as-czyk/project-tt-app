@@ -1,8 +1,12 @@
 from flask import request, jsonify, Blueprint
 # from apscheduler.schedulers.background import BackgroundScheduler
 import uuid
-from settings import *
 
+# For Deployment
+from server.settings import *
+
+# For Development
+# from settings import *
 
 # get collection
 collection = get_collection("reservation")

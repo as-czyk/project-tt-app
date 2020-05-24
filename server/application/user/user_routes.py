@@ -7,8 +7,12 @@ import jwt
 import datetime
 from functools import wraps
 import uuid
-from settings import *
 
+# For Deployment
+from server.settings import *
+
+# For Development
+# from settings import *
 
 collection = get_collection("user")
 
