@@ -4,12 +4,12 @@ import json
 from bson import json_util
 
 # For Deployment
-#from server.settings import *
-#from server.models import Journey, Event
+from server.settings import *
+from server.models import Journey, Event
 
 # For Development
-from settings import *
-from models import Journey, Event
+#from settings import *
+#from models import Journey, Event
 
 # Set up a Blueprint
 trips_bp = Blueprint('trips_bp', __name__,
