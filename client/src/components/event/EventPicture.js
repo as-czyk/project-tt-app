@@ -5,6 +5,8 @@ import wolfsburgLogo from '../../resources/Wolfsburg.png';
 import UserContext from '../../context/user/UserContext';
 import wcdLogo from '../../resources/wcd-logo.png';
 
+import './event.scss';
+
 const EventPicture = () => {
   const userContext = useContext(UserContext);
   const { event } = userContext;
