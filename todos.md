@@ -17,6 +17,7 @@ Backend:
 * [ ] Wie kann ich Bilder in MongoDB speichern?
 * [ ] Push-Notifications (Wie sende ich etwas vom Backend ans Frontend?)
 * [ ] Mapper für Orten zu PLZs
+* [ ] Bei der Reservierung automatisch den Ort zu der PLZ finden!
 
 Frontend:
 1. Reservation

@@ -1,12 +1,15 @@
 from flask import request, jsonify, Blueprint
 # from apscheduler.schedulers.background import BackgroundScheduler
 import uuid
+import json
 
 # For Deployment
-from server.settings import *
+#from server.settings import *
+#from server.models import Reservation, Journey
 
 # For Development
-#from settings import *
+from settings import *
+from models import Reservation, Journey
 
 # get collection
 collection = get_collection("reservation")
@@ -21,27 +24,30 @@ reservation_bp = Blueprint('reservation_bp', __name__,
 
 @reservation_bp.route("/api/reservation/messages", methods=["GET"])
 def check_messages():
-    userID = request.args.get("id")
-    if request.args.get('status') != None:
+    user_id = request.args.get("id")
+    if request.args.get('status') is not None:
         status = request.args.get('status')
-        result = collection.find({'journey_user_id': userID, 'reservation_status': status})
-        results = []
-        for x in result:
-            results.append(x)
-        if not results:
+        result = json.loads(Reservation.objects(journey_user_id=user_id, reservation_status=status).exclude("id").only("reservation_text", "reservation_requested_seats", "user_id", "reservation_id", "reservation_status").to_json())
+        # result = collection.find({'journey_user_id': user_id, 'reservation_status': status})
+        # results = []
+        # for x in result:
+        #     results.append(x)
+        if result is None:
+        # if not results:
             return jsonify({'msg': 'There are currently no reservation with the status'}), 404
-        data = []
-        for text in results:
-            item = {"reservation_text": text["reservation_text"],
-                    "reservation_requested_seats": text["reservation_requested_seats"],
-                    "user_id": text['user_id'],
-                    "reservation_id": text['reservation_id'],
-                    "status": text['reservation_status']}
-            data.append(item)
-        return jsonify(data)
+        
+        # data = []
+        # for text in results:
+        #     item = {"reservation_text": text["reservation_text"],
+        #             "reservation_requested_seats": text["reservation_requested_seats"],
+        #             "user_id": text['user_id'],
+        #             "reservation_id": text['reservation_id'],
+        #             "status": text['reservation_status']}
+        #     data.append(item)
+        return jsonify(result)
     else:
-        if collection.count_documents({"journey_user_id": userID}, limit=1):
-            result = collection.find({"journey_user_id": userID})
+        if collection.count_documents({"journey_user_id": user_id}, limit=1):
+            result = collection.find({"journey_user_id": user_id})
             results = []
             for x in result:
                 results.append(x)
@@ -59,10 +65,10 @@ def check_messages():
 
 @reservation_bp.route("/api/reservation/requests", methods=["GET"])
 def check_requests():
-    userID = request.args.get("id")
+    user_id = request.args.get("id")
     if request.args.get('status') != None:
         status = request.args.get('status')
-        result = collection.find({'user_id': userID, 'reservation_status': status})
+        result = collection.find({'user_id': user_id, 'reservation_status': status})
         results = []
         for x in result:
             results.append(x)
@@ -78,8 +84,8 @@ def check_requests():
             data.append(item)
         return jsonify(data)
     else:
-        if collection.count_documents({"user_id": userID}, limit=1):
-            result = collection.find({"user_id": userID})
+        if collection.count_documents({"user_id": user_id}, limit=1):
+            result = collection.find({"user_id": user_id})
             results = []
             for x in result:
                 results.append(x)
