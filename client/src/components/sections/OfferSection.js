@@ -7,7 +7,7 @@ const OfferSection = () => {
   return (
     <div className='offerSection'>
       <Link className='link__section' to='/offertrip'>
-        <h2>Offer a Trip</h2>
+        <h2 style={{ color: '#ffffff' }}>Offer a Trip</h2>
         <i className='fas fa-car fa-7x'></i>
       </Link>
     </div>
