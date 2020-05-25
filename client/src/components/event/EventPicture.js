@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import sgeLogo from '../../resources/eintracht-logo.png';
-import bayernLogo from '../../resources/bayern-logo.png';
 import wolfsburgLogo from '../../resources/Wolfsburg.png';
 import UserContext from '../../context/user/UserContext';
 import wcdLogo from '../../resources/wcd-logo.png';

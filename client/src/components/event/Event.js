@@ -1,6 +1,7 @@
 import React, { useContext, Fragment } from 'react';
 import UserContext from '../../context/user/UserContext';
 import EventPicture from '../event/EventPicture';
+import UpComing from '../event/UpComing';
 import './event.scss';
 
 const Event = () => {
@@ -31,7 +32,9 @@ const Event = () => {
           <EventPicture />
         </div>
       </div>
-      <div className='event__ctn__sec'></div>
+      <div className='event__ctn__sec'>
+        <UpComing />
+      </div>
     </Fragment>
   );
 };
