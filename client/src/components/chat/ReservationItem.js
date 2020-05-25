@@ -54,15 +54,15 @@ const ReservationItem = ({ reservation }) => {
     <div className='reservation__item__wrapper'>
       <div className='reservation__item__header'>
         <p style={{ paddingLeft: '20px' }}>
-          {event.event_start_date} | {event.event_start_time} | Mitfahreranfrage
-          | {reservation_requested_seats} Plätze
+          {event.event_start_date} | {event.event_start_time} | Passenger
+          request | {reservation_requested_seats} Seats
         </p>
       </div>
       <div className='reservation__item__content__wrapper'>
         <div className='reservation__item__content'>
-          <b>Nachricht des Mitfahrers:</b>
+          <b>Message from the passenger:</b>
           <p>{reservation_text}</p>
-          <b>Angefragte Plätze: {reservation_requested_seats}</b>
+          <b>Requested Seats: {reservation_requested_seats}</b>
         </div>
         <div className='reservation__item__buttons'>
           <button
@@ -70,14 +70,14 @@ const ReservationItem = ({ reservation }) => {
             onMouseOver={acceptHover}
             className='button__sge__2'
           >
-            Anfrage bestätigen
+            Confirm request
           </button>
           <button
             onClick={decline}
             onMouseOver={declineHover}
             className='button__sge__1'
           >
-            Anfrage ablehnen
+            Decline request
           </button>
         </div>
       </div>
