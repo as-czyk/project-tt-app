@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.85a957bc.chunk.css",
-    "main.js": "/static/js/main.058669a4.chunk.js",
-    "main.js.map": "/static/js/main.058669a4.chunk.js.map",
+    "main.css": "/static/css/main.6796fc02.chunk.css",
+    "main.js": "/static/js/main.94be420f.chunk.js",
+    "main.js.map": "/static/js/main.94be420f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.dad12b62.js",
     "runtime-main.js.map": "/static/js/runtime-main.dad12b62.js.map",
     "static/js/2.3dc5b80d.chunk.js": "/static/js/2.3dc5b80d.chunk.js",
     "static/js/2.3dc5b80d.chunk.js.map": "/static/js/2.3dc5b80d.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.e1c143358b15b83cf128319f525721d3.js": "/precache-manifest.e1c143358b15b83cf128319f525721d3.js",
+    "precache-manifest.35f4ca3a17d3f7ea73fefc69c8a58641.js": "/precache-manifest.35f4ca3a17d3f7ea73fefc69c8a58641.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.85a957bc.chunk.css.map": "/static/css/main.85a957bc.chunk.css.map",
+    "static/css/main.6796fc02.chunk.css.map": "/static/css/main.6796fc02.chunk.css.map",
     "static/js/2.3dc5b80d.chunk.js.LICENSE.txt": "/static/js/2.3dc5b80d.chunk.js.LICENSE.txt",
     "static/media/Logo.svg": "/static/media/Logo.008bf3c6.svg",
     "static/media/Wolfsburg.png": "/static/media/Wolfsburg.e43ad3d4.png",
@@ -19,6 +19,7 @@
     "static/media/choreo3.jpg": "/static/media/choreo3.9f141e9b.jpg",
     "static/media/sections.scss": "/static/media/choreo4.ba8c799e.jpg",
     "static/media/eintracht-logo.png": "/static/media/eintracht-logo.ff8c4daf.png",
+    "static/media/auth.scss": "/static/media/eventway.ed46b7af.png",
     "static/media/hertha.png": "/static/media/hertha.dd5e1fff.png",
     "static/media/main.png": "/static/media/main.4460d488.png",
     "static/media/wcd-logo.png": "/static/media/wcd-logo.0f58e27c.png"
@@ -26,7 +27,7 @@
   "entrypoints": [
     "static/js/runtime-main.dad12b62.js",
     "static/js/2.3dc5b80d.chunk.js",
-    "static/css/main.85a957bc.chunk.css",
-    "static/js/main.058669a4.chunk.js"
+    "static/css/main.6796fc02.chunk.css",
+    "static/js/main.94be420f.chunk.js"
   ]
 }

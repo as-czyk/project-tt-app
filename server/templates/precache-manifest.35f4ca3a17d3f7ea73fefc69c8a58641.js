@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7956a26ad55088a9e8ecd60ac3e9e23e",
+    "revision": "fd9e6bb3f83157fb4256d042745569f9",
     "url": "/index.html"
   },
   {
-    "revision": "8741399fa4ffbf7ec025",
-    "url": "/static/css/main.85a957bc.chunk.css"
+    "revision": "741a6305737b20b18f83",
+    "url": "/static/css/main.6796fc02.chunk.css"
   },
   {
     "revision": "2ef8a4b7a06b0258fd99",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.3dc5b80d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8741399fa4ffbf7ec025",
-    "url": "/static/js/main.058669a4.chunk.js"
+    "revision": "741a6305737b20b18f83",
+    "url": "/static/js/main.94be420f.chunk.js"
   },
   {
     "revision": "25e31c438e982d7375dd",
@@ -50,6 +50,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ff8c4dafce4859be82996b89673ef534",
     "url": "/static/media/eintracht-logo.ff8c4daf.png"
+  },
+  {
+    "revision": "ed46b7af0cca75cd811b8b858951993d",
+    "url": "/static/media/eventway.ed46b7af.png"
   },
   {
     "revision": "dd5e1fff832ae49047bb4772cc123e70",
