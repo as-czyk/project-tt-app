@@ -64,7 +64,7 @@ const Register = (props) => {
   };
 
   return (
-    <Fragment>
+    <div className='auth__wrapper'>
       <Logo />
       <form onSubmit={onSubmit} className='auth__form__register'>
         <div className='input__wrapper'>
@@ -134,7 +134,7 @@ const Register = (props) => {
           Register
         </button>
       </form>
-    </Fragment>
+    </div>
   );
 };
 
