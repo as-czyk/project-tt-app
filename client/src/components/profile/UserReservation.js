@@ -18,6 +18,8 @@ const UserReservation = () => {
     // eslint-disable-next-line
   }, []);
 
+  console.log(acceptedReservation);
+
   if (acceptedReservation.length === 0) {
     return (
       <div className='reservation__container'>

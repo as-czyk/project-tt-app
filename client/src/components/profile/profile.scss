@@ -8,8 +8,8 @@
   border: 3px solid white;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   min-height: 15em;
   background-color: #f4f4f4;
 }
@@ -17,12 +17,13 @@
 .userdata__container__content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   font-size: 20px;
   margin: 20px;
   height: 300px;
+  border: 1px solid red;
 }
 
 .userdata__container__picture {
@@ -31,6 +32,7 @@
   justify-content: space-evenly;
   align-items: center;
   height: 100%;
+  border: 1px solid blue;
 }
 
 .userdata__container__info {
@@ -39,6 +41,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  border: 1px solid blue;
 }
 
 .userdata__container__button {
@@ -53,10 +56,15 @@
 /** User Trips Container */
 .usertrips__container {
   display: grid;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: repeat(2, 1fr);
   margin: 20px;
+  height: 300px;
   line-height: 1.5;
   min-height: 15em;
+  width: 85%;
 }
 
 .usertrips__container__info {
@@ -67,6 +75,7 @@
   padding-left: 30px;
   line-height: 2em;
   font-size: 20px;
+  border: 1px solid red;
 }
 
 .usertrips__container__text {
@@ -75,6 +84,7 @@
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  border: 1px solid red;
 }
 
 .usertrips__container__button {
