@@ -24,10 +24,11 @@ def get_journey():
         return jsonify(json.loads(Journey.objects(event_id=data["event_id"]).to_json()))
 
     if request.method == 'PATCH':
+        print(type(data["journey_id"]))
         Journey.objects(journey_id=data["journey_id"]).update_one(
-            set__pickup_zip_code=data['pickup_zip_code'],
+            set__pickup_zip_code=str(data['pickup_zip_code']),
             set__journey_id=data['journey_id'],
-            set__journey_empty_spaces=data['journey_empty_spaces'],
+            set__journey_empty_spaces=str(data['journey_empty_spaces']),
             set__journey_car=data['journey_car'],
             set__journey_text=data['journey_text'],
             set__journey_date=data['journey_date'])
