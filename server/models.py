@@ -1,5 +1,4 @@
 from mongoengine import Document, StringField, IntField, LongField
-import datetime
 
 
 #  Class Event
@@ -34,3 +33,16 @@ class Journey(Document):
 class Pickups(Document):
     pickup_city = StringField(required=True)
     pickup_zip_code = IntField(min_value=10000, max_value=99999)
+
+
+# Class Reservation
+class Reservation(Document):
+    reservation_id = StringField(required=False)  # UUIDField...
+    journey_id = StringField(required=False)  # UUIDField...
+    reservation_requested_seats = IntField(required=False)
+    journey_empty_spaces = IntField(required=False)  # TODO: Maybe insert a highest numbers of offered trips?
+    reservation_text = StringField(required=False)
+    user_id = StringField(required=False)  # UUIDField...
+    journey_user_id = StringField(required=False)  # UUIDField...
+    reservation_money = IntField(required=False)  # TODO: Maybe set max number for Money?
+    reservation_status = StringField(required=False, default="pending")
