@@ -29,7 +29,7 @@ const Navigation = () => {
         <li className='navigation__authLinks'>Find Trips</li>
       </Link>
       <Link to='/offertrip'>
-        <li className='navigation__authLinks'>Offer Trips</li>
+        <li className='navigation__authLinks'>Offer Trip</li>
       </Link>
       <Link to='/chat'>
         <li className='navigation__authLinks'>Notifications</li>
