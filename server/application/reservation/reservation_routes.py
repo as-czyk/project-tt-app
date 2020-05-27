@@ -4,13 +4,13 @@ import uuid
 import json
 
 # For Deployment
-# from server.settings import *
-# from server.models import Reservation, Journey
+from server.settings import *
+from server.models import Reservation, Journey
 
 # For Development
-from settings import *
-from models import Reservation, Journey
-from application.send_email import send_email
+#from settings import *
+#from models import Reservation, Journey
+#from application.send_email import send_email
 
 # Set up a Blueprint
 reservation_bp = Blueprint('reservation_bp', __name__,
