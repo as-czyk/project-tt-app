@@ -18,9 +18,10 @@ const UserReservation = () => {
     // eslint-disable-next-line
   }, []);
 
-  console.log(acceptedReservation);
-
-  if (acceptedReservation.length === 0) {
+  if (
+    acceptedReservation.length === 0 ||
+    acceptedReservation.length === undefined
+  ) {
     return (
       <div className='reservation__container'>
         <h1 style={{ paddingLeft: '20px' }}>Your accepted Reservation</h1>

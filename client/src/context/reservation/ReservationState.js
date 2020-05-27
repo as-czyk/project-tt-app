@@ -89,17 +89,18 @@ const ReservationState = (props) => {
         payload: res.data,
       });
     } catch (err) {
+      /*
       dispatch({
         type: ERROR,
         payload: err.response.data.msg,
-      });
+      }); */
+      console.log(err, 'error');
     }
   };
 
   //Accept reservation
   const acceptReservation = async (reservationID) => {
     setLoading();
-    console.log(reservationID);
 
     const config = {
       headers: {

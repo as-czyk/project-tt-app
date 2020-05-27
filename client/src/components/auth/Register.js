@@ -126,7 +126,6 @@ const Register = (props) => {
               Please select your event
             </option>
             <option value='Eintracht Frankfurt'>Eintracht Frankfurt</option>
-            <option value='World Club Dome'>World Club Dome</option>
           </select>
         </div>
         <Alerts />
