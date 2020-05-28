@@ -26,6 +26,13 @@ MONGO_DBNAME = "dev"
 MONGO_URI = "mongodb+srv://" + db_user + ":" + db_password + "@connext-en64e.mongodb.net/" + db_name + "?retryWrites=true&w=majority"
 
 
+# print connection status
+print("I AM CURRENTLY CONNECT TO: ", db_name)
+if db_name == "table":
+    for i in range(1:50):
+        print("ATTENTION: YOU ARE WORKING ON THE PRODUCTION DATABASE!")
+
+
 # connect to database
 connect(
     db="journey",
