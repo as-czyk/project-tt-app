@@ -1,4 +1,4 @@
-from flask import request, jsonify, Blueprint
+from flask import request, jsonify, Blueprint, Response
 # from apscheduler.schedulers.background import BackgroundScheduler
 import uuid
 import json
@@ -9,7 +9,7 @@ import json
 
 # For Development
 from settings import *
-from models import Reservation, Journey
+from models import Reservation, Journey, User
 from application.send_email import send_email
 
 # Set up a Blueprint

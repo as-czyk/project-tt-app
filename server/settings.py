@@ -11,13 +11,18 @@ SECRET_KEY = 'thisisasecret'
 
 
 # Contemporary vars - here you can exchange your name
-db_user = "aron"
+db_user = "yannik"
 db_password = "techtalents2020"
-db_name = "table"
+db_name = "dev"
+
+
+# email creds
+email_user = "eventwayco@gmail.com"
+email_password = "zihju5-wejzuj-Sekkog"
 
 
 # MongoDB settings
-MONGO_DBNAME = "table"
+MONGO_DBNAME = "dev"
 MONGO_URI = "mongodb+srv://" + db_user + ":" + db_password + "@connext-en64e.mongodb.net/" + db_name + "?retryWrites=true&w=majority"
 
 
