@@ -18,10 +18,13 @@ const UserReservation = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (acceptedReservation.length === 0) {
+  if (
+    acceptedReservation.length === 0 ||
+    acceptedReservation.length === undefined
+  ) {
     return (
       <div className='reservation__container'>
-        <h1 style={{ paddingLeft: '20px' }}>Your accepted Reservation</h1>
+        <h1 style={{ paddingLeft: '20px' }}>Your accepted reservation</h1>
         <div className='empty__container__text'>
           <p>You do not have any accepted reservations!</p>
         </div>
@@ -30,7 +33,7 @@ const UserReservation = () => {
   } else {
     return (
       <div className='reservation__container'>
-        <h1 style={{ paddingLeft: '20px' }}>Your accepted Reservation</h1>
+        <h1 style={{ paddingLeft: '20px' }}>Your accepted reservation</h1>
         {acceptedReservation.map((reservation) => (
           <AcceptedReservationItem
             key={reservation.reservation_id}

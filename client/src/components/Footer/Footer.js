@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../../context/user/UserContext';
 
 import './footer.scss';
 
 const Footer = () => {
-  return (
-    <div className='footer__wrapper'>
-      <div className='footer__content'>
-        <h1>Footer-Content 1</h1>
-      </div>
-      <div className='footer__content'>
-        <h1>Footer-Content 2</h1>
-      </div>
-    </div>
-  );
+  const userContext = useContext(UserContext);
+
+  if (userContext.event === null) {
+    return <div className='footer__wrapper__eventway'>&copy; Eventway</div>;
+  } else {
+    return <div className='footer__wrapper'>&copy; Eventway</div>;
+  }
 };
 
 export default Footer;

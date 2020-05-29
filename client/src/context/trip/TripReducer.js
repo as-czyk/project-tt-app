@@ -22,7 +22,7 @@ export default (state, action) => {
         ...state,
         filtered: state.trips.filter((trip) => {
           const regex = new RegExp(`${action.payload}`, 'gi');
-          return trip.journey_text.match(regex);
+          return trip.pickup_zip_code.match(regex);
         }),
       };
 

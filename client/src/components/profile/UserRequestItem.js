@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 const UserRequestItem = (props) => {
   const { request } = props;
@@ -22,7 +22,8 @@ const UserRequestItem = (props) => {
   return (
     <div className='userequests__container__details'>
       <p>
-        Reservierungs-ID: {request.reservation_id} | {setIcon(request.status)}
+        Reservierungs-ID: {request.reservation_id} | 
+        {setIcon(request.reservation_status)}
       </p>
     </div>
   );

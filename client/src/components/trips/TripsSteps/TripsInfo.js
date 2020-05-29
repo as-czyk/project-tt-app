@@ -56,7 +56,7 @@ const TripsInfo = (props) => {
         <div className='input__wrapper'>
           <input
             type='number'
-            placeholder='Mitfahrerkosten'
+            placeholder='Cost per Fellow'
             name='journey_money'
             value={trip.journey_money}
             onChange={onChange}

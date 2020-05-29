@@ -29,7 +29,7 @@ const Navigation = () => {
         <li className='navigation__authLinks'>Find Trips</li>
       </Link>
       <Link to='/offertrip'>
-        <li className='navigation__authLinks'>Offer Trips</li>
+        <li className='navigation__authLinks'>Offer Trip</li>
       </Link>
       <Link to='/chat'>
         <li className='navigation__authLinks'>Notifications</li>
@@ -57,11 +57,19 @@ const Navigation = () => {
     </Fragment>
   );
 
-  return (
-    <nav className='nav__wrapper'>
-      <ul>{isAuthenticated ? authLinks : freeLinks}</ul>
-    </nav>
-  );
+  if (userContext.event === null) {
+    return (
+      <nav className='nav__wrapper__eventway'>
+        <ul>{isAuthenticated ? authLinks : freeLinks}</ul>
+      </nav>
+    );
+  } else {
+    return (
+      <nav className='nav__wrapper'>
+        <ul>{isAuthenticated ? authLinks : freeLinks}</ul>
+      </nav>
+    );
+  }
 };
 
 export default Navigation;

@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "86c93f1d436277e57891d27a6bcc68b2",
+    "revision": "85d2e58514e95a59e106db30f961ec39",
     "url": "/index.html"
   },
   {
-    "revision": "e3a5def57495b931ca48",
-    "url": "/static/css/main.142b97f5.chunk.css"
+    "revision": "2f271711b5b10a29cceb",
+    "url": "/static/css/main.002dab42.chunk.css"
   },
   {
-    "revision": "a0cfb1f528f3a9b11fbc",
-    "url": "/static/js/2.2fa11aad.chunk.js"
+    "revision": "2ef8a4b7a06b0258fd99",
+    "url": "/static/js/2.3dc5b80d.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/static/js/2.2fa11aad.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.3dc5b80d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e3a5def57495b931ca48",
-    "url": "/static/js/main.dfdf98fb.chunk.js"
+    "revision": "2f271711b5b10a29cceb",
+    "url": "/static/js/main.c55ecea2.chunk.js"
   },
   {
     "revision": "25e31c438e982d7375dd",
@@ -28,8 +28,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/Logo.008bf3c6.svg"
   },
   {
-    "revision": "969976a5eff6fef0fc48a37c03605659",
-    "url": "/static/media/bayern-logo.969976a5.png"
+    "revision": "e43ad3d408a2d1687e2dfa21697d25f8",
+    "url": "/static/media/Wolfsburg.e43ad3d4.png"
   },
   {
     "revision": "b9b26e7e0a1cbc07d33b092185249604",
@@ -50,6 +50,18 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ff8c4dafce4859be82996b89673ef534",
     "url": "/static/media/eintracht-logo.ff8c4daf.png"
+  },
+  {
+    "revision": "ed46b7af0cca75cd811b8b858951993d",
+    "url": "/static/media/eventway.ed46b7af.png"
+  },
+  {
+    "revision": "dd5e1fff832ae49047bb4772cc123e70",
+    "url": "/static/media/hertha.dd5e1fff.png"
+  },
+  {
+    "revision": "4460d488360a25a9a72201aafe70ac3e",
+    "url": "/static/media/main.4460d488.png"
   },
   {
     "revision": "0f58e27c98d5faa1184e12e16c1ee71a",

@@ -31,6 +31,11 @@
   margin: 10px;
   background-color: $base;
   opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
 }
 
 .event_inf_ctn {
@@ -68,6 +73,10 @@
   width: 150px;
 }
 
+.event__text {
+  opacity: 1;
+}
+
 /** Styling for counter */
 
 .counter__wrapper {
@@ -85,12 +94,36 @@
 
 .counter__text {
   /*border-bottom: 1px solid $action;*/
-  border-bottom: 1px solid $sgePrimary;
+  border-bottom: 1px solid #000000;
   font-size: 20px;
+  font-weight: bold;
+  color: #000000;
 }
 
 .count {
   font-size: 40px;
-  color: $sgePrimary;
+  color: #000000;
   /*color: $action;*/
+}
+
+/** Upcoming Boxes */
+
+.upcoming__game__box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: 80%;
+  height: 20%;
+  margin: 15px;
+
+  img {
+    width: 70px;
+    height: 70px;
+  }
+
+  p {
+    font-size: 30px;
+  }
 }

@@ -20,16 +20,11 @@ const TripItem = ({ trip }) => {
 
   const {
     journey_id,
-    event_id,
-    event_start_date,
-    event_start_time,
-    event_address,
-    journey_car,
     journey_date,
     journey_empty_spaces,
     journey_text,
     pickup_zip_code,
-    user_id,
+    journey_start_time,
     journey_money,
   } = trip;
 
@@ -47,15 +42,15 @@ const TripItem = ({ trip }) => {
             <p>{journey_date}</p>
           </div>
           <div className='info__wrapper'>
-            <i className='far fa-clock'></i>
-            <p>Journey Time</p>
+            <i className='fas fa-clock'></i>
+            <p>{journey_start_time}</p>
           </div>
           <div className='info__wrapper'>
-            <p>Freie Sitzplätze: {journey_empty_spaces}</p>
-          </div>
-          <div className='info__wrapper'>
-            <i className='fas fa-dollar-sign'></i>
+            <i class='fas fa-euro-sign'></i>
             <p>{journey_money}</p>
+          </div>
+          <div className='info__wrapper'>
+            <p>Available Seats: {journey_empty_spaces}</p>
           </div>
         </div>
       </div>

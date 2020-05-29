@@ -1,18 +1,18 @@
 from flask import Flask, render_template
 
 # For deployment
-# from server import settings
-# from server.application.trips import trip_routes
-# from server.application.user import user_routes
-# from server.application.reservation import reservation_routes
-# from server.application.event import event_routes
+from server import settings
+from server.application.trips import trip_routes
+from server.application.user import user_routes
+from server.application.reservation import reservation_routes
+from server.application.event import event_routes
 
 # for local use
-from application.trips import trip_routes
-from application.user import user_routes
-from application.reservation import reservation_routes
-from application.event import event_routes
-import settings
+#from application.trips import trip_routes
+#from application.user import user_routes
+#from application.reservation import reservation_routes
+#from application.event import event_routes
+#import settings
 
 port = 5000
 

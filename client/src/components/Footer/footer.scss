@@ -8,6 +8,19 @@
   justify-content: space-around;
   align-items: center;
   color: $base;
+  font-size: 20px;
+}
+
+.footer__wrapper__eventway {
+  background-color: $primary;
+  font-family: $text;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: $base;
+  font-size: 20px;
 }
 
 .footer__content {

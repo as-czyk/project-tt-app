@@ -7,7 +7,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 25em;
+  min-height: 30em;
+  width: 70%;
+  background-color: $base;
+  opacity: 0.9;
   input {
     width: 90%;
     height: 90%;
@@ -38,7 +41,11 @@
   justify-content: flex-start;
   align-items: center;
   padding-top: 80px;
-  height: 25em;
+  height: 20em;
+  width: 70%;
+  background-color: $base;
+  opacity: 0.9;
+
   input {
     width: 90%;
     height: 90%;
@@ -91,6 +98,18 @@
   &:focus {
     outline: 0;
   }
+}
+
+.auth__wrapper {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  background-image: url('../../resources/eventway.png');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .logo__wrapper {

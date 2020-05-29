@@ -36,7 +36,7 @@ const TripsDetails = (props) => {
           <div className='input__wrapper'>
             <input
               type='text'
-              placeholder='Abfahrtsort'
+              placeholder='Place of departure'
               name='pickup_zip_code'
               value={trip.pickup_zip_code}
               onChange={onChange}
@@ -45,7 +45,7 @@ const TripsDetails = (props) => {
           <div className='input__wrapper'>
             <input
               type='text'
-              placeholder='Abfahrtszeit'
+              placeholder='Departure time'
               name='journey_start_time'
               value={trip.journey_start_time}
               onChange={onChange}
@@ -54,7 +54,7 @@ const TripsDetails = (props) => {
           <div className='input__wrapper'>
             <input
               type='text'
-              placeholder='Abfahrtsdatum'
+              placeholder='Departure date'
               name='journey_date'
               value={trip.journey_date}
               onChange={onChange}

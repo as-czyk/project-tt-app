@@ -19,6 +19,25 @@
   }
 }
 
+.nav__wrapper__eventway {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: center;
+  min-height: 110vh;
+  width: 200px;
+  background-color: $primary;
+  font-family: $text;
+
+  ul {
+    margin-top: 40px;
+  }
+  :link {
+    text-decoration: none;
+  }
+}
+
 .navigation__freeLinks {
   list-style: none;
   padding: 10px;

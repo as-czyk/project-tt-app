@@ -50,17 +50,22 @@
   margin: 10px;
   background-color: $base;
   opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /** Icons */
 .fa-car {
   margin-top: 20px;
-}
-
-.fa-glasses {
-  margin-top: 20px;
+  color: white;
 }
 
 .fa-cloud-sun {
+  margin-top: 20px;
+}
+
+.fa-search {
   margin-top: 20px;
 }

@@ -17,7 +17,7 @@ const TripsText = (props) => {
         </div>
         <textarea
           type='text'
-          placeholder='Beschreibung'
+          placeholder='Description'
           name='journey_text'
           value={trip.journey_text}
           onChange={onChange}

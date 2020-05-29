@@ -46,7 +46,7 @@ const Login = (props) => {
   const { email, password } = user;
 
   return (
-    <Fragment>
+    <div className='auth__wrapper'>
       <Logo />
       <form onSubmit={onSubmit} className='auth__form__login'>
         <div className='input__wrapper'>
@@ -72,7 +72,7 @@ const Login = (props) => {
           Login
         </button>
       </form>
-    </Fragment>
+    </div>
   );
 };
 
