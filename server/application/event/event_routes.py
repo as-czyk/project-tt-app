@@ -9,7 +9,7 @@ from functools import wraps
 
 # For Development
 from settings import *
-from models import Event
+from models import Events
 
 # get collection
 collection = get_collection("events")

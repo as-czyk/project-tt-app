@@ -5,10 +5,14 @@ import json
 # User Model
 class User(Document):
     user_id = StringField(required=True)
-    name = StringField(required=True)
-    email = EmailField(max_length=50)
-    password = StringField(required=True)
-    ticket_ID = StringField(required=True)
+    username = StringField(required=True)
+    user_email = EmailField(max_length=50)
+    user_password = StringField(required=True)
+    user_account_created = StringField(required=True)  # DateTimeField
+    user_last_login = StringField(required=True)  # DateTimeField
+    user_profile_picture = StringField(required=False, default="default.jpg")
+    event_id = StringField(required=True, default="2ab60824-b539-4a1f-ae1a-f7d94d2d55bb")  # FIXME: This default is the eintracht game!
+
 
     def json(self):
         user_dict = {
@@ -22,9 +26,10 @@ class User(Document):
 
 
 #  Class Event
-class Event(Document):  # TODO: Look at the comments
+class Events(Document):  # TODO: Look at the comments
     event_id = StringField(required=True)  # UUIDField
     event_name = StringField(required=True)
+    organizator_name_clean = StringField(required=True)
     event_address = StringField(required=True)
     event_start_date = StringField(required=True)  # DateTimeField
     event_end_date = StringField(required=True)  # DateTimeField

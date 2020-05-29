@@ -9,7 +9,7 @@ from bson import json_util
 
 # For Development
 from settings import *
-from models import Journey, Event, User
+from models import Journey, Events, User
 from application.send_email import send_email
 
 # Set up a Blueprint
