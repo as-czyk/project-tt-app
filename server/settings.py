@@ -29,7 +29,7 @@ MONGO_URI = "mongodb+srv://" + db_user + ":" + db_password + "@connext-en64e.mon
 # print connection status
 print("I AM CURRENTLY CONNECT TO: ", db_name)
 if db_name == "table":
-    for i in range(1:50):
+    for i in range(1, 50):
         print("ATTENTION: YOU ARE WORKING ON THE PRODUCTION DATABASE!")
 
 
