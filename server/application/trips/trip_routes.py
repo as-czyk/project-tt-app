@@ -4,12 +4,13 @@ import json
 from bson import json_util
 
 # For Deployment
-from server.settings import *
-from server.models import Journey, Event
+# from server.settings import *
+# from server.models import Journey, Event
 
 # For Development
-#from settings import *
-#from models import Journey, Event
+from settings import *
+from models import Journey, Event, User
+from application.send_email import send_email
 
 # Set up a Blueprint
 trips_bp = Blueprint('trips_bp', __name__,
@@ -47,7 +48,7 @@ def create_trip():
             event_id=data['event_id'],
             event_start_date=str(Event.objects(event_id=data["event_id"]).only("event_start_date")),  # FIXME: This should be a datetime
             event_start_time=str(Event.objects(event_id=data["event_id"]).only("event_start_time")),  # FIXME: This should be a datetime
-            pickup_zip_code=data['pickup_zip_code'],  # FIXME: Add a mapper!
+            pickup_zip_code=str(data['pickup_zip_code']),  # FIXME: Add a mapper!
             user_id=data['user_id'],
             journey_id=str(uuid.uuid4()),
             journey_empty_spaces=str(data['journey_empty_spaces']),
@@ -57,6 +58,10 @@ def create_trip():
             journey_start_time=data['journey_start_time'],
             journey_money=data["journey_money"])
     new_journey.save()
+    user_email = json.loads(User.objects(user_id=data["user_id"]).exclude("id").to_json())  # FIXME: Not a nice way!
+    send_email(email_user, email_password, user_email[0]["user_email"],
+                            "Congrats! Your reservation has been posted!",
+                            "Hi there, \n this your first reservation at our new eventway service! Welcome to the community!")
     return "Successfully inserted"
 
 

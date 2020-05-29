@@ -1,4 +1,24 @@
-from mongoengine import Document, StringField, IntField, LongField
+from mongoengine import Document, StringField, IntField, LongField, EmailField
+import json
+
+
+# User Model
+class User(Document):
+    user_id = StringField(required=True)
+    name = StringField(required=True)
+    email = EmailField(max_length=50)
+    password = StringField(required=True)
+    ticket_ID = StringField(required=True)
+
+    def json(self):
+        user_dict = {
+            "user_id": self.user_id,
+            "name": self.name,
+            "email": self.email,
+            "password": self.password,
+            "ticket_ID": self.ticket_ID
+        }
+        return json.dumps(user_dict)
 
 
 #  Class Event

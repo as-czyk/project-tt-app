@@ -10,3 +10,4 @@
 client/build
 #server/settings.py
 *.pyc
+server/notebooks/.ipynb_checkpoints/connectorMongoDB-checkpoint.ipynb
