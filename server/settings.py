@@ -44,7 +44,7 @@ connect(
 # get collection
 def get_collection(collection):
     """This function returns the selected collection."""
-    client = pymongo.MongoClient("mongodb+srv://" + db_user + ":" + db_password + "@connext-en64e.mongodb.net/table?retryWrites=true&w=majority")
-    db = client['table']
+    client = pymongo.MongoClient("mongodb+srv://" + db_user + ":" + db_password + "@connext-en64e.mongodb.net/" + db_name + "?retryWrites=true&w=majority")
+    db = client[db_name]
     collection = db[collection]
     return collection
