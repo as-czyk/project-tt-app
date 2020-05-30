@@ -1,12 +1,3 @@
-from flask import current_app as app
-import json
-from flask import request, jsonify, make_response, Blueprint
-from werkzeug.security import generate_password_hash, check_password_hash
-import jwt
-import datetime
-from functools import wraps
-import uuid
-
 # For Deployment
 # from server.settings import *
 
@@ -21,36 +12,18 @@ user_bp = Blueprint('user_bp', __name__,
                     static_folder='static')
 
 
-def token_required(f):  # FIXME: How can I give more values to the current user?
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        token = None
-
-        if 'x-access-token' in request.headers:
-            token = request.headers['x-access-token']
-            print("THIS IS THE TOKEN: ", token)
-            # text_file = open("token.txt", "wt")  # YOU CAN USE THE FOLLOWING CODE FOR GETTING THE TOKEN IN THE TOKEN.TXT
-            # n = text_file.write(token)
-            # text_file.close()
-        if not token:
-            return jsonify({'msg': 'Token is missing'})
-        try:
-            data = jwt.decode(token, app.config['SECRET_KEY'])
-            current_user = json.loads(User.objects(user_id=data["user_id"]).to_json())
-            current_user = current_user[0]
-        except:
-            return jsonify({'msg': 'Token is invalid'})
-        return f(current_user, *args, **kwargs)
-    return decorated
-
-
 # User Routes
 # '/api/user', methods=['GET']
 # Private Route
 @user_bp.route('/api/user', methods=['GET'])
 @token_required
 def get_one_user(current_user):
-    result = json.loads(User.objects(user_email=request.args.get("email")).exclude("id").to_json())
+    """This function GETs one user.
+
+    Keyword-Arguments:
+    email -- Unique user email, it is necessary to login
+    """
+    result = json.loads(User.objects(user_email=request.args.get("email")).exclude("id").to_json())  # FIXME: EMAIL SHOULD BE USER_EMAIL
     if not result:
         return jsonify({'message': 'No user found!'})
     return jsonify({'user': result[0]})
@@ -62,6 +35,11 @@ def get_one_user(current_user):
 @user_bp.route('/api/user', methods=['DELETE'])
 @token_required
 def delete_user(current_user):
+    """This function DELETEs a user from the user collection.
+
+    Keyword-Arguments:
+    email -- Unique user email, it is necessary to login
+    """
     User.objects(user_email=request.args.get("email")).delete()
     return jsonify({"message": "record deleted"})
 
@@ -71,6 +49,7 @@ def delete_user(current_user):
 # Private Route
 @user_bp.route('/api/allusers', methods=['GET'])
 def get_all_user():
+    """This function GETs all user in the user collection."""
     return jsonify({'users': json.loads(User.objects().all().exclude("id").to_json())})  # TODO: Is the return that what you wanted?
 
 
@@ -80,6 +59,7 @@ def get_all_user():
 @user_bp.route('/api/auth', methods=['GET'])
 @token_required
 def get_auth_user(current_user):
+    """This function GETs the authentication for a user."""
     result = json.loads(User.objects(user_id=current_user["user_id"]).exclude("id").to_json())
     if not result:
         return jsonify({'message': 'No user found!'})
@@ -91,12 +71,13 @@ def get_auth_user(current_user):
 # Public Route
 @user_bp.route('/api/user', methods=['POST'])
 def create_user():
-    """
-    JSON must contain
-    # event (Name of Event (e.g. "Eintracht Frankfurt")) --> THIS BUTTON DOES NOT EXITS ANYMORE!!! DEFAULT!
-    user_email
-    user_password
-    username
+    """This function POSTs a user into the user collection
+
+    Keyword-Arguments:
+    user_id -- This is a unique uuid4 user id, to identify every single user
+    username -- This is the users name, it does not have to be unique
+    user_email -- Unique user email, it is necessary to login
+    user_password -- Users Password, which is hashed with sha256 in the database
     """
     data = request.get_json()
     try:
@@ -126,6 +107,12 @@ def create_user():
 
 @user_bp.route('/api/auth', methods=['POST'])
 def auth_user():
+    """This function POSTs the authentication.
+
+    Keyword-Arguments:
+    user_email -- Unique user email, it is necessary to login
+    user_password -- Users Password, which is hashed with sha256 in the database
+    """
     data = request.get_json()
     email = data['user_email']
     password = data['user_password']
