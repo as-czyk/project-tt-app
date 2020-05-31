@@ -37,7 +37,7 @@ class TipsReservation extends Component {
           <div className='input__wrapper'>
             <input
               type='number'
-              placeholder='Anzahl der Plätze'
+              placeholder='Seats'
               name='reservation_requested_seats'
               value={this.state.reservation_requested_seats}
               onChange={this.onChange}
@@ -46,7 +46,7 @@ class TipsReservation extends Component {
           <div className='input__wrapper'>
             <input
               type='text'
-              placeholder='Nachricht an den Fahrer'
+              placeholder='Description'
               name='reservation_text'
               value={this.state.reservation_text}
               onChange={this.onChange}

@@ -1,2 +1,2 @@
-event_id,event_name,organizator_name_clean,event_address,event_start_date,event_end_date,event_start_time,event_end_time
-2ab60824-b539-4a1f-ae1a-f7d94d2d55bb,Vfl Wolfsburg vs. Eintracht Frankfurt,Eintracht Frankfurt,"In den Allerwiesen 1, 38446 Wolfsburg",2020-06-01,2020-06-01,15:30:00,18:00:00
+event_id,event_name,organizator_name_clean,organizator_id,event_address,event_start_date,event_end_date,event_start_time,event_end_time
+2ab60824-b539-4a1f-ae1a-f7d94d2d55bb,Vfl Wolfsburg vs. Eintracht Frankfurt,Eintracht Frankfurt,96c55241-eede-4102-ab0b-4d25cadff77e,"In den Allerwiesen 1, 38446 Wolfsburg",2020-06-01,2020-06-01,15:30:00,18:00:00
