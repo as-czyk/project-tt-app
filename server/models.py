@@ -20,10 +20,10 @@ class User(Document):
     username = StringField(required=True)
     user_email = EmailField(max_length=50)
     user_password = StringField(required=True)
-    user_account_created = StringField(required=True)  # DateTimeField
-    user_last_login = StringField(required=True)  # DateTimeField
+    user_account_created = StringField(required=False)  # DateTimeField
+    user_last_login = StringField(required=False)  # DateTimeField
     user_profile_picture = StringField(required=False, default="default.jpg")
-    event_id = StringField(required=True, default="2ab60824-b539-4a1f-ae1a-f7d94d2d55bb")  # FIXME: This default is the eintracht game!
+    event_id = StringField(required=False, default="2ab60824-b539-4a1f-ae1a-f7d94d2d55bb")  # FIXME: This default is the eintracht game!
 
 
 #  Class Event

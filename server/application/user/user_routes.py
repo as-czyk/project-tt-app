@@ -66,6 +66,26 @@ def get_auth_user(current_user):
     return jsonify({'user': result[0]})
 
 
+# Patch User
+# '/api/user', methods=['PATCH']
+# Public Route
+@user_bp.route('/api/user', methods=['PATCH'])
+def update_user():
+    """This function PATCHs the user information.
+    
+    Keyword-Arguments:
+    user_id --This is a unique uuid4 user id, to identify every single user
+    username -- This is the users name, it does not have to be unique
+    user_password -- Users Password, which is hashed with sha256 in the database
+    """
+    data = request.get_json()
+    hashed_password = generate_password_hash(data['user_password'], method='sha256')
+    User.objects(user_id=data["user_id"]).update_one(
+        set__user_password = hashed_password,
+        set__username = data["username"])
+    return jsonify({"message": 'record updated'}), 200
+
+
 # Create User
 # '/api/user', methods=['GET']
 # Public Route

@@ -4,7 +4,7 @@
 
 # For Development
 from settings import *
-from models import Reservation, Journey, User
+from models import Reservation, Journey
 
 
 # Set up a Blueprint

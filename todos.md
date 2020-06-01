@@ -1,23 +1,29 @@
-Backend: 
+Backend:
+MVP:
 * [X] ~~*Mongoengine classes*~~ [2020-05-22] 
-* [ ] Die Felder in den DB Datenbanken sind noch nicht richtig!
-* [ ] Verifikation User Mail
-* [ ] Email wenn Fahrt erstellt
-* [ ] Email wenn Anfrage
-* [ ] PATCH für User
-* [ ] Zugang für Eventveranstalter
-* [ ] GET für angenommene Reservierungen - Fahrer
-* [ ] GET für angenommene Reservierungen - Beifahrer
-* [ ] PATCH für Sitze bei Reservierung, wenn Fahrt angenommen
-* [ ] Wenn Anfrage "declined" dann nach 24 Stunden löschen
-* [ ] Max Anzahl an Anfragen für eine Fahrt begrenzen
-* [ ] Max Anzahl an Anfragen pro Nutzer pro Stunde begrenzen
-* [ ] Alle Tabellen aktualisieren (da fehlen noch einige Felder)
-* [ ] Auch das Format der Tabellenfelder aktualisieren
+* [X] ~~*PATCH für User*~~ [2020-06-01]
 * [ ] Wie kann ich Bilder in MongoDB speichern?
-* [ ] Push-Notifications (Wie sende ich etwas vom Backend ans Frontend?)
+* [ ] Die Felder in den DB Datenbanken sind noch nicht richtig! !WICHTIG! Aber kriege ich noch nicht hin
+* [ ] Tabelle für Bundesligisten anlegen
+* [ ] Tabelle für Bundesliga Spielplan anlegen
+* [ ] Zugang für Eventveranstalter
 * [ ] Mapper für Orten zu PLZs
 * [ ] Bei der Reservierung automatisch den Ort zu der PLZ finden!
+* [ ] PATCH für Sitze bei Reservierung, wenn Fahrt angenommen
+* [ ] Max Anzahl an Anfragen für eine Fahrt begrenzen
+* [ ] Max Anzahl an Anfragen pro Nutzer pro Stunde begrenzen
+* [ ] Wenn Anfrage "declined" dann nach 24 Stunden löschen
+* [ ] Update "last logged in" with utcnow()
+
+Sp#tere Release:
+* [ ] Email wenn Fahrt erstellt
+* [ ] Verifikation User Mail
+* [ ] Email wenn Anfrage
+* [ ] GET für angenommene Reservierungen - Fahrer
+* [ ] GET für angenommene Reservierungen - Beifahrer
+* [ ] Push-Notifications (Wie sende ich etwas vom Backend ans Frontend?)
+
+
 
 Frontend:
 1. Reservation
