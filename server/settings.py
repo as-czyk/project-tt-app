@@ -15,6 +15,7 @@ from application.send_email import send_email
 from bson import json_util
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
+from models import User
 
 DEBUG = True
 TESTING = False
@@ -57,6 +58,7 @@ def token_required(f):  # FIXME: How can I give more values to the current user?
 
     Keyword-Arguments:
     f -- ???  # FIXME: @Aron
+    user_id -- 
     """
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -72,6 +74,8 @@ def token_required(f):  # FIXME: How can I give more values to the current user?
             return jsonify({'msg': 'Token is missing'})
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'])
+            User.objects(user_id=data["user_id"]).update_one(
+                 set__user_last_login=datetime.datetime.utcnow().strftime('%d.%m.%Y %H:%M:%S'))
             current_user = json.loads(User.objects(user_id=data["user_id"]).to_json())
             current_user = current_user[0]
         except:

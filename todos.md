@@ -2,6 +2,9 @@ Backend:
 MVP:
 * [X] ~~*Mongoengine classes*~~ [2020-05-22] 
 * [X] ~~*PATCH für User*~~ [2020-06-01]
+* [X] ~~*Update "last logged in" with utcnow()*~~ [2020-06-01]
+* [ ] Wenn Anfrage "declined" dann nach 24 Stunden löschen
+* [ ] PATCH für Sitze bei Reservierung, wenn Fahrt angenommen
 * [ ] Wie kann ich Bilder in MongoDB speichern?
 * [ ] Die Felder in den DB Datenbanken sind noch nicht richtig! !WICHTIG! Aber kriege ich noch nicht hin
 * [ ] Tabelle für Bundesligisten anlegen
@@ -9,11 +12,9 @@ MVP:
 * [ ] Zugang für Eventveranstalter
 * [ ] Mapper für Orten zu PLZs
 * [ ] Bei der Reservierung automatisch den Ort zu der PLZ finden!
-* [ ] PATCH für Sitze bei Reservierung, wenn Fahrt angenommen
 * [ ] Max Anzahl an Anfragen für eine Fahrt begrenzen
 * [ ] Max Anzahl an Anfragen pro Nutzer pro Stunde begrenzen
-* [ ] Wenn Anfrage "declined" dann nach 24 Stunden löschen
-* [ ] Update "last logged in" with utcnow()
+
 
 Sp#tere Release:
 * [ ] Email wenn Fahrt erstellt

@@ -14,14 +14,14 @@ class User(Document):
     user_account_created -- This is a timestemp, of when the user created his account
     user_last_login -- A variable to track when the user last logged into the platform
     user_profile_picture -- A picture which the user like to represent him with
-    event_id -- This is the event_id every user has, in order to know which event he wants to visit from the event collection # FIXME: We have to talk about it NAMING 
+    event_id -- This is the event_id every user has, in order to know which event he wants to visit from the event collection # FIXME: We have to talk about it NAMING
     """
-    user_id = StringField(required=True)
-    username = StringField(required=True)
+    user_id = StringField(required=False)
+    username = StringField(required=False)
     user_email = EmailField(max_length=50)
-    user_password = StringField(required=True)
+    user_password = StringField(required=False)
     user_account_created = StringField(required=False)  # DateTimeField
-    user_last_login = StringField(required=False)  # DateTimeField
+    user_last_login = StringField(required=False)  # DateTimeField  THIS IS MEASURED IN UTC!
     user_profile_picture = StringField(required=False, default="default.jpg")
     event_id = StringField(required=False, default="2ab60824-b539-4a1f-ae1a-f7d94d2d55bb")  # FIXME: This default is the eintracht game!
 
