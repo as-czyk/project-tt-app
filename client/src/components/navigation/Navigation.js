@@ -31,7 +31,7 @@ const Navigation = () => {
       <Link to='/offertrip'>
         <li className='navigation__authLinks'>Offer Trip</li>
       </Link>
-      <Link to='/chat'>
+      <Link to='/reservation'>
         <li className='navigation__authLinks'>Notifications</li>
       </Link>
       <li className='navigation__logoutLink'>
