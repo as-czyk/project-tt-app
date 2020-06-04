@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import UserContext from '../../context/user/UserContext';
 import ReservationContext from '../../context/reservation/ReservationContext';
 
-import UserRequestItem from '../profile/UserRequestItem';
+import UserRequestItem from './Items/UserRequestItem';
 
 const UserRequest = () => {
   const userContext = useContext(UserContext);

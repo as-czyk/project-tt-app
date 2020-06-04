@@ -9,14 +9,14 @@ const UpComing = () => {
     <Fragment>
       <h1>Upcoming</h1>
       <div className='upcoming__game__box'>
-        <img src={sgeLogo} />
+        <img src={sgeLogo} alt='Logo' />
         <p>:</p>
-        <img src={mainz} />
+        <img src={mainz} alt='Logo' />
       </div>
       <div className='upcoming__game__box'>
-        <img src={hertha} />
+        <img src={hertha} alt='Logo' />
         <p>:</p>
-        <img src={sgeLogo} />
+        <img src={sgeLogo} alt='Logo' />
       </div>
     </Fragment>
   );

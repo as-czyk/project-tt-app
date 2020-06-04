@@ -5,7 +5,7 @@ import ReservationItem from './ReservationItem';
 
 import './chat.scss';
 
-const Chat = () => {
+const Reservation = () => {
   const userContext = useContext(UserContext);
   const reservationContext = useContext(ReservationContext);
 
@@ -43,4 +43,4 @@ const Chat = () => {
   }
 };
 
-export default Chat;
+export default Reservation;

@@ -139,7 +139,7 @@ const ReservationState = (props) => {
     };
 
     try {
-      const res = await axios.patch(
+      await axios.patch(
         '/api/reservation/status',
         {
           reservation_id: reservationID.id,

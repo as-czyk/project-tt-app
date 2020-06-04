@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TripState from './context/trip/TripState';
 import UserState from './context/user/UserState';
 import AlertState from './context/alert/AlertState';
 import ReservationState from './context/reservation/ReservationState';
-
-import UserContext from './context/user/UserContext';
 
 import './App.css';
 import './components/main.scss';

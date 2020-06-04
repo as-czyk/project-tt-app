@@ -12,7 +12,7 @@ export const UserData = () => {
       <h1 style={{ paddingLeft: '20px' }}>Personal Details</h1>
       <div className='userdata__container__content'>
         <div className='userdata__container__picture'>
-          <i class='far fa-user fa-5x'></i>
+          <i className='far fa-user fa-5x'></i>
           <p>User Bewertung</p>
         </div>
         <div className='userdata__container__info'>

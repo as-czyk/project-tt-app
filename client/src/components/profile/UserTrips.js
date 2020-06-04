@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect } from 'react';
-import UserTripsItem from '../profile/UserTripsItem';
+import UserTripsItem from './Items/UserTripsItem';
 import TripContext from '../../context/trip/TripContext';
 import UserContext from '../../context/user/UserContext';
 
