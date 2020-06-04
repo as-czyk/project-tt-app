@@ -26,6 +26,7 @@ const TripItem = ({ trip }) => {
     pickup_zip_code,
     journey_start_time,
     journey_money,
+    journey_car,
   } = trip;
 
   return (
@@ -48,6 +49,10 @@ const TripItem = ({ trip }) => {
           <div className='info__wrapper'>
             <i className='fas fa-euro-sign'></i>
             <p>{journey_money}</p>
+          </div>
+          <div className='info__wrapper'>
+            <i className='fas fa-car'></i>
+            <p>{journey_car}</p>
           </div>
           <div className='info__wrapper'>
             <p>Available Seats: {journey_empty_spaces}</p>
