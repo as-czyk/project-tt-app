@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import TripContext from '../../context/trip/TripContext';
+import TripContext from '../../../context/trip/TripContext';
 
 const UserTripsItem = ({ userTrip }) => {
   const tripContext = useContext(TripContext);

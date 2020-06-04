@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import ReservationContext from '../../context/reservation/ReservationContext';
 import UserContext from '../../context/user/UserContext';
 
-import AcceptedReservationItem from './AcceptedReservationItem';
+import AcceptedReservationItem from './Items/AcceptedReservationItem';
 
 import './profile.scss';
 
