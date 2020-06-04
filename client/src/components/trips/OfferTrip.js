@@ -1,7 +1,5 @@
 import React, { useState, useContext } from 'react';
-import TripsContext from '../../context/trip/TripContext';
 import UserContext from '../../context/user/UserContext';
-import AlertContext from '../../context/alert/AlertContext';
 
 import TripsDetails from './TripsSteps/TripsDetails';
 import TripsInfo from './TripsSteps/TripsInfo';
@@ -12,12 +10,9 @@ import Success from './TripsSteps/Success';
 import './trips.scss';
 
 const OfferTrip = () => {
-  const tripContext = useContext(TripsContext);
   const userContext = useContext(UserContext);
-  const alertContext = useContext(AlertContext);
 
   const { user, event } = userContext;
-  const { setAlert } = alertContext;
 
   const [trip, setTrip] = useState({
     step: 1,
@@ -32,16 +27,6 @@ const OfferTrip = () => {
     event_address: event.event_address,
     event_id: user.user.event_id,
   });
-
-  const {
-    pickup_zip_code,
-    journey_start_time,
-    journey_car,
-    journey_text,
-    journey_empty_spaces,
-    journey_date,
-    journey_money,
-  } = trip;
 
   const { step } = trip;
 
@@ -111,6 +96,9 @@ const OfferTrip = () => {
       );
     case 5:
       return <Success />;
+
+    default:
+      return 'An error occured';
   }
 };
 export default OfferTrip;

@@ -46,7 +46,7 @@ const TripItem = ({ trip }) => {
             <p>{journey_start_time}</p>
           </div>
           <div className='info__wrapper'>
-            <i class='fas fa-euro-sign'></i>
+            <i className='fas fa-euro-sign'></i>
             <p>{journey_money}</p>
           </div>
           <div className='info__wrapper'>

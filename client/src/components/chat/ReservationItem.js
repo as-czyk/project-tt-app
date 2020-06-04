@@ -15,7 +15,6 @@ const ReservationItem = ({ reservation }) => {
     reservation_id,
     reservation_requested_seats,
     reservation_text,
-    user_id,
   } = reservation;
 
   const [id, setId] = useState({

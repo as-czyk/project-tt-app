@@ -20,7 +20,7 @@ const UserTripsItem = ({ userTrip }) => {
     user_id,
   } = userTrip;
 
-  const [current, setCurrent] = useState({
+  const [current] = useState({
     id: journey_id,
     event_id: event_id,
     event_start_time: event_start_time,
