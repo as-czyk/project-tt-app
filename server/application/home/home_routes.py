@@ -13,8 +13,8 @@ home_bp = Blueprint('home_bp', __name__,
                      static_folder='static')
 
 
-@home_bp.route("/api/upcoming", methods=["GET"])
-def get_upcoming_games:
+#@home_bp.route("/api/upcoming", methods=["GET"])
+#def get_upcoming_games:
     # event name will be created manually
     # start date can be got from datetime.strftime
     
