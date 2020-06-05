@@ -77,6 +77,9 @@ def check_reservation_status():
         reservation_id -- The unique id of the made reservation request
         """
         result = json.loads(Reservation.objects(reservation_id=data["reservation_id"]).exclude("id").only("reservation_status").to_json())
+        print("THIS IS THE RESULT: ", result[0]["reservation_status"])
+        if result[0]["reservation_status"] == "accepted":
+            
         if not result:
             return jsonify({'msg': 'There are currently no reservation with the status'}), 404
         return jsonify(result)
@@ -90,6 +93,8 @@ def check_reservation_status():
         """
         Reservation.objects(reservation_id=data["reservation_id"]).update_one(
             set__reservation_status=data['reservation_status'])
+        # HIER REIN DAS REDUZIEREN DER SITZE BEI ANNEHMEN
+        
         return jsonify({"message": 'record updated'}), 200
 
 

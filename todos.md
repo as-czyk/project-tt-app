@@ -3,9 +3,11 @@ MVP:
 * [X] ~~*Mongoengine classes*~~ [2020-05-22] 
 * [X] ~~*PATCH für User*~~ [2020-06-01]
 * [X] ~~*Update "last logged in" with utcnow()*~~ [2020-06-01]
-* [ ] Wenn Anfrage "declined" dann nach 24 Stunden löschen
 * [ ] PATCH für Sitze bei Reservierung, wenn Fahrt angenommen
+* [ ] Wenn Anfrage "declined" dann nach 24 Stunden löschen
 * [ ] Wie kann ich Bilder in MongoDB speichern?
+* [ ] Hin-/Rück-/Hin- und Rückfahrt
+* [ ] Update Journey (Event_id darstellen, Hin/Rück/Hin & Rückfahrt)
 * [ ] Die Felder in den DB Datenbanken sind noch nicht richtig! !WICHTIG! Aber kriege ich noch nicht hin
 * [ ] Tabelle für Bundesligisten anlegen
 * [ ] Tabelle für Bundesliga Spielplan anlegen
@@ -14,6 +16,7 @@ MVP:
 * [ ] Bei der Reservierung automatisch den Ort zu der PLZ finden!
 * [ ] Max Anzahl an Anfragen für eine Fahrt begrenzen
 * [ ] Max Anzahl an Anfragen pro Nutzer pro Stunde begrenzen
+* [ ] Zwischenhalte
 
 
 Sp#tere Release:

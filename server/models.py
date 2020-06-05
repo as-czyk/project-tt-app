@@ -1,5 +1,30 @@
-from mongoengine import Document, StringField, IntField, LongField, EmailField
+from mongoengine import Document, StringField, IntField, LongField, EmailField, ImageField, ListField
 import json
+
+
+# Clubs Model
+class Club(Document):
+    """This class takes 7 arguments and writes them to the Clubs Collection
+
+    """
+    club_id = StringField(required=True)
+    client_id = StringField()
+    competition_id = ListField(required=True)
+    club_name_long = StringField(required=True)
+    club_name_short = StringField(required=True)
+    club_logo = ImageField(required=True, thumbnail_size=(300, 300, False))
+    club_primary_color = StringField(required=True)
+    club_secondary_color = StringField(required=True)
+    club_teritary_color = StringField(required=False, default="")
+    # FIXME: HIER FEHLT NOCH STADION ADDRESSE
+
+
+# Competition Model
+class Competition(Document):
+    """This class takes
+    """
+    competition_id = StringField(required=True)
+    competition_name_long = StringField(required=True)
 
 
 # User Model
@@ -23,7 +48,18 @@ class User(Document):
     user_account_created = StringField(required=False)  # DateTimeField
     user_last_login = StringField(required=False)  # DateTimeField  THIS IS MEASURED IN UTC!
     user_profile_picture = StringField(required=False, default="default.jpg")
-    event_id = StringField(required=False, default="2ab60824-b539-4a1f-ae1a-f7d94d2d55bb")  # FIXME: This default is the eintracht game!
+    event_id = StringField(required=False, default="2ab60824-b539-4a1f-ae1a-f7d94d2d55bb")  # FIXME: THIS IS THE CLIENT ID! FIXME: This default is the eintracht game!
+
+
+# Client Model
+class Client(Document):
+    """This class takes X arguments and writes them to the Client collection.
+
+
+    """
+    client_id = StringField(required=True)
+    client_name = StringField(required=True)
+    client_email = EmailField()
 
 
 #  Class Event
@@ -32,22 +68,26 @@ class Events(Document):  # TODO: Look at the comments
 
     Keyword-Arguments:
     event_id -- A unique uuid4 event id
+    client_id -- A unique uuid4 id of the client
+    competition_id -- What competition is it?
+    event_sort -- What kind of Event is it?
+    club_id_home -- Unique id of the home team if soccer event
+    club_id_away -- Unique id of the away team if soccer event
     event_name -- The name of the event
-    organizator_name_clean -- Clean name of the organizer from the organizator collection
     event_address -- Address of the event location
-    event_start_date -- The date of the day, month and year this event starts
-    event_end_date -- The date of the day, month and year this event ends
-    event_start_time -- The exact hours and minutes when this event starts
-    event_end_time -- The exact hours and minutes when this event ends
+    event_start_date -- The date of the day, month, year, hours, minute this event starts
+    event_end_date -- The date of the day, month, year, hours, minute this event ends
     """
     event_id = StringField(required=True)  # UUIDField
-    event_name = StringField(required=True)
-    organizator_name_clean = StringField(required=True)
+    client_id = StringField(required=True)  # Who hosts this event?
+    competition_id = ListField(required=False)
+    event_sort = StringField(choices=["soccer", "festival"], required=True)  # What kind of event will it be?
+    club_id_home = StringField()
+    club_id_away = StringField()
+    event_name = StringField()
     event_address = StringField(required=True)
-    event_start_date = StringField(required=True)  # DateTimeField
-    event_end_date = StringField(required=True)  # DateTimeField
-    event_start_time = StringField(required=True)
-    event_end_time = StringField(required=True)
+    event_start_date = DateTimeField(required=True)  # DateTimeField
+    event_end_date = DateTimeField(required=True)  # DateTimeField
 
 
 # Class Journey
