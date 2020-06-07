@@ -45,8 +45,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 5em;
-  margin: 5em;
+  height: 10em;
+  margin: 2em 5em 2em 5em;
   background-color: $sgePrimary;
 }
 
@@ -268,4 +268,23 @@
       outline: none;
     }
   }
+}
+
+/** Styling for upcoming trips */
+
+.tripsUpcoming__container {
+  display: grid;
+  margin: 2em 5em 2em 5em;
+  min-height: 10em;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid red;
+}
+
+.tripsUpcoming__item__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border: 1px solid blue;
 }

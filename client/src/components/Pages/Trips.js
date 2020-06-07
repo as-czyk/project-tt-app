@@ -3,6 +3,7 @@ import TripsContext from '../../context/trip/TripContext';
 import UserContext from '../../context/user/UserContext';
 import TripItem from '../trips/TripItem';
 import TripsSearch from '../trips/TripsSearch';
+import TripUpcoming from '../trips/TripUpcoming';
 
 const Trips = () => {
   const tripscontext = useContext(TripsContext);
@@ -19,6 +20,7 @@ const Trips = () => {
   if (!loading) {
     return (
       <Fragment>
+        <TripUpcoming />
         <TripsSearch />
         <div className='trips__wrapper'>
           <h2>There are currently {trips.length} carpooling opportunities</h2>
