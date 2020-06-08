@@ -1,2 +1,2 @@
-organizator_id,organizator_name,organizator_name_clean,organizator_email
-96c55241-eede-4102-ab0b-4d25cadff77e,Eintracht Frankfurt GmbH,Eintracht Frankfurt,info@ef.de
+organizator_id,organizator_name,organizator_name_clean,organizator_email,organizator_color_one,organizator_font
+96c55241-eede-4102-ab0b-4d25cadff77e,Eintracht Frankfurt GmbH,Eintracht Frankfurt,info@ef.de,#e1000f,"'Open Sans Condensed', sans-serif"

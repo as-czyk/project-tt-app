@@ -11,6 +11,7 @@ import {
   LOGOUT,
   LOAD_ERROR,
   EVENT_LOADED,
+  CLIENT_LOADED,
   SET_LOADING,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
@@ -24,7 +25,7 @@ const UserState = (props) => {
     loading: false,
     user: null,
     error: null,
-    event: null,
+    client: null,
   };
 
   const [state, dispatch] = useReducer(UseReducer, initialState);

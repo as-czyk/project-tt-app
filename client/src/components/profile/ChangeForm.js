@@ -38,7 +38,7 @@ class ChangeForm extends Component {
             <div className='input__wrapper'>
               <input
                 type='text'
-                placeholder='Anzahl der Plätze'
+                placeholder='Seats'
                 name='journey_empty_spaces'
                 value={this.state.journey_empty_spaces}
                 onChange={this.onChange}
@@ -47,7 +47,7 @@ class ChangeForm extends Component {
             <div className='input__wrapper'>
               <input
                 type='text'
-                placeholder='Auto'
+                placeholder='Car'
                 name='journey_car'
                 value={this.state.journey_car}
                 onChange={this.onChange}
@@ -56,7 +56,7 @@ class ChangeForm extends Component {
             <div className='input__wrapper'>
               <input
                 type='text'
-                placeholder='Datum der Fahrt'
+                placeholder='Departure date'
                 name='journey_date'
                 value={this.state.journey_date}
                 onChange={this.onChange}
@@ -65,7 +65,7 @@ class ChangeForm extends Component {
             <div className='input__wrapper'>
               <input
                 type='text'
-                placeholder='Abfahrtort'
+                placeholder='Place of departure'
                 name='pickup_zip_code'
                 value={this.state.pickup_zip_code}
                 onChange={this.onChange}
@@ -75,7 +75,7 @@ class ChangeForm extends Component {
           <div className='change__form__text'>
             <textarea
               type='text'
-              placeholder='Freitext'
+              placeholder='Description'
               name='journey_text'
               value={this.state.journey_text}
               onChange={this.onChange}

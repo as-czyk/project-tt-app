@@ -22,6 +22,9 @@ export const SET_LOADING = 'SET_LOADING';
 // Event
 export const EVENT_LOADED = 'EVENT_LOADED';
 
+// Client
+export const CLIENT_LOADED = 'CLIENT_LOADED';
+
 //Alerts
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
