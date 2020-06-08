@@ -34,7 +34,7 @@ const UserState = (props) => {
    */
 
   //Load Event
-  const loadEvent = async (eventId) => {
+  const loadEvent = async (clientId) => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
@@ -42,7 +42,7 @@ const UserState = (props) => {
     try {
       const res = await axios.get('/api/event', {
         params: {
-          event_id: eventId,
+          client_id: clientId,
         },
       });
       dispatch({
