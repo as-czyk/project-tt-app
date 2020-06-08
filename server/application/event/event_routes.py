@@ -23,7 +23,7 @@ def get_event(current_user):
     Keyword-Arguments:
     event_id -- The ID for identifying one specific event    
     """
-    result = json.loads(Events.objects(event_id=request.args.get("event_id")).to_json())
+    result = json.loads(Events.objects(client_id=request.args.get("client_id")).to_json())
     if not result:
         return jsonify({'message': 'Kein Event gefunden'})
     return jsonify({'event': result[0]}), 200
