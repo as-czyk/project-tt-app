@@ -110,7 +110,8 @@ def create_user():
                         user_email=data["user_email"],
                         user_password=hashed_password,
                         user_account_created=datetime.datetime.utcnow().strftime('%d.%m.%Y %H:%M:%S'),  # TODO: Turn into datetimefield!
-                        user_last_login=datetime.datetime.utcnow().strftime('%d.%m.%Y %H:%M:%S'))
+                        user_last_login=datetime.datetime.utcnow().strftime('%d.%m.%Y %H:%M:%S'),
+                        client_id=data['client_id'])
             user.save()
             token = jwt.encode({'user_id': user['user_id'],
                                 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60)},
