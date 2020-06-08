@@ -48,7 +48,7 @@ class User(Document):
     user_account_created = StringField(required=False)  # DateTimeField
     user_last_login = StringField(required=False)  # DateTimeField  THIS IS MEASURED IN UTC!
     user_profile_picture = StringField(required=False, default="default.jpg")
-    event_id = StringField(required=False, default="2ab60824-b539-4a1f-ae1a-f7d94d2d55bb")  # FIXME: THIS IS THE CLIENT ID! FIXME: This default is the eintracht game!
+    client_id = StringField(required=True)
 
 
 # Client Model
