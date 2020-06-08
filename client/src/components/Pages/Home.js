@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!loading && user !== undefined) {
-      loadEvent(user.user.event_id);
+      loadEvent(user.user.client_id);
     }
     // eslint-disable-next-line
   }, [loading]);
