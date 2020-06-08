@@ -1,23 +1,25 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
+import UserContext from '../../context/user/UserContext';
 
-import sgeLogo from '../../resources/eintracht-logo.png';
-import hertha from '../../resources/hertha.png';
-import mainz from '../../resources/main.png';
+//import sgeLogo from '../../resources/eintracht-logo.png';
+//import hertha from '../../resources/hertha.png';
+//import mainz from '../../resources/main.png';
+import UpComingItem from './UpComingItem';
 
 const UpComing = () => {
+  const userContext = useContext(UserContext);
+  const { event } = userContext;
+  const size = 4;
+
+  const events = event.slice(1, size);
+  console.log(events);
+
   return (
     <Fragment>
       <h1>Upcoming</h1>
-      <div className='upcoming__game__box'>
-        <img src={sgeLogo} alt='Logo' />
-        <p>:</p>
-        <img src={mainz} alt='Logo' />
-      </div>
-      <div className='upcoming__game__box'>
-        <img src={hertha} alt='Logo' />
-        <p>:</p>
-        <img src={sgeLogo} alt='Logo' />
-      </div>
+      {events.map((event) => (
+        <UpComingItem key={event.event_id} event={event} />
+      ))}
     </Fragment>
   );
 };

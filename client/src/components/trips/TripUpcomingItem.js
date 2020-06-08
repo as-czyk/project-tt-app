@@ -6,18 +6,23 @@ const TripUpcomingItem = (props) => {
   const { event } = props;
   const { loadTrips } = tripContext;
 
-  const state = useState({
+  const [state, setState] = useState({
     id: event.event_id,
+    active: false,
   });
 
   const onClick = (state) => {
-    loadTrips(state[0].id);
+    loadTrips(state.id);
   };
 
   return (
     <div
       onClick={() => {
         onClick(state);
+        setState({
+          ...state,
+          active: true,
+        });
       }}
       className='tripsUpcoming__item__container'
     >
