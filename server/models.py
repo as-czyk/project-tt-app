@@ -97,8 +97,6 @@ class Journey(Document):
     Keyword-Arguments:
     event_address -- The event address and journey destination from the event collection
     event_id -- The unique uuid4 id of the event from the event collection
-    event_start_date -- The date of the day, month and year this event starts from the event collection
-    event_start_time -- The exact hours and minutes when this event starts from the event collection
     pickup_zip_code -- This displays the start location from the pickups collection
     user_id -- The user id of the one who offers the trip from the user collection
     journey_id -- Unique uuid4 id of a journey
@@ -111,8 +109,6 @@ class Journey(Document):
     """
     event_address = StringField(required=False)
     event_id = StringField(required=False)  # UUIDField(required=True)
-    event_start_date = StringField(required=False)  # DateTimeField(required=True)
-    event_start_time = StringField(required=False)  # DateTimeField(required=True)
     pickup_zip_code = StringField(required=True)  # IntField(min_value=10000, max_value=99999)
     user_id = StringField(required=False)  # UUIDField(required=True)
     journey_id = StringField(required=True)  # UUIDField(required=True)
