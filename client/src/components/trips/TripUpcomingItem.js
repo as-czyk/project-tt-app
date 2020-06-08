@@ -4,13 +4,13 @@ const TripUpcomingItem = (props) => {
   const { event } = props;
 
   useState({
-    id: event.Id,
+    id: event.event_id,
   });
 
   return (
     <div className='tripsUpcoming__item__container'>
-      <p>{event.Name}</p>
-      <p>{event.Id}</p>
+      <p>{event.event_name}</p>
+      <p>{event.client_id}</p>
     </div>
   );
 };
