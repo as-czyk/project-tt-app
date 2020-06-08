@@ -25,7 +25,7 @@ const UserState = (props) => {
     loading: false,
     user: null,
     error: null,
-    event: null,
+    client: null,
   };
 
   const [state, dispatch] = useReducer(UseReducer, initialState);
