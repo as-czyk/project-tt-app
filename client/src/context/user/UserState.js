@@ -11,7 +11,6 @@ import {
   LOGOUT,
   LOAD_ERROR,
   EVENT_LOADED,
-  CLIENT_LOADED,
   SET_LOADING,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
@@ -25,7 +24,7 @@ const UserState = (props) => {
     loading: false,
     user: null,
     error: null,
-    client: null,
+    event: null,
   };
 
   const [state, dispatch] = useReducer(UseReducer, initialState);
@@ -35,7 +34,7 @@ const UserState = (props) => {
    */
 
   //Load Event
-  const loadEvent = async (eventId) => {
+  const loadEvent = async (clientId) => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
@@ -43,7 +42,7 @@ const UserState = (props) => {
     try {
       const res = await axios.get('/api/event', {
         params: {
-          event_id: eventId,
+          client_id: clientId,
         },
       });
       dispatch({

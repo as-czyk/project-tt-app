@@ -1,26 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../../context/user/UserContext';
 import TripUpcomingItem from './TripUpcomingItem';
 
 const TripUpcoming = () => {
-  const events = [
-    {
-      Id: '1',
-      Name: 'Spiel 1',
-    },
-    {
-      Id: '2',
-      Name: 'Spiel 2',
-    },
-    {
-      Id: '3',
-      Name: 'Spiel3',
-    },
-  ];
+  const userContext = useContext(UserContext);
+  const size = 3;
+  const { event } = userContext;
+
+  const events = event.slice(0, size);
 
   return (
     <div className='tripsUpcoming__container'>
       {events.map((event) => (
-        <TripUpcomingItem key={event.Id} event={event} />
+        <TripUpcomingItem key={event.event_id} event={event} />
       ))}
     </div>
   );

@@ -9,11 +9,11 @@ const Trips = () => {
   const tripscontext = useContext(TripsContext);
   const userContext = useContext(UserContext);
 
-  const { user } = userContext;
+  const { event } = userContext;
   const { trips, filtered, loadTrips, loading } = tripscontext;
 
   useEffect(() => {
-    loadTrips(user.user.event_id);
+    loadTrips(event[0].event_id);
     // eslint-disable-next-line
   }, []);
 

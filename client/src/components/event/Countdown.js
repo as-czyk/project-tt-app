@@ -6,6 +6,7 @@ import './event.scss';
 const Countdown = () => {
   const userContext = useContext(UserContext);
   const { event } = userContext;
+  const nextEvent = event[0];
   const [counter, setCounter] = useState({
     days: '',
     hours: '',
@@ -17,7 +18,6 @@ const Countdown = () => {
     const oneDay = 1000 * 60 * 60 * 24;
     const startDate = new Date();
     const endDate = new Date(`${endD}T${endT}`);
-
     let diff = endDate - startDate;
 
     let day = Math.floor(diff / oneDay - 1);
@@ -34,7 +34,10 @@ const Countdown = () => {
   };
 
   setTimeout(() => {
-    const time = getTimeToEvent(event.event_start_date, event.event_start_time);
+    const time = getTimeToEvent(
+      nextEvent.event_start_date,
+      /*event.event_start_time*/ '18:00:00'
+    );
     setCounter({
       days: time.days,
       hours: time.hours,
