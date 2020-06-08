@@ -12,7 +12,6 @@ const UpComing = () => {
   const size = 4;
 
   const events = event.slice(1, size);
-  console.log(events);
 
   return (
     <Fragment>
