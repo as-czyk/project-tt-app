@@ -295,7 +295,6 @@
 }
 
 .filter__selector {
-  border: 1px solid green;
   width: 40em;
   margin: 1em;
   display: flex;
@@ -303,4 +302,13 @@
   justify-content: space-evenly;
   align-items: center;
   padding: 1em;
+}
+
+.filter__button__wrapper {
+  display: flex;
+  width: 40em;
+  margin: 1em;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
 }

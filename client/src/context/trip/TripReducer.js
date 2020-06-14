@@ -21,8 +21,40 @@ export default (state, action) => {
       return {
         ...state,
         filtered: state.trips.filter((trip) => {
-          const regex = new RegExp(`${action.payload}`, 'gi');
-          return trip.pickup_zip_code.match(regex);
+          const filter = action.payload;
+          if (
+            trip.pickup_zip_code !== filter.city &&
+            filter.city !== undefined &&
+            filter.city !== ''
+          ) {
+            return false;
+          }
+
+          if (trip.journey_empty_spaces < filter.seats) {
+            return false;
+          }
+
+          if (trip.journey_money > filter.maxcost) {
+            return false;
+          }
+
+          if (
+            trip.journey_date !== filter.date &&
+            filter.date !== undefined &&
+            filter.date !== 'undefined'
+          ) {
+            return false;
+          }
+
+          if (
+            trip.journey_start_time !== filter.time &&
+            filter.time !== undefined &&
+            filter.date !== 'undefined'
+          ) {
+            return false;
+          }
+
+          return true;
         }),
       };
 
