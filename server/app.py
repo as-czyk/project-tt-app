@@ -24,7 +24,6 @@ app.register_blueprint(trip_routes.trips_bp)
 app.register_blueprint(user_routes.user_bp)
 app.register_blueprint(reservation_routes.reservation_bp)
 app.register_blueprint(event_routes.event_bp)
-app.register_blueprint(home_routes.home_bp)
 
 
 
