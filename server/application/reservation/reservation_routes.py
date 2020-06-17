@@ -1,10 +1,10 @@
 # For Deployment
-# from server.settings import *
-# from server.models import Reservation, Journey
+from server.settings import *
+from server.models import Reservation, Journey
 
 # For Development
-from settings import *
-from models import Reservation, Journey
+#from settings import *
+#from models import Reservation, Journey
 
 
 # Set up a Blueprint

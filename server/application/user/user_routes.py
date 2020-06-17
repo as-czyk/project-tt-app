@@ -1,9 +1,10 @@
 # For Deployment
-# from server.settings import *
+from server.settings import *
+from server.models import User
 
 # For Development
-from settings import *
-from models import User
+#from settings import *
+#from models import User
 
 
 # Set up a Blueprint

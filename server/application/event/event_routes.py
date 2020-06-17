@@ -1,10 +1,10 @@
 # For Deployment
-# from server.settings import *
-# from server.models import Event
+from server.settings import *
+from server.models import Event
 
 # For Development
-from settings import *
-from models import Events
+# from settings import *
+# from models import Events
 
 # Set up a Blueprint
 event_bp = Blueprint('event_bp', __name__,

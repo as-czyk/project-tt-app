@@ -1,11 +1,11 @@
 # For Deployment
-# from server.settings import *
-# from server.models import Journey, Event
+from server.settings import *
+from server.models import Journey, Event
 
 # For Development
-from settings import *
-from models import Journey, Events, User
-from application.send_email import send_email
+# from settings import *
+# from models import Journey, Events, User
+# from application.send_email import send_email
 
 # Set up a Blueprint
 home_bp = Blueprint('home_bp', __name__,
