@@ -30,14 +30,16 @@ const TripUpcomingItem = (props) => {
       className='tripsUpcoming__item__container'
     >
       <img
-        src={`client/src/resources/${event.club_id_home}.png`}
+        src={`/images/${event.club_id_home}.png`}
         alt='Home Team'
+        className='upcoming__logo__wrapper'
       />
-      <p>Vs</p>
+      <p style={{ fontSize: '30px' }}>:</p>
       <img
-        src={`../../resources/${event.club_id_away}.png`}
+        src={`/images/${event.club_id_away}.png`}
         alt='Away Team'
-      ></img>
+        className='upcoming__logo__wrapper'
+      />
     </div>
   );
 };

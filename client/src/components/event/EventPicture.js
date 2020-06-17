@@ -21,9 +21,17 @@ const EventPicture = () => {
   } else {
     return (
       <div className='event__wrapper'>
-        <p>{nextEvent.club_id_home}</p>
+        <img
+          src={`/images/${nextEvent.club_id_home}.png`}
+          alt='Home Team'
+          className='eventLogo__wrapper'
+        />
         <p style={{ fontSize: '40px', margin: '10px' }}>:</p>
-        <p>{nextEvent.club_id_away}</p>
+        <img
+          src={`/images/${nextEvent.club_id_away}.png`}
+          alt='Away Team'
+          className='eventLogo__wrapper'
+        />
       </div>
     );
   }

@@ -5,9 +5,17 @@ const UpComingItem = (props) => {
 
   return (
     <div className='upcoming__game__box'>
-      <p>{event.club_id_home}</p>
-      <p>:</p>
-      <p>{event.club_id_away}</p>
+      <img
+        src={`/images/${event.club_id_home}.png`}
+        alt='Home Team'
+        className='upcoming__logo__wrapper'
+      />
+      <p style={{ fontSize: '30px' }}>:</p>
+      <img
+        src={`/images/${event.club_id_away}.png`}
+        alt='Away Team'
+        className='upcoming__logo__wrapper'
+      />
     </div>
   );
 };
