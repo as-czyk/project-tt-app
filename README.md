@@ -23,3 +23,5 @@ Second Tab for serving flask:
 ```sh
 $ python app.py
 ```
+
+Have Fun!
