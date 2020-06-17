@@ -12,7 +12,7 @@ const Event = () => {
     <Fragment>
       <div className='event__ctn'>
         <div className='event__ctn__inf'>
-          <h1 className='event__text'>Next Game</h1>
+          <h1 className='event__text'>Next Away Game</h1>
           <div className='event_inf_ctn'>
             <div className='info__wrapper'>
               <i className='fas fa-thumbtack'></i>
