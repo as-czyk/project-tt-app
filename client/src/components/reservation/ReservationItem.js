@@ -53,7 +53,7 @@ const ReservationItem = ({ reservation }) => {
     <div className='reservation__item__wrapper'>
       <div className='reservation__item__header'>
         <p style={{ paddingLeft: '20px' }}>
-          {event.event_start_date} | {event.event_start_time} | Passenger
+          {event[0].event_start_date} | {event[0].event_start_time} | Passenger
           request | {reservation_requested_seats} Seats
         </p>
       </div>
