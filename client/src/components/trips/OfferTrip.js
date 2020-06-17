@@ -24,8 +24,7 @@ const OfferTrip = () => {
     journey_date: '',
     journey_money: undefined,
     user_id: user.user.user_id,
-    event_address: event.event_address,
-    event_id: user.user.event_id,
+    event_id: '',
   });
 
   const { step } = trip;
