@@ -1,5 +1,6 @@
 from mongoengine import Document, StringField, IntField, LongField, EmailField, ImageField, ListField, DateTimeField
 import json
+import Pillow
 
 
 # Clubs Model
