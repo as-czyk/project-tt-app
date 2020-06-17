@@ -1,6 +1,6 @@
 # For Deployment
 from server.settings import *
-from server.models import Event
+from server.models import Events
 
 # For Development
 # from settings import *

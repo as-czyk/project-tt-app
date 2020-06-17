@@ -1,6 +1,6 @@
 # For Deployment
 from server.settings import *
-from server.models import Journey, Event
+from server.models import Journey, Events, User
 
 # For Development
 #from settings import *
