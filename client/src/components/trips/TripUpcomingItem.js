@@ -30,13 +30,13 @@ const TripUpcomingItem = (props) => {
       className='tripsUpcoming__item__container'
     >
       <img
-        src={`/static/images/${event.club_id_home}.png`}
+        src={`/images/${event.club_id_home}.png`}
         alt='Home Team'
         className='upcoming__logo__wrapper'
       />
       <p style={{ fontSize: '30px' }}>:</p>
       <img
-        src={`/static/images/${event.club_id_away}.png`}
+        src={`/images/${event.club_id_away}.png`}
         alt='Away Team'
         className='upcoming__logo__wrapper'
       />
