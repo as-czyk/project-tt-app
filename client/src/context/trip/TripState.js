@@ -149,7 +149,6 @@ const TripState = (props) => {
 
   // Filter Trips
   const filterTrips = (filter) => {
-    console.log(filter);
     dispatch({
       type: FILTER_TRIPS,
       payload: filter,
