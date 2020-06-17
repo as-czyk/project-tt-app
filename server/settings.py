@@ -7,15 +7,16 @@ from functools import wraps
 import json
 from flask import request, jsonify, Blueprint, Response, make_response
 import jwt
-from models import Events, User
+#from model import Events, User
+from server.models import Events, User
 from flask import current_app as app
 # from apscheduler.schedulers.background import BackgroundScheduler
 import uuid
-from application.send_email import send_email
+from server.application.send_email import send_email
+#from application.send_email import send_email
 from bson import json_util
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
-from models import User
 
 DEBUG = True
 TESTING = False
