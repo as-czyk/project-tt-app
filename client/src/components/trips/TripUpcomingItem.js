@@ -15,6 +15,9 @@ const TripUpcomingItem = (props) => {
     loadTrips(state.id);
   };
 
+  console.log(event.club_id_home);
+  console.log(event.club_id_away);
+
   return (
     <div
       onClick={() => {
@@ -26,7 +29,10 @@ const TripUpcomingItem = (props) => {
       }}
       className='tripsUpcoming__item__container'
     >
-      <img src={`../../resources/${event.club_id_home}.png`} alt='Home Team' />
+      <img
+        src={`client/src/resources/${event.club_id_home}.png`}
+        alt='Home Team'
+      />
       <p>Vs</p>
       <img
         src={`../../resources/${event.club_id_away}.png`}
