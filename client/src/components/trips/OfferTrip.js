@@ -21,11 +21,10 @@ const OfferTrip = () => {
     journey_car: '',
     journey_text: '',
     journey_empty_spaces: '',
-    journey_date: '',
+    journey_date: event[0].event_start_date,
     journey_money: undefined,
     user_id: user.user.user_id,
-    event_address: event.event_address,
-    event_id: user.user.event_id,
+    event_id: '',
   });
 
   const { step } = trip;

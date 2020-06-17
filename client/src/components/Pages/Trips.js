@@ -23,7 +23,14 @@ const Trips = () => {
         <TripUpcoming />
         <TripsSearch />
         <div className='trips__wrapper'>
-          <h2>There are currently {trips.length} carpooling opportunities</h2>
+          {filtered !== null ? (
+            <h2>
+              There are currently {filtered.length} carpooling opportunities
+            </h2>
+          ) : (
+            <h2>There are currently {trips.length} carpooling opportunities</h2>
+          )}
+
           {filtered !== null
             ? filtered.map((trip) => (
                 <TripItem key={trip.journey_id} trip={trip} />

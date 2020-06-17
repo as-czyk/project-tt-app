@@ -24,7 +24,7 @@ const Event = () => {
             </div>
             <div className='info__wrapper'>
               <i className='far fa-clock'></i>
-              <p className='event__text'>{event[0].event_start_date}</p>
+              <p className='event__text'>{event[0].event_start_time}</p>
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@ const UserTrips = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (!loading && userTrips !== undefined) {
+  if (!loading && userTrips !== undefined && userTrips.length !== 0) {
     return (
       <Fragment>
         <div className='userdata__container'>
@@ -25,7 +25,7 @@ const UserTrips = () => {
         </div>
       </Fragment>
     );
-  } else if (userTrips.length === 0) {
+  } else if (userTrips.length === 0 || userTrips === undefined) {
     return (
       <div className='userdata__container'>
         <h1 style={{ paddingLeft: '20px' }}>Your active trips</h1>

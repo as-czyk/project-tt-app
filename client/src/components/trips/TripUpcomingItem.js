@@ -26,9 +26,12 @@ const TripUpcomingItem = (props) => {
       }}
       className='tripsUpcoming__item__container'
     >
-      <p>{event.club_id_home}</p>
+      <img src={`../../resources/${event.club_id_home}.png`} alt='Home Team' />
       <p>Vs</p>
-      <p>{event.club_id_away}</p>
+      <img
+        src={`../../resources/${event.club_id_away}.png`}
+        alt='Away Team'
+      ></img>
     </div>
   );
 };

@@ -17,10 +17,10 @@ const Register = (props) => {
     username: '',
     user_email: '',
     user_password: '',
-    event: '',
+    client_id: '',
   });
 
-  const { username, user_email, user_password, event } = user;
+  const { username, user_email, user_password, client_id } = user;
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -41,7 +41,7 @@ const Register = (props) => {
       username === '' ||
       user_email === '' ||
       user_password === '' ||
-      event === ''
+      client_id === ''
     ) {
       alertState.setAlert('Please fill in all fields', 'danger');
     } else {
@@ -117,15 +117,17 @@ const Register = (props) => {
         </div>
         <div className='input__wrapper__dropdown'>
           <select
-            value={user.event}
+            value={user.client_id}
             onChange={onChange}
-            name='event'
+            name='client_id'
             selected='Please select your event'
           >
             <option value='' seclected disabled hidden>
               Please select your event
             </option>
-            <option value='Eintracht Frankfurt'>Eintracht Frankfurt</option>
+            <option value='96c55241-eede-4102-ab0b-4d25cadff77e'>
+              Eintracht Frankfurt
+            </option>
           </select>
         </div>
         <Alerts />

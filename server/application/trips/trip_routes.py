@@ -74,10 +74,10 @@ def create_trip():
     """
     data = request.get_json()
     new_journey = Journey(
-            event_address=data['event_address'],
+            #event_address=data['event_address'],
             event_id=data['event_id'],
-            event_start_date=str(Events.objects(event_id=data["event_id"]).only("event_start_date")),  # FIXME: This should be a datetime
-            event_start_time=str(Events.objects(event_id=data["event_id"]).only("event_start_time")),  # FIXME: This should be a datetime
+            #event_start_date=str(Events.objects(event_id=data["event_id"]).only("event_start_date")),  # FIXME: This should be a datetime
+            #event_start_time=str(Events.objects(event_id=data["event_id"]).only("event_start_time")),  # FIXME: This should be a datetime
             pickup_zip_code=str(data['pickup_zip_code']),  # FIXME: Add a mapper!
             user_id=data['user_id'],
             journey_id=str(uuid.uuid4()),

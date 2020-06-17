@@ -1,21 +1,26 @@
 import React, { Fragment, useContext } from 'react';
 import AlertContext from '../../../context/alert/AlertContext';
+import UserContext from '../../../context/user/UserContext';
 import Alert from '../../auth/Alerts';
+import EventOption from './EventOption';
 import picture from '../../../resources/eintracht-images/choreo1.jpg';
 
 import '../trips.scss';
 
 const TripsDetails = (props) => {
-  const { trip, onChange, nextStep, step } = props;
+  const { trip, onChange, nextStep, step, event_id } = props;
   const alertState = useContext(AlertContext);
+  const userContext = useContext(UserContext);
 
   const { setAlert } = alertState;
+  const { event } = userContext;
 
   const validate = () => {
     if (
       trip.pickup_zip_code === '' ||
       trip.journey_start_time === '' ||
-      trip.journey_date === ''
+      trip.journey_date === '' ||
+      trip.event_id === ''
     ) {
       setAlert('Please enter all required field', 'danger');
     } else {
@@ -33,6 +38,11 @@ const TripsDetails = (props) => {
           <div className='form__text'>
             <h3>When and where do you want to start?</h3>
           </div>
+          <select name='event_id' value={trip.event_id} onChange={onChange}>
+            {event.map((event_id) => (
+              <EventOption key={event.event_id} event_id={event_id} />
+            ))}
+          </select>
           <div className='input__wrapper'>
             <input
               type='text'

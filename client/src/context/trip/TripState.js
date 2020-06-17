@@ -148,10 +148,10 @@ const TripState = (props) => {
   };
 
   // Filter Trips
-  const filterTrips = (text) => {
+  const filterTrips = (filter) => {
     dispatch({
       type: FILTER_TRIPS,
-      payload: text,
+      payload: filter,
     });
   };
 
