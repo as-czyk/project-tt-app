@@ -22,13 +22,13 @@ const EventPicture = () => {
     return (
       <div className='event__wrapper'>
         <img
-          src={`/images/${nextEvent.club_id_home}.png`}
+          src={`/static/images/${nextEvent.club_id_home}.png`}
           alt='Home Team'
           className='eventLogo__wrapper'
         />
         <p style={{ fontSize: '40px', margin: '10px' }}>:</p>
         <img
-          src={`/images/${nextEvent.club_id_away}.png`}
+          src={`/static/images/${nextEvent.club_id_away}.png`}
           alt='Away Team'
           className='eventLogo__wrapper'
         />
