@@ -9,7 +9,7 @@ const AcceptedReservationItem = (props) => {
         {reservation.reservation_requested_seats} | Passenger-ID:{' '}
         {reservation.user_id}
       </p>
-      <i class='fas fa-check fa-2x'></i>
+      <i className='fas fa-check fa-2x'></i>
     </div>
   );
 };

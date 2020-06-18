@@ -15,9 +15,6 @@ const TripUpcomingItem = (props) => {
     loadTrips(state.id);
   };
 
-  console.log(event.club_id_home);
-  console.log(event.club_id_away);
-
   return (
     <div
       onClick={() => {

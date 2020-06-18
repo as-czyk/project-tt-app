@@ -30,11 +30,17 @@ export default (state, action) => {
             return false;
           }
 
-          if (trip.journey_empty_spaces < filter.seats) {
+          if (
+            trip.journey_empty_spaces < filter.seats &&
+            filter.seats !== 'undefined'
+          ) {
             return false;
           }
 
-          if (trip.journey_money > filter.maxcost) {
+          if (
+            trip.journey_money > filter.maxcost &&
+            filter.maxcost !== 'undefined'
+          ) {
             return false;
           }
 

@@ -39,6 +39,9 @@ const TripsDetails = (props) => {
             <h3>When and where do you want to start?</h3>
           </div>
           <select name='event_id' value={trip.event_id} onChange={onChange}>
+            <option value='' seclected='selected'>
+              Please select an event
+            </option>
             {event.map((event_id) => (
               <EventOption key={event.event_id} event_id={event_id} />
             ))}
